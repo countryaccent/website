@@ -4,7 +4,8 @@
   "description": "a good site for country",
   "private": true,
   "dependencies": {
-    "egg": "^1.1.0"
+    "egg": "^1.1.0",
+    "egg-view-nunjucks": "^2.1.0"
   },
   "devDependencies": {
     "autod": "^2.8.0",

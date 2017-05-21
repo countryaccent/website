@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="renderer" content="webkit" />
+    <title>{{ pagetitle }}</title>
+    <link rel="stylesheet" href="/public/css/iview.css" />
+    <link rel="stylesheet" href="/public/css/common.css" />
+    <script type="text/javascript" src="/public/js/vue.js"></script>
+    <script type="text/javascript" src="/public/js/iview.js"></script>
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    <div class="XY-layout" id="XY-APP">
+        {% block content %}
+        {% endblock %}
+    </div>
+    
+
+<script>
+	new Vue({
+		el: '#XY-APP',
+		data: {}
+	});
+</script>
+</body>
+</html>

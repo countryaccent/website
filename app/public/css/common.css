@@ -1,0 +1,25 @@
+.XY-layout {
+
+}
+.XY-layout .ivu-menu{
+	background:#f60;
+	color: #FFF;
+	min-width: 1190px;
+	margin: 0 auto;
+}
+.XY-layout .layout-nav {
+	overflow: hidden;
+	margin-left:200px;
+}
+.XY-layout .layout-nav .active {
+	background: #D05300;
+}
+.XY-layout .layout-logo {
+	float: left;
+	margin-left: 20px;
+}
+
+.XY-layout .layout-content {
+	width: 1190px;
+	margin: 20px auto;
+}

@@ -1,25 +1,38 @@
-.XY-layout {
-
-}
-.XY-layout .ivu-menu{
-	background:#f60;
-	color: #FFF;
-	min-width: 1190px;
-	margin: 0 auto;
-}
-.XY-layout .layout-nav {
-	overflow: hidden;
-	margin-left:200px;
-}
-.XY-layout .layout-nav .active {
-	background: #D05300;
-}
-.XY-layout .layout-logo {
-	float: left;
-	margin-left: 20px;
+.C-header {
+    height: 80px;
 }
 
-.XY-layout .layout-content {
-	width: 1190px;
-	margin: 20px auto;
+.C-header .logo {
+    color: #ea4246;
+    height: 80px;
+    line-height: 80px;
+    padding: 0 20px;
+}
+
+.C-nav {
+    height: 60px;
+    background: #222222;
+}
+
+.C-nav .nav-list {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.C-nav .nav-list li {
+    float: left;
+    margin-right: 10px;
+}
+
+.C-nav .nav-list li a {
+    display: block;
+    color: #FFF;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 20px;
+    font-size: 14px;
+}
+
+.C-nav .nav-list li a.active {
+    background: #ea4246;
 }

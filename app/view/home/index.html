@@ -1,165 +1,42 @@
-
-<!DOCTYPE html> 
-<html> 
-<head> 
-<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-<meta name=viewport content="width=device-width,initial-scale=1"> 
-<meta http-equiv="X-UA-Compatible" content="IE=9" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
-<title>好嘉好装饰工程有限公司</title> 
-<meta name="keywords" content="好嘉好装饰工程有限公司"/>
-<meta name="description" content="好嘉好装饰工程有限公司、装修、南昌"/>
-<link href="/public/haojiahao/bootstrap.min.css" rel="stylesheet"> 
-<link href="/public/haojiahao/bootstrap-responsive.min.css" rel="stylesheet">
-<link href="/public/haojiahao/font-awesome.min.css" rel="stylesheet"> 
-<link href="/public/haojiahao/front_common.css" rel="stylesheet"> 
-<link href="/public/haojiahao/a1.css" rel="stylesheet"> 
-<link href="/public/haojiahao/a2.css" rel="stylesheet"> 
-
-<script type="text/javascript" src="/public/haojiahao/jquery.min.js"></script>
-<script type="text/javascript" src="/public/haojiahao/bootstrap.min.js"></script> 
-  <!--[if lt IE 9]>
-      <script src="/public/haojiahao/html5shiv.min.js"></script>
-      <script src="/public/haojiahao/respond.min.js"></script>
-    <![endif]--> 
- <!-- Navbar --> 
-<BODY>
-<DIV class="navbar navbar-fixed-top">   
-<DIV class="navbar-inner">
-<DIV class="container">
-<A class="btn btn-navbar" style="padding: 3px 10px; color: rgb(0, 0, 0);" data-target=".nav-collapse" data-toggle="collapse">导航栏</A><SPAN></SPAN>
-<A name="top" class="brand text_bnb_strong bnb_middle" href="/" style="line-height:20px">好嘉好装饰</A>
-<DIV class="nav-collapse collapse">
-<UL class="nav pull-left" style="margin-right: 0px;">
-  <LI class="divider-vertical"></LI>
-  <LI class="dropdown"><A class="text_bnb_strong" href="/">首页</A></LI>
-  <LI class="divider-vertical"></LI>
-  <LI class="dropdown"><A class="text_bnb_strong" href="/home/yewu">业务范围</A></LI>
-  <LI class="divider-vertical"></LI>
-  <LI class="dropdown"><A class="text_bnb_strong" href="/home/lianxi">联系我们</A></LI>
-  <LI class="divider-vertical"></LI>
-</UL>
-<UL class="nav pull-right" id="destoon_member"></UL>
-</DIV></DIV></DIV></DIV><div class=parallax> 
-<div class="parallaxImg parallaxImg-header"></div> 
-<div class=front-clouds></div> 
-</div> 
-<div class=section-header style="position:relative;display:table;table-layout:fixed;height:100%;width:100%" id=header> 
-<div class=crp-showcase style="width:100%;vertical-align:middle;display:table-cell;height:300px;padding:0;border:0"> 
-<div class=container> 
-<div class=row> 
-<div class=col-sm-12> 
-<h1 class="sourehan text-center animated fadeInDown">诚信立足<i style="padding:0 10px;"></i>创新至远</h1> 
-<h3 class="text-center animated fadeInDown"> 
-<span id=video-start>南昌好嘉好装饰工程有限公司</h3> 
-<div class="text-center actions animated fadeInDown delay2" id=dashboard> 
-</div>  
-</div> 
-</div> 
-</div> 
-</div> 
-</div> 
-
- 
-<div class=section-block id=product-features> 
-<div class=container> 
-<h2>免费预约、现场测量</h2> 
-<div class=decorate-line></div>
-<div class="row"> 
-<div class="col-xs-12" style="position:relative;"> <img src="/public/haojiahao/cl.jpg">
-</div> 
-</div>  
-</div> </div> 
-<div class=section-block> 
-<div class=container> 
-<h2>专业的施工</h2> 
-<p class=text-muted>我们拥有一支高效、技术感十足、环保的装修队伍。</p>
-<div class=decorate-line></div> 
-<div class="grid-intro"> 
-<div class="row"> 
-<div class="col-sm-4"> 
-<img src="/public/haojiahao/11.jpg" style="border:2px solid #CCC;padding:5px;"/>
-</div> 
-<div class="col-sm-4"> 
-<img src="/public/haojiahao/33.jpg" style="border:2px solid #CCC;padding:5px;"/> 
-</div> 
-<div class="col-sm-4"> 
-<img src="/public/haojiahao/22.jpg" style="border:2px solid #CCC;padding:5px;"/> 
-</div> 
-</div> 
-</div>
-
- </div> 
- </div> 
- 
- 
-<div class="section-block">
-            <div class="container">
-                <h2>高品质的交付</h2>
-<p class=text-muted>一切以客户满意度为最高标准交付我们的工程。</p> 
-
-<div class=decorate-line></div> 
-<div class="grid-intro"> 
-<div class="row"> 
-<div class="col-sm-3"> 
-<img src="/public/haojiahao/44.jpg" style="border:2px solid #CCC;padding:5px;"/>
-</div> 
-<div class="col-sm-3"> 
-<img src="/public/haojiahao/55.jpg" style="border:2px solid #CCC;padding:5px;"/> 
-</div> 
-<div class="col-sm-3"> 
-<img src="/public/haojiahao/66.jpg" style="border:2px solid #CCC;padding:5px;"/> 
-</div> 
-<div class="col-sm-3"> 
-<img src="/public/haojiahao/77.jpg" style="border:2px solid #CCC;padding:5px;"/> 
-</div> 
-</div> 
-</div>
-
-
+{% set pagetitle = "深圳荣新PCB" %} {% set pagenav = "home" %} {% extends "../inc/layout.html" %} {% block head %}
+<style type="text/css">
+    .M-count-price {
+        background: url(/public/img/bg.jpg) no-repeat;
+        background-size: cover;
+    }
+    
+    .M-count-price .con {
+        width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    .M-count-price .con .count-form {
+        width: 800px;
+        background: #FFF;
+        border: 3px solid #ea4246;
+        border-radius: 3px;
+        height: 400px;
+        box-shadow: 0 0 10px #444;
+    }
+</style>
+{% endblock %} {% block content %}
+<div class="P-home">
+    <div class="M-count-price">
+        <div class="con">
+            <div class="count-form">
 
             </div>
-        </div>  
+        </div>
+    </div>
+    <div class="M-product-list">
 
-<div class="section-block" id="underneath"> 
-<div class="container"> 
-                <h2>联系我们</h2>
-                <div class="decorate-line"></div>
-<div class="banner-bottom-grids">
-<div class="col-md-4 banner-bottom-grid red">
-<img src="/public/haojiahao/productivity.png" alt="">
-<p class=text-muted style="text-align:center;padding:20px 0px;">联系地址：江西省南昌市南昌县莲塘镇迎宾中大道2013号盛汇城市广场3栋509室</p>
-</div>
-<div class="col-md-4 banner-bottom-grid">
-<img src="/public/haojiahao/clarity.png" alt="">
-<p class=text-muted style=" text-align:center;padding:20px 0px;">联系电话：13707913846；联系人：徐先生</p>
-</div>
-<div class="col-md-4 banner-bottom-grid green">
-<img src="/public/haojiahao/peace2.png" alt="">
-<p class=text-muted style="text-align:center;padding:20px 0px;">QQ：1158384121；微信：xchunde18179184897</p>
-</div>
-<div class="clearfix"> </div>
-</div>
- </div> 
- </div> 
-  
+    </div>
+    <div class="M-about">
 
-<!-- Footer --> 
-<div id="footer"> 
-<div class="container"> 
-<div class="row-fluid"> 
-<p style="text-align:center;color:#FFF;font-size: 30px;">诚信立足，创新至远</p>
-</div> 
-</div> </div> 
-<div class="footer0"> 
-<div class="container"> 
+    </div>
+    <div class="M-contact">
 
-<div class="copy0">
- ©2017 好嘉好 All Rights Reserved 赣ICP备17006862号-1
- </div> 
- </div>
-  </div>  
-  
-
-</body>
-</html> 
+    </div>
+</div>
+{% endblock %}

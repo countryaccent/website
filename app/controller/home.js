@@ -11,6 +11,18 @@ module.exports = app => {
     * lianxi() {
       yield this.ctx.render('home/lianxi.html');
     }
+    * info() {
+      yield this.ctx.render('home/info.html');
+    }
+    * count() {
+      yield this.ctx.render('home/count.html');
+    }
+    * about() {
+      yield this.ctx.render('home/about.html');
+    }
+    * contact() {
+      yield this.ctx.render('home/contact.html');
+    }
   }
   return HomeController;
 };

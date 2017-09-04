@@ -1,0 +1,333 @@
+
+.home_count{
+    background: #fff;
+    width: 364px;
+    padding:20px 30px 30px 30px;
+    border: 2px solid #ea4246;
+    position: relative;
+    top: 30px;
+}
+
+.items-list{
+	float: left;
+	margin-bottom: 10px;
+}
+.items-list h3{
+
+	width: 76px;
+    margin-right: 7px;
+    text-align: right;
+    margin-top: 2px;
+    padding-bottom: 0;
+    font-weight: normal;
+}
+.items-list .items-btn{
+	position: relative;
+	width: 180px;
+}
+.i-width{
+   margin-left: 20px;
+}
+.i-width .items-btn{
+    width: 100px;
+}
+.btn-icon{
+	position: absolute;
+	right: 5px;
+	top: 10px;
+	width: 0;
+	height: 0;
+	border-top:6px solid #aaa;
+	border-left:4px solid  transparent;
+	border-right:4px solid  transparent;
+}
+.items-list .items-btn-wrap {
+	height: 28px;
+    line-height: 26px;
+	padding-left: 8px;
+	cursor: pointer;
+	color: #333;
+	position: relative;
+    background: #fff;
+    border: 1px solid #d8d8d8;
+    border-radius: 3px;
+}
+.choose-menu{
+	position: absolute;
+	top: 24px;
+	left: 0px;
+	width: 100px;
+	background:#fffff9;
+	border: 1px solid #d8d8d8;
+	display: none;
+	z-index: 99999;
+	box-shadow: 2px 2px 4px #efefef;
+}
+.choose-menu ul li{
+	height: 26px;
+    line-height: 26px;
+    line-height: 26px;
+    cursor: pointer;
+    padding-left: 8px;
+    white-space: nowrap;
+}
+.choose-menu ul li:hover{
+	background: #f6f6f6
+}
+.input-box{
+	float: left;
+    width: 79px;
+    padding-left: 8px;
+    padding-right: 6px;
+    position: relative;
+    background: #fff;
+    border: 1px solid #d8d8d8;
+    border-radius: 3px;
+}
+.icon-x{
+	    float: left;
+    padding: 7px 6px 0;
+    color: #c9c9c9;
+}
+.input-box input{
+	height: 26px;
+    line-height: 26px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    display: block;
+    width: 100%;
+    border: 0;
+    background: none;
+    outline: none;
+}
+.cm{
+	height: 100%;
+    width: 34px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #f9f9f9;
+    border-left: 1px solid #e4e4e4;
+    text-align: center;
+    line-height: 27px;
+    font-size: 14px;	
+}
+.min-wdith,.min-wdith .choose-menu{
+	width: 74px !important;
+	float: left;
+}
+.counts .choose-menu{
+    padding: 10px;
+    width: 200px;
+}
+    .counts .choose-menu ul li {
+    width: 20%;
+    padding: 0;
+    float: left;
+    text-indent: 3px;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 3px;
+}
+.submit-count-price{
+    display: inline-block;
+    padding: 10px 25px;
+    background: #ea4246;
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #fff;
+    line-height: 1.0;
+    text-align: center;
+    width: 180px;
+    margin-top: 10px;
+}
+
+/*热门产品*/
+.M-product-list{
+    margin-top: 20px;
+}
+.hot-title{
+    font-size: 16px;
+    position: relative;
+    overflow: hidden;
+}
+.hot-title:after{
+    content: '';
+    width: 90%;
+    height: 1px;
+    background: #e4e4e4;
+    position: absolute;
+    top: 15px;
+    right: 0;
+}
+.hot-title i{
+    display: block;
+    height: 32px;
+    width: 32px;
+    overflow: hidden;
+    background: url(../img/sprite.png) -0px -0px no-repeat;
+    float: left;
+    margin-right: 10px;
+}
+.hot-title span{
+    margin-top: 6px;
+    float: left;
+    color: #333;
+    font-weight: bold;
+}
+.M-product-list ul{
+    float: left;
+    margin-top: 20px;
+}
+.M-product-list ul li{
+    float: left;
+}
+.M-product-list ul li p{
+    font-size: 16px;
+    margin-top: 10px;
+}
+.M-product-list ul li + li{
+    margin-left: 20px;
+}
+.M-product-list ul li img{
+    width: 280px;
+    height: 230px;
+}
+.M-product-list ul li.more-product{
+    width: 280px;
+    height: 230px;
+    background: #dad4d4;
+    text-align: center;
+    line-height: 230px;
+    font-size: 16px;
+}
+.M-product-list ul li.more-product:hover{
+    background: #ccc;
+}
+.M-product-list ul li.more-product a{
+    color: #ea4246;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+/*我们的优势*/
+.M-adv{
+    /*float: left;*/
+    background: #eee;
+    text-align: center;
+    padding:30px 0 60px 0;
+    margin-top: 30px;
+}
+.M-adv h3{
+    display: inline;
+    position: relative;
+}
+.M-adv h3:after{
+    content: '';
+    width: 200%;
+    height: 1px;
+    background: #ccc;
+    position: absolute;
+    bottom: -15px;
+    left: -50%;
+}
+.M-adv h3 i{
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    overflow: hidden;
+    background: url(../img/sprite.png) -32px -0px no-repeat;
+    vertical-align: bottom;
+}
+.M-adv h3 span{
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+.M-adv ul {
+    width: 900px;
+    margin: 50px auto;
+}
+.M-adv ul li{
+    float: left;
+
+}
+.M-adv ul li + li{
+    margin-left: 175px;
+}
+.M-adv ul li img{
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+.M-adv ul li img.img-w{
+    width: 160px;
+    height: 160px;
+}
+.M-adv ul li p{
+    font-size: 20px;
+    color: #222;
+}
+
+/*关于我们*/
+.M-about{
+    margin-top: 30px;
+}
+.about-title i{
+    background: url(../img/sprite.png) -64px -0px no-repeat;
+}
+.M-about .about-left{
+    float: left;
+    margin-top: 30px;
+    width: 690px;
+    text-align: center;
+    padding: 16px 20px 10px 28px ;
+    background: #fff;
+    overflow: hidden;
+    border:1px solid #e4e4e4;
+    border-radius: 15px;
+}
+.M-about .about-left h3,.about-right h3{
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+}
+.M-about .about-left ul{
+     margin-left: -10px;
+}
+.M-about .about-left ul li{
+    float: left;
+    margin:10px 16px;
+    font-size: 15px;
+}
+.M-about .about-left ul li img,.about-right ul li img{
+    border-radius: 4px;
+}
+.about-right{
+    float: right;
+    width: 460px;
+    padding: 16px 20px 10px 28px ;
+    border:1px solid #e4e4e4;
+    border-radius: 15px;
+    margin-top: 30px;
+    height: 424px;
+}
+.about-right ul li{
+    float: left;
+    text-align: center;
+     font-size: 15px;
+}
+.about-right ul li{
+    margin: 10px;
+}
+.about-right .about-txt{
+    text-indent: 2em;
+    font-size: 15px;
+    height: 180px;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+

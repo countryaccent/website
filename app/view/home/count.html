@@ -1,0 +1,584 @@
+{% set pagetitle = "深圳荣新PCB" %} {% set pagenav = "yewu" %} {% extends "../inc/layout.html" %} {% block head %}
+{% endblock %} {% block content %}
+<style>
+	
+</style>
+<link rel="stylesheet" href="public/css/count.css">
+<div class="P-count">
+	<div class="container">
+		<h1>在线计价</h1>
+		<div class="count">
+			<div class="count-table">
+				<div class="notice">下单有礼! 支付完成后将获赠优惠券一张</div>
+				<!-- 表左侧 -->
+				<div class="items">
+					<div class="items-list">
+						<h3>板子层数：</h3>
+						<div class="items-btn">
+							<div class="items-btn-wrap">
+								<span class="btn-txt">${layer}</span>
+								<span class="btn-icon"></span>
+							</div>
+							<div class="choose-menu">
+								<ul data-key="layer">
+									<li data="1">1</li>
+									<li data="2">2</li>
+									<li data="4">4</li>
+									<li data="6">6</li>
+									<li data="8">8</li>
+									<li data="10">10</li>
+									<li data="12">12</li>
+									<li data="14">14</li>
+									<li data="16">16</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="items-list">
+						<h3>出货形式：</h3>
+						<div class="items-btn">
+							<div class="items-btn-wrap">
+								<span class="btn-txt">${pattern}</span>
+								<span class="btn-icon"></span>
+							</div>
+							<div class="choose-menu">
+								<ul data-key="pattern">
+									<li data="1">单片出货</li>
+									<li data="2">文件内是单片，需拼版</li>
+									<li data="3">按文件内已拼版资料出货</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="items-list" v-show="pbStyleShow">
+						<h3>单片大小：</h3>
+						<div class="items-btn">
+							<div class="">
+								<div class="input-box" style="width: 100%">
+									<input type="text" onkeyup="this.value=this.value.replace(/[^0-9]+/,'');" v-model.number="pbStyle" name="width" placeholder="长" id="width">
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+					<div class="items-list">
+						<h3>单片大小：</h3>
+						<div class="items-btn">
+							<div class="">
+								<div class="input-box">
+									<input type="text" onkeyup="this.value=this.value.replace(/[^0-9]+/,'');" v-model.number="width" name="width" placeholder="长" id="width">
+									<div class="cm">cm</div>
+								</div>
+								<div class="icon-x">X</div>
+								<div class="input-box">
+									<input type="text" onkeyup="this.value=this.value.replace(/[^0-9]+/,'');" v-model.number="height" name="height" placeholder="宽" id="height">
+									<div class="cm">cm</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<div class="items-list" v-show="pattern=='文件内是单片，需拼版'">
+						<h3>拼版规则：</h3>
+						<div class="items-btn">
+							<div class="">
+								<div class="input-box">
+									<input type="text" onkeyup="this.value=this.value.replace(/[^0-9]+/,'');" v-model.number="pbWidth" name="pbWidth" placeholder="" id="pbWidth">
+									<div class="cm">Pcs</div>
+								</div>
+								<div class="icon-x">X</div>
+								<div class="input-box">
+									<input type="text" onkeyup="this.value=this.value.replace(/[^0-9]+/,'');" v-model.number="pbHeight" name="pbHeight" placeholder="" id="pbHeight">
+									<div class="cm">Pcs</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<div class="items-list">
+						<h3>工艺边框：</h3>
+						<div class="items-btn min-wdith">
+							<div class="items-btn-wrap">
+								<span class="btn-txt">${border}</span>
+								<span class="btn-icon"></span>
+							</div>
+							<div class="choose-menu">
+								<ul data-key="border">
+									<li data="左右">左右</li>
+									<li data="上下">上下</li>
+									<li data="四边">四边</li>
+									<li data="无">无</li>
+								</ul>
+							</div>
+						</div>
+						<div class="border-input input-box">
+							<input onkeyup="this.value=this.value.replace(/[^0-9]+/,'');" id="borderStyle" type="text" v-model.number="borderStyle" readonly placeholder="0">
+							<div class="cm">cm</div>
+						</div>
+					</div>
+					<div class="items-list">
+						<h3>
+							<span v-if="lianP">单</span>
+							<span v-else>连</span>片数量：
+						</h3>
+						<div class="items-btn counts">
+							<div class="items-btn-wrap">
+								<span class="btn-txt">${counts}</span>
+								<span class="btn-icon"></span>
+							</div>
+							<div class="choose-menu">
+								<ul data-key="counts">
+									<li data="5">5</li>
+									<li data="10">10</li>
+									<li data="15">15</li>
+									<li data="20">20</li>
+									<li data="25">25</li>
+									<li data="30">30</li>
+									<li data="40">40</li>
+									<li data="50">50</li>
+									<li data="60">60</li>
+									<li data="80">80</li>
+									<li data="100">100</li>
+									<li data="120">120</li>
+									<li data="150">150</li>
+									<li data="200">200</li>
+									<li data="250">250</li>
+									<li data="300">300</li>
+									<li data="350">350</li>
+									<li data="400">400</li>
+									<li data="450">450</li>
+									<li data="500">500</li>
+									<li data="600">600</li>
+									<li data="700">700</li>
+									<li data="800">800</li>
+									<li data="900">900</li>
+									<li data="1000">1000</li>
+									<li data="1500">1500</li>
+									<li data="2000">2000</li>
+									<li data="2500">2500</li>
+									<li data="3000">3000</li>
+									<li data="3500">3500</li>
+									<li data="4000">4000</li>
+									<li data="4500">4500</li>
+									<li data="5000">5000</li>
+									<li data="5500">5500</li>
+									<li data="6000">6000</li>
+									<li data="6500">6500</li>
+									<li data="7000">7000</li>
+									<li data="7500">7500</li>
+									<li data="8000">8000</li>
+									<li data="8500">8500</li>
+									<li data="9000">9000</li>
+								</ul>
+								<div class="input-counts">
+									<p>其它数量：<span>(数量x长x宽需大于10平米)</span></p>
+									<div class="input-counts-box">
+										<input onkeyup="this.value=this.value.replace(/[^0-9]+/,'');" type="text" placeholder="10" id="inputCounts">
+										<a href="javascript:;" id="counts-btn">确定</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="items-list">
+						<h3>板子厚度：</h3>
+						<div class="items-btn">
+							<div class="items-btn-wrap">
+								<span class="btn-txt">${thick}</span>
+								<span class="btn-icon"></span>
+							</div>
+							<div class="choose-menu">
+								<ul data-key="thick">
+									<li data="0.4">0.4</li>
+									<li data="0.6">0.6</li>
+									<li data="0.8">0.8</li>
+									<li data="1.0">1.0</li>
+									<li data="1.2">1.2</li>
+									<li data="1.6">1.6</li>
+									<li data="2.0">2.0</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="items-list">
+						<h3>焊盘喷镀：</h3>
+						<div class="items-btn">
+							<div class="items-btn-wrap">
+								<span class="btn-txt">${spray}</span>
+								<span class="btn-icon"></span>
+							</div>
+							<div class="choose-menu">
+								<ul data-key="spray">
+									<li data="有铅喷锡">
+										有铅喷锡
+									</li>
+									<li data="无铅喷锡">
+										无铅喷锡
+									</li>
+									<li data="沉金">
+										沉金
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="items-list">
+						<h3>阻焊覆盖：</h3>
+						<div class="items-btn">
+							<div class="items-btn-wrap">
+								<span class="btn-txt">${cover}</span>
+								<span class="btn-icon"></span>
+							</div>
+							<div class="choose-menu">
+								<ul data-key="cover">
+									<li data="有铅喷锡">
+										有铅喷锡
+									</li>
+									<li data="无铅喷锡">
+										无铅喷锡
+									</li>
+									<li data="沉金">
+										沉金
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="items-list">
+						<h3>阻焊颜色：</h3>
+						<div class="items-btn">
+							<div class="items-btn-wrap color-wrap">
+								<span class="btn-txt color green "><i></i>${color}</span>
+								<span class="btn-icon"></span>
+							</div>
+							<div class="choose-menu">
+								<ul data-key="color" class="color">
+									<li class="green" data="绿色">
+										<i></i>
+										绿色
+									</li>
+									<li class="red" data="红色">
+										<i></i>
+										红色
+									</li>
+									<li class="yellow" data="黄色">
+										<i></i>
+										黄色
+									</li>
+									<li class="blue" data="蓝色">
+										<i></i>
+										蓝色
+									</li>
+									<li class="black" data="黑色">
+										<i></i>
+										黑色
+									</li>
+									<li class="white" data="白色">
+										<i></i>
+										白色
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 表右侧 -->
+				<div class="items-right">
+					<div class="items-list">
+						<h3>外层铜厚：</h3>
+						<div class="items-btn">
+							<div class="items-btn-wrap">
+								<span class="btn-txt">${copper} oz</span>
+								<span class="btn-icon"></span>
+							</div>
+							<div class="choose-menu">
+								<ul data-key="copper">
+									<li data="1">1 oz</li>
+									<li data="2">2 oz</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="items-list">
+						<h3>最小线宽：</h3>
+						<div class="items-btn">
+							<div class="items-btn-wrap">
+								<span class="btn-txt">${lineweight} / ${lineweight} mil</span>
+								<span class="btn-icon"></span>
+							</div>
+							<div class="choose-menu">
+								<ul data-key="lineweight">
+									<li data="6.0">6.0 / 6.0 mil</li>
+									<li data="5.0">5.0 / 5.0 mil</li>
+									<li data="4.0">4.0 / 4.0 mil</li>
+									<li data="3.5">3.5 / 3.5 mil</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="items-list">
+						<h3>最小过孔：</h3>
+						<div class="items-btn">
+							<div class="items-btn-wrap">
+								<span class="btn-txt">${hole} mm</span>
+								<span class="btn-icon"></span>
+							</div>
+							<div class="choose-menu">
+								<ul data-key="hole">
+									<li data="0.3">0.3 mm</li>
+									<li data="0.25">0.25 mm</li>
+									<li data="0.2">0.2 mm</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="items-list">
+						<h3>BGA：</h3>
+						<div class="items-btn">
+							<div class="items-btn-wrap">
+								<span class="btn-txt">
+									<template v-if="bga==0">
+										无
+									</template>
+									<template v-else>
+										${bga}
+									</template>
+								</span>
+								<span class="btn-icon"></span>
+							</div>
+							<div class="choose-menu">
+								<ul data-key="bga">
+									<li data="0.35">0.35</li>
+									<li data="0.3">0.3</li>
+									<li data="0.25">0.25</li>
+									<li data="0">无</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="items-list">
+						<h3>半孔：</h3>
+						<div class="items-btn">
+							<div class="items-btn-wrap">
+								<span class="btn-txt">
+									<template v-if="halfhole==1">
+										有
+									</template>
+									<template v-else>
+										无
+									</template>
+								</span>
+								<span class="btn-icon"></span>
+							</div>
+							<div class="choose-menu">
+								<ul data-key="halfhole">
+									<li data="1">有</li>
+									<li data="0">无</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="items-list">
+						<h3>阻抗：</h3>
+						<div class="items-btn">
+							<div class="items-btn-wrap">
+								<span class="btn-txt">
+									<template v-if=" impedance==1">
+										有
+									</template>
+									<template v-else>
+										无
+									</template>
+								</span>
+								<span class="btn-icon"></span>
+							</div>
+							<div class="choose-menu">
+								<ul data-key="impedance">
+									<li data="1">有</li>
+									<li data="0">无</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="items-list">
+						<h3>阻抗：</h3>
+						<div class="items-btn">
+							<div class="items-btn-wrap">
+								<span class="btn-txt">${test}</span>
+								<span class="btn-icon"></span>
+							</div>
+							<div class="choose-menu">
+								<ul data-key="test">
+									<li>样品免费测试</li>
+									<li>批量飞测：AOI测试+飞针测试</li>
+									<li v-show="false">抽测：全部光学AOI测试 +飞针测试进行抽测，不收费</li>
+									<li v-show="false">批量测试架：AOI测试+测试架测试</li>
+									<li v-show="false">目测：FQC人工目检，不收费</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="items-list">
+						<h3>发货时间：</h3>
+						<div class="items-btn">
+							<div class="items-btn-wrap">
+								<span class="btn-txt">${delivery}</span>
+								<span class="btn-icon"></span>
+							</div>
+							<div class="choose-menu">
+								<ul data-key="delivery">
+									<li>正常3-4天</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="items-list">
+						<h3>加急：</h3>
+						<div class="items-btn">
+							<div class="items-btn-wrap">
+								<span class="btn-txt">${urgent}</span>
+								<span class="btn-icon"></span>
+							</div>
+							<div class="choose-menu">
+								<ul data-key="urgent">
+									<li data="0">不加急</li>
+									<li data="1">24小时</li>
+									<li data="2">48小时</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 拼版规则示意图 -->
+			<div class="pb-result" v-show="width>0 && height>0 && pbWidth>0 && pbHeight>0">
+				<div class="pb-result-wrap">
+					<h3>拼版信息</h3>
+					<div class="pb-table">
+						<div class="pb-table-tr">
+							<div class="pb-table-title">
+								拼版后大小
+							</div>
+							<div class="pb-table-num">
+								${(width*pbWidth ) + borderWidthResult } 
+								* 
+								${(height*pbWidth) + borderHeightResult} cm
+							</div>
+						</div>
+						<div class="pb-table-tr">
+							<div class="pb-table-title">
+								拼版后数量
+							</div>
+							<div class="pb-table-num">
+								${counts} 连片(45000单片)
+							</div>
+						</div>
+						<div class="pb-table-tr">
+							<div class="pb-table-title">
+								拼版后面积
+							</div>
+							<div class="pb-table-num">
+								${(counts*width*pbWidth*height*pbHeight/10000).toFixed(3)} ㎡
+							</div>
+						</div>
+					</div>
+					<div class="pb-draw">
+						<h4>连片示意图：↓ (仅供参考)</h4>
+						<div class="draw-x">
+							<span>${width*pbWidth} cm</span>
+						</div>
+						<div class="draw-wrap">
+							<div class="draw-table">
+								<table class="pannel">
+									<tr v-for="n in tableY">
+										<td v-for="n in tableX">
+										</td>
+									</tr>
+								</table>
+							</div>
+							<div class="draw-y">
+								<span>${height*pbHeight} cm </span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 计算结果 -->
+			<div class="count-result">
+				<div class="count-result-wrap">
+					<template v-if="width>0 && height>0 && counts>0">
+						<h2>价格</h2>	
+						<ul>
+							<li v-show="gcFee > 0">
+								工程费：<i>￥</i>${gcFee}
+							</li>
+							<li v-show="bcFee > 0">
+								板材费：<i>￥</i>${bcFee}
+							</li>
+							<li v-show="price.specialFee > 0">
+								特殊板厚：<i>￥</i>${price.specialFee}
+							</li>
+							<li v-show="feilinFee > 0">
+								菲林费：<i>￥</i>${feilinFee}
+							</li>
+							<li v-show="price.pinFee > 0">
+								拼版费：<i>￥</i>${price.gcpinFeef}
+							</li>
+							<li v-show="price.copperFee > 0">
+								铜厚费：<i>￥</i>${price.copperFee}
+							</li>
+							<li v-show="price.sprayFee > 0">
+								喷镀费：<i>￥</i>${price.sprayFee}
+							</li>
+							<li v-show="price.colorFee > 0">
+								颜色费：<i>￥</i>${price.colorFee}
+							</li>
+							<li v-show="price.bgaFee > 0">
+								BGA费：<i>￥</i>${price.bgaFee}
+							</li>
+							<li v-show="price.holeFee > 0">
+								过孔费：<i>￥</i>${price.holeFee}
+							</li>
+							<li v-show="price.impedanceFee > 0">
+								阻抗费：<i>￥</i>${price.impedanceFee}
+							</li>
+							<li v-show="price.halfholeFee > 0">
+								半孔费：<i>￥</i>${price.halfholeFee}
+							</li>
+							<li v-show="price.testFee > 0">
+								测试费：<i>￥</i>${price.testFee}
+							</li>
+							<li v-show="urgentFee > 0">
+								加急费：<i>￥</i>${urgentFee}
+							</li>
+						</ul>
+						<div class="totalFee">
+							￥<span>
+								<template v-if="totalFee > 0">
+									${totalFee}
+								</template>
+								<template v-else>
+									0
+								</template>
+							</span>
+						</div>
+						<div class="submit buy">立即下单</div>
+						<div>面积：${(width*height*counts/10000).toFixed(3)} ㎡</div>
+					</template>
+					<template v-else>
+						<p class="please-input">请输入板子大小~</p>
+						<div class="please-price">
+							￥<span>0</span>
+						</div>
+						<div class="buy">立即下单</div>
+					</template>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="public/js/jquery.min.js"></script>
+<script src="public/js/vue.js"></script>
+<script src="public/js/counts.js"></script>
+{% endblock %}

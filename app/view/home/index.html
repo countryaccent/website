@@ -3,6 +3,7 @@
     .M-count-price {
         background: url(/public/img/bg.jpg) no-repeat;
         background-size: cover;
+        background-position: center center;
     }
     
     .M-count-price .con {
@@ -12,31 +13,245 @@
     }
     
     .M-count-price .con .count-form {
-        width: 800px;
-        background: #FFF;
-        border: 3px solid #ea4246;
-        border-radius: 3px;
+       
         height: 400px;
-        box-shadow: 0 0 10px #444;
+       
     }
 </style>
+
 {% endblock %} {% block content %}
+<link rel="stylesheet" href="public/css/home.css">
 <div class="P-home">
-    <div class="M-count-price">
+    <div class="M-count-price clearfix">
         <div class="con">
             <div class="count-form">
-
+                <form :action="url">
+                    <div class="home_count">
+                        <div class="items-list">
+                            <h3>单片大小：</h3>  
+                            <div class="items-btn">
+                                <div class="">
+                                    <div class="input-box">
+                                        <input type="text" onkeyup="this.value=this.value.replace(/[^0-9]+/,'');" v-model.number="width" name="width" placeholder="长" id="width">
+                                        <div class="cm">cm</div>
+                                    </div>
+                                    <div class="icon-x">X</div>
+                                    <div class="input-box">
+                                        <input type="text" onkeyup="this.value=this.value.replace(/[^0-9]+/,'');" v-model.number="height" name="height" placeholder="宽" id="height">
+                                        <div class="cm">cm</div>
+                                    </div>
+                                </div>    
+                            </div>
+                        </div>
+                        <div class="items-list i-width">
+                            <h3>板子层数：</h3>
+                            <div class="items-btn">
+                                <div class="items-btn-wrap">
+                                    <span class="btn-txt">${ layer }</span>
+                                    <span class="btn-icon"></span>
+                                </div>
+                                <div class="choose-menu">
+                                    <ul data-key="layer">
+                                        <li data="1">1</li>
+                                        <li data="2">2</li>
+                                        <li data="4">4</li>
+                                        <li data="6">6</li>
+                                        <li data="8">8</li>
+                                        <li data="10">10</li>
+                                        <li data="12">12</li>
+                                        <li data="14">14</li>
+                                        <li data="16">16</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="items-list">
+                            <h3>
+                                <span>单片数量：</span>
+                            </h3>
+                            <div class="items-btn counts">
+                                <div class="items-btn-wrap">
+                                    <span class="btn-txt">${ counts }</span>
+                                    <span class="btn-icon"></span>
+                                </div>
+                                <div class="choose-menu">
+                                    <ul data-key="counts">
+                                        <li data="5">5</li>
+                                        <li data="10">10</li>
+                                        <li data="15">15</li>
+                                        <li data="20">20</li>
+                                        <li data="25">25</li>
+                                        <li data="30">30</li>
+                                        <li data="40">40</li>
+                                        <li data="50">50</li>
+                                        <li data="60">60</li>
+                                        <li data="80">80</li>
+                                        <li data="100">100</li>
+                                        <li data="120">120</li>
+                                        <li data="150">150</li>
+                                        <li data="200">200</li>
+                                        <li data="250">250</li>
+                                        <li data="300">300</li>
+                                        <li data="350">350</li>
+                                        <li data="400">400</li>
+                                        <li data="450">450</li>
+                                        <li data="500">500</li>
+                                        <li data="600">600</li>
+                                        <li data="700">700</li>
+                                        <li data="800">800</li>
+                                        <li data="900">900</li>
+                                        <li data="1000">1000</li>
+                                        <li data="1500">1500</li>
+                                        <li data="2000">2000</li>
+                                        <li data="2500">2500</li>
+                                        <li data="3000">3000</li>
+                                        <li data="3500">3500</li>
+                                        <li data="4000">4000</li>
+                                        <li data="4500">4500</li>
+                                        <li data="5000">5000</li>
+                                        <li data="5500">5500</li>
+                                        <li data="6000">6000</li>
+                                        <li data="6500">6500</li>
+                                        <li data="7000">7000</li>
+                                        <li data="7500">7500</li>
+                                        <li data="8000">8000</li>
+                                        <li data="8500">8500</li>
+                                        <li data="9000">9000</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="items-list i-width">
+                        <h3>板子厚度：</h3>
+                            <div class="items-btn">
+                                <div class="items-btn-wrap">
+                                    <span class="btn-txt">${thick}</span>
+                                    <span class="btn-icon"></span>
+                                </div>
+                                <div class="choose-menu">
+                                    <ul data-key="thick">
+                                        <li data="0.4">0.4</li>
+                                        <li data="0.6">0.6</li>
+                                        <li data="0.8">0.8</li>
+                                        <li data="1.0">1.0</li>
+                                        <li data="1.2">1.2</li>
+                                        <li data="1.6">1.6</li>
+                                        <li data="2.0">2.0</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="submit-count-price">计算价格</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <div class="M-product-list">
-
+    <div class="M-product-list clearfix">
+       <div class="container">
+            <div class="hot-title">
+               <i></i>
+               <span>热门产品</span>
+           </div>
+           <ul>
+               <li>
+                   <img src="public/img/hdi.png" alt="">
+                   <p>HDI沉金板HDI沉金板</p>
+               </li>
+               <li>
+                   <img src="public/img/hdi.png" alt="">
+                   <p>HDI沉金板HDI沉金板</p>
+               </li>
+               <li>
+                   <img src="public/img/hdi.png" alt="">
+                   <p>HDI沉金板HDI沉金板</p>
+               </li>
+               <li class="more-product">
+                   <a href="">更多产品 >></a>
+               </li>
+           </ul>
+       </div>
     </div>
-    <div class="M-about">
-
+    <div class="M-adv clearfix">
+        <div class="container">
+            <h3>
+                <i></i>
+                <span>我们的优势</span>
+            </h3>
+            <ul>
+                <li>
+                    <img src="public/img/price.png" alt="">
+                    <p>价格优惠，厂家直销</p>
+                </li>
+                <li>
+                    <img src="public/img/quality.png" alt="">
+                    <p>淘宝销量冠军</p>
+                    <p>大平台保证</p>
+                </li>
+                <li>
+                    <img class="img-w" src="public/img/sale.png" alt="">
+                    <p>售后服务优质，全天接待</p>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="M-contact">
-
+    <div class="M-about clearfix">
+        <div class="container">
+            <div class="hot-title about-title">
+               <i></i>
+               <span>关于我们</span>
+            </div>
+            <div class="about-left">
+                <h3>工厂实拍</h3>
+                <ul>
+                    <li>
+                        <img src="public/img/2.jpg" alt="">
+                        <p>客户在前台合影</p>
+                    </li>
+                    <li>
+                        <img src="public/img/2.jpg" alt="">
+                        <p>客户在前台合影</p>
+                    </li>
+                    <li>
+                        <img src="public/img/2.jpg" alt="">
+                        <p>客户在前台合影</p>
+                    </li>
+                    <li>
+                        <img src="public/img/2.jpg" alt="">
+                        <p>客户在前台合影</p>
+                    </li>
+                    <li>
+                        <img src="public/img/2.jpg" alt="">
+                        <p>客户在前台合影</p>
+                    </li>
+                    <li>
+                        <img src="public/img/2.jpg" alt="">
+                        <p>客户在前台合影</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="about-right">
+                <h3>客服团队</h3>
+                <ul>
+                    <li>
+                        <img src="public/img/2.jpg" alt="">
+                        <p>客户在前台合影</p>
+                    </li>
+                    <li>
+                        <img src="public/img/2.jpg" alt="">
+                        <p>客户在前台合影</p>
+                    </li>
+                </ul>
+                <div class="about-txt">
+                   公司定位多层精密电路板样板及小批量为主要目标市场，坚持以质量求生存，以速度求发展的理念.公司定位多层精密电路板样板及小批量为主要目标市场，坚持以质量求生存，以速度求发展的理念.公司定位多层精密电路板样板及小批量为主要目标市场，坚持以质量求生存，以速度求发展的理念.
+                   公司定位多层精密电路板样板及小批量为主要目标市场，坚持以质量求生存，以速度求发展的理念.公司定位多层精密电路板样板及小批量为主要目标市场，坚持以质量求生存，以速....
+                </div>
+            </div>
+        </div>
     </div>
+   
 </div>
+<script src="public/js/jquery.min.js"></script>
+<script src="public/js/vue.js"></script>
+<script src="public/js/home.js"></script>
 {% endblock %}

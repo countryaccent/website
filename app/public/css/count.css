@@ -7,7 +7,7 @@ body{
 	font-weight: normal;
 }
 .count-table{
-	width: 580px;
+	width: 590px;
 	float: left;
 	background: #fff;
 	padding: 30px 10px 20px 10px;
@@ -28,7 +28,7 @@ body{
     font-size: 13px;
 }
 .items{
-	width: 266px;
+	width: 278px;
 	float: left;
 	
 }
@@ -38,7 +38,7 @@ body{
 }
 .items-list h3{
 	float: left;
-	width: 76px;
+	width: 90px;
     margin-right: 7px;
     text-align: right;
     margin-top: 2px;
@@ -221,7 +221,7 @@ body{
 /*右侧*/
 .items-right{
 	float: right;
-	width: 265px;
+	width: 278px;
 }
 
 /*计算结果*/
@@ -249,7 +249,7 @@ body{
 .buy{
 	display: inline-block;
     padding: 10px 25px;
-    background: #de533c;
+    background: #bbbec4;
     cursor: default;
     border: 0;
     border-radius: 3px;
@@ -261,6 +261,9 @@ body{
     margin-bottom: 15px;
     letter-spacing: 2px;
     width: 100%;
+}
+.buy.submit{
+	    background: #de533c;
 }
 .count-result-wrap h2{
 		font-size: 15px;
@@ -362,6 +365,7 @@ body{
 	overflow: auto;	
 	position: relative;
 	margin-top: 10px;
+	max-height: 260px;
 }
 .draw-table .pannel tbody{
 /*	border-top: 1px dashed #ccc;

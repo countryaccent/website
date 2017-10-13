@@ -1,0 +1,255 @@
+{% set pagetitle = "深圳荣新PCB" %} {% set accountnav = "address" %} {% extends "inc/layout.html" %} {% block head %}
+{% endblock %} {% block content %}
+<link rel="stylesheet" href="/public/css/account.css">
+<div class="account">
+	<div class="container">
+		{% include "common/accountNav.html" %}
+		<div class="account-wrap">
+			<div class="wrap">
+				<h2>收货地址</h2>
+				<div class="addAddress">
+					<button @click="addressShow">添加收货地址</button>
+				</div>
+			  	<div class="ivu-table-wrapper">
+			   		<div class="ivu-table"> 
+			    		<div class="ivu-table-header">
+			     			<table cellspacing="0" cellpadding="0" border="0" style="width: 882px;">
+			      				<colgroup>
+			       					<col width="100" />
+			       					<col width="160" />
+			       					<col width="240" />
+			       					<col width="120" />
+			       					<col width="60" />
+			       					<col width="150" />
+			      				</colgroup> 
+				      			<thead>
+					       			<tr>
+					        			<th class="">
+					         				<div class="ivu-table-cell">
+					          					<span>收货人</span> 
+					         				</div>
+					         			</th>
+					        			<th class="">
+					         				<div class="ivu-table-cell">
+					          					<span>所在区域</span> 
+					         				</div>
+					         			</th>
+					         			<th class="">
+					         				<div class="ivu-table-cell">
+					          					<span>详细地址</span> 
+					         				</div>
+					         			</th>
+					         			<th class="">
+					         				<div class="ivu-table-cell">
+					          					<span>联系电话</span> 
+					         				</div>
+					         			</th>
+					         			<th class="">
+					         				<div class="ivu-table-cell">
+					          					<!-- <span>修改</span>  -->
+					          					<span>删除</span> 
+					         				</div>
+					         			</th>
+					         			<th class="">
+					         				<div class="ivu-table-cell">
+					          					
+					         				</div>
+					         			</th>
+					       			</tr>
+				      			</thead>
+			    	 		</table>
+			    		</div> 
+			    		<div class="ivu-table-body">
+			     			<table cellspacing="0" cellpadding="0" border="0" style="width: 882px;">
+			      				<colgroup>
+			       					<col width="100" />
+			       					<col width="160" />
+			       					<col width="240" />
+			       					<col width="120" />
+			       					<col width="60" />
+			       					<col width="150" />
+			      				</colgroup> 
+				      			<tbody class="ivu-table-tbody">
+					       			<tr class="ivu-table-row" v-for="(addressList,index) in addressLists" :class="[addressList.isDefault == 1 ? activeParent :'']">
+					        			<td class="">
+					         				<div class="ivu-table-cell">
+					          					<span>${addressList.acceptName}</span> 
+					         				</div>
+					         			</td>
+					         			<td class="">
+					         				<div class="ivu-table-cell">
+					          					<span>${addressList.address}</span> 
+					         				</div>
+					         			</td>
+					         			<td class="">
+					         				<div class="ivu-table-cell">
+					          					<span>${addressList.detailAddress}</span> 
+					         				</div>
+					         			</td>
+					         			<td class="">
+					         				<div class="ivu-table-cell">
+					          					<span>${addressList.phone}</span> 
+					         				</div>
+					         			</td>
+					         			<td class="">
+					         				<div class="ivu-table-cell">
+					          					<!-- <a href="javascript:;" @click="updateAddress(addressList.id,index)">修改</a> -->
+					          					<a href="javascript:;" @click="deleteAddress(addressList.id,index)">删除</a>
+					         				</div>
+					         			</td>
+					         			<td :class="[addressList.isDefault == 1 ? active :'']">
+					         				<div class="ivu-table-cell defaultAddress">
+					          					<span  @click="defaultAddress(addressList.id,index)">【设置为默认地址】</span> 
+					         				</div>
+					         			</td>
+					       			</tr>
+				      			</tbody>
+			    	 		</table>
+			    		</div> 
+			  		</div>
+			  	</div>
+			</div> 
+		</div>
+	</div>
+	<div class="address_show" v-show="address_show">
+		<div class="con">
+			<h2>新增收货地址</h2>
+			<div class="form">
+				<form>
+					<label>
+		                <span class="item">收货人</span>
+		                <input class="ivu-input" v-model="name" type="text" name="name">
+		            </label>
+		            <label>
+		                <span class="item">联系方式</span>
+		                <input class="ivu-input" type="text" v-model="phone" name="phone" placeholder="请输入手机号或座机">
+		            </label>
+		            <label>
+		                <span class="item">所在地区</span>
+		                 <div data-toggle="distpicker">
+						  <select class="ivu-input" v-model="sel1"></select>
+						  <select class="ivu-input" v-model="sel2"></select>
+						  <select class="ivu-input" v-model="sel3"></select>
+						</div>
+		            </label>
+		            <label>
+		                <span class="item">街道地址</span>
+		                <input class="ivu-input" type="text" v-model="detailAddress" name="detailAddress" placeholder="如街道名称，门牌号码等信息">
+		            </label>
+		            <div class="save">
+		            	<span @click="save">保存</span>
+		            	<span @click="address_hide">关闭</span>
+		            </div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="/public/js/jquery.min.js"></script>
+<script src="/public/js/vue.js"></script>
+<script src="/public/js/distpicker.js"></script>
+<script>
+
+	new Vue({
+		el:'.account',
+		delimiters: ['${', '}'],
+		data:{
+			address_show: false,
+			name:'',
+			phone:'',
+			sel1:'',
+			sel2:'',
+			sel3:'',
+			detailAddress:'',
+			addressLists:[
+
+			],
+			active:'active',
+			activeParent:'activeParent'
+		},
+		mounted:function(){
+			var that = this
+			$.post('/account/getAddressRank?_csrf={{ ctx.csrf }}',{userName:'{{user}}'},function(res){
+				if (res) {
+					console.log(res)
+					that.addressLists = res.getAddress
+				}
+			})
+		},
+		methods:{
+			addressShow:function(){
+				this.address_show = true
+			},
+			address_hide:function(){
+				this.address_show = false
+			},
+			save:function(){
+				if (this.name === '' || 
+					this.phone === '' || 
+					this.sel1 === '' ||
+					this.sel2 === '' ||
+					this.sel3 === '' ||
+					this.detailAddress === '') {
+					alert('请填写完整的信息')
+					return
+				}else if (!(/^1[3|4|5|8][0-9]\d{8}$/g).test(this.phone) && !(/^0\d{2,3}-?\d{7,8}$/g).test(this.phone)) {
+					alert('1')
+					return
+				}
+				console.log(this.sel1,this.sel2,this.sel3);
+				var that = this
+				var data = {
+					acceptName: that.name,
+					phone: that.phone,
+					address: that.sel1 + that.sel2 + that.sel3,
+					detailAddress: that.detailAddress,
+					userName: '{{user}}',
+					isDefault:0
+				};
+				$.post('/account/saveAddress?_csrf={{ ctx.csrf }}',data,function(res){
+					if (res) {
+						console.log(res)
+						that.address_show = false;
+						data['id'] = res;
+						that.addressLists.push(data)
+						console.log(that.addressLists)
+					}
+				})
+			},
+			updateAddress:function(id,index){
+					// var data = this.addressLists[index]
+					// var that = this
+					// console.log(this.addressLists[index])
+					// this.address_show = true;
+					// this.name = data.acceptName
+					// this.phone = data.phone
+					// this.detailAddress = data.detailAddress
+					// this.sel1 = data.address.split(' ')[0]
+					// this.sel2 = data.address.split(' ')[1]
+					// this.sel3 = data.address.split(' ')[2]
+			},
+			deleteAddress:function(id,index){
+				console.log(id)
+				var that = this
+				$.post('/account/deleteAddress?_csrf={{ ctx.csrf }}',{id:id},function(res){
+					if (res == 'deleteSuccess') {
+						console.log(res)
+						that.addressLists.splice(index,1)
+					}
+				})
+			},
+			defaultAddress:function(id,index){
+				$.post('/account/defaultAddress?_csrf={{ ctx.csrf }}',{id:id},function(res){
+					if (res == 'defaultSuccess') {
+						console.log(res);
+						window.location.reload()
+						// that.addressLists.splice(index,1)
+					}
+				})
+			}
+
+		}
+	})
+	
+</script>
+{% endblock %}

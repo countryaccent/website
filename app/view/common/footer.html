@@ -7,7 +7,8 @@
                     <i></i>
                     <div>
                         <p>售前咨询热线</p>
-                        <h3>98187转1</h3>
+                        <h3>{{words['foot-phone'] }}</h3>
+                        <!-- <h3>{{phone['contact']}}</h3> -->
                     </div>
                 </div>
                 <div class="contact-left-bot">
@@ -21,17 +22,14 @@
                 <div class="contact-right-wrap">
                     <div class="contact-erm">
                         <h3>微信公众号</h3>
-                        <img src="public/img/2.jpg" alt="">
+                       {% for ewm in ewms %}
+                      
+                          <img src="/public/images/{{ewm.img}}" alt="">
+                      
+                        {% endfor %}
                     </div>
                     <div class="contact-location">
-                        <p>公司地址：广东省福田区梅芳路1-1号华强云产业园3栋301</p>
-                        <p>公司地址：广东省福田区梅芳路1-1号华强云产业园3栋301</p>
-                        <p>公司地址：广东省福田区梅芳路1-1号华强云产业园3栋301</p>
-                        <p>公司地址：广东省福田区梅芳路1-1号华强云产业园3栋301</p>
-                        <p>公司地址：广东省福田区梅芳路1-1号华强云产业园3栋301</p>
-                        <p>公司地址：广东省福田区梅芳路1-1号华强云产业园3栋301</p>
-                        <p>公司地址：广东省福田区梅芳路1-1号华强云产业园3栋301</p>
-                        <p>公司地址：广东省福田区梅芳路1-1号华强云产业园3栋301</p>
+                        {{words['foot-location']  | safe}}
                     </div>
                 </div>
                 <div class="copyright">

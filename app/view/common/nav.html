@@ -1,19 +1,42 @@
 <div class="C-nav">
     <ul class="nav-list">
         <li>
+            {% if pagenav=='home' %}
             <a href="/" class="active">首页</a>
+            {% else %}
+            <a href="/" >首页</a>
+            {% endif %}
         </li>
         <li>
-            <a href="/count">在线计价</a>
+            {% if pagenav=='count' %}
+            <a href="/count" class="active">在线计价</a>
+            {% else %}
+            <a href="/count" >在线计价</a>
+            {% endif %}
         </li>
         <li>
             <a href="/taobao">淘宝网店</a>
         </li>
         <li>
-            <a href="/about">关于我们</a>
+            {% if pagenav=='products' %}
+            <a href="/products" class="active">产品展示</a>
+            {% else %}
+            <a href="/products" >产品展示</a>
+            {% endif %}
         </li>
         <li>
-            <a href="/contact">联系我们</a>
+            {% if pagenav=='about' %}
+            <a href="/about" class="active">关于我们</a>
+            {% else %}
+            <a href="/about" >关于我们</a>
+            {% endif %}
+        </li>
+        <li>
+             {% if pagenav=='contact' %}
+            <a href="/contact" class="active">联系我们</a>
+            {% else %}
+            <a href="/contact" >联系我们</a>
+            {% endif %}
         </li>
     </ul>
 </div>

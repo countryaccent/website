@@ -1,0 +1,81 @@
+{% set pagetitle = "深圳荣新PCB" %}{% set accountnav = "balance" %} {% extends "inc/layout.html" %} {% block head %}
+{% endblock %} {% block content %}
+<link rel="stylesheet" href="/public/css/account.css">
+<div class="account">
+	<div class="container">
+		{% include "common/accountNav.html" %}
+		<div class="account-wrap">
+			<div class="wrap">
+				<h2>我的余额</h2>
+				<div class="balance">
+					余额：<span>￥<i>0</i></span> <a href="/account/finance/recharge">充值</a>
+				</div>
+				<h3>交易记录：</h3>
+			  	<div class="ivu-table-wrapper">
+			   		<div class="ivu-table"> 
+			    		<div class="ivu-table-header">
+			     			<table cellspacing="0" cellpadding="0" border="0" style="width: 882px;">
+			      				<colgroup>
+			       					<col width="" />
+			       					<col width="" />
+			       					<col width="" />
+			       					<col width="" />
+			       					<col width="" />
+			      				</colgroup> 
+				      			<thead>
+					       			<tr>
+					        			<th class="">
+					         				<div class="ivu-table-cell">
+					          					<span>订单号</span> 
+					         				</div>
+					         			</th>
+					         			<th class="">
+					         				<div class="ivu-table-cell">
+					          					<span>金额类型</span> 
+					         				</div>
+					         			</th>
+					        			<th class="">
+					         				<div class="ivu-table-cell">
+					          					<span>操作时间</span> 
+					         				</div>
+					         			</th>
+					         			<th class="">
+					         				<div class="ivu-table-cell">
+					          					<span>充值/扣款</span> 
+					         				</div>
+					         			</th>
+					         			<th class="">
+					         				<div class="ivu-table-cell">
+					          					<span>余额</span> 
+					         				</div>
+					         			</th>
+					       			</tr>
+				      			</thead>
+			    	 		</table>
+			    		</div> 
+			    		<div class="ivu-table-body">
+			     			<table cellspacing="0" cellpadding="0" border="0" style="width: 882px;">
+			      				<colgroup>
+			       					<col width="294" />
+			       					
+			      				</colgroup> 
+				      			<tbody class="ivu-table-tbody">
+					       			<tr class="ivu-table-row">
+					        			<td class="">
+					         				<div class="ivu-table-cell">
+					          					<span>6546</span> 
+					         				</div>
+					         			</td>
+					        			
+					       			</tr>
+
+				      			</tbody>
+			    	 		</table>
+			    		</div> 
+			  		</div>
+			  	</div>
+			</div> 
+		</div>
+	</div>
+</div>
+{% endblock %}

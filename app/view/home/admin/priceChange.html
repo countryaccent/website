@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>首页 · 后台模板 HTML</title>
+    <link rel="stylesheet" href="/public/frame/layui/css/layui.css">
+    <link rel="stylesheet" href="/public/frame/static/css/style.css">
+    <link rel="icon" href="/public/frame/static/image/code.png">
+</head>
+<body>
+<style>
+  body{
+    padding-bottom: 50px;
+  }
+  .layui-input{
+    width: 60px;
+    display: inline-block;
+    margin-top: 5px;
+  }
+  .layui-form-item.btn{
+    /*position: fixed;
+    right: 0;
+    top: 0;*/
+    margin-top: 30px;
+  }
+  .grid-demo-bg2 .layui-form-item{
+    margin-top: 10px;
+  }
+</style>
+<!-- layout admin -->
+<form class="layui-form" onsubmit="return false" action="">
+  <div class="layui-form-item btn ">
+    <div class="layui-input-block">
+      <button class="layui-btn layui-btn-danger" id="submit" lay-filter="demo1">立即修改</button>
+    </div>
+  </div>
+  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>非批量价格列表</legend>
+  </fieldset>
+   <div class="grid-demo grid-demo-bg2">
+      <div class="layui-form-item ">
+        <label class="layui-form-label">工程费</label>
+        <input type="checkbox" name="like[write]" title="工程费" checked="">
+      </div>
+      <div class="layui-input-block">
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title="单面板" checked="" disabled>
+        <input class="layui-input" type="text" name="price1" value="{{price.price1}}">
+      </div>
+       <div class="layui-input-block">
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title="双面板" checked="" disabled>
+        <input class="layui-input" type="text" name="price2" value="{{price.price2}}">
+      </div>
+      <div class="layui-input-block">
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title="四层板" checked="" disabled>
+        <input class="layui-input" type="text" name="price3" value="{{price.price3}}">
+      </div>
+      <div class="layui-input-block">
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title="六层板" checked="" disabled>
+        <input class="layui-input" type="text" name="price4" value="{{price.price4}}">
+      </div>
+  
+    <div class="layui-form-item ">
+        <label class="layui-form-label">板材费单价</label>
+        <input type="checkbox" name="like[write]" title="板材费单价" checked="">
+      </div>
+      <div class="layui-input-block">
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title="单面板" checked="" disabled>
+        <input class="layui-input" type="text" name="price5" value="{{price.price5}}">
+      </div>
+       <div class="layui-input-block">
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title="双面板" checked="" disabled>
+        <input class="layui-input" type="text" name="price6" value="{{price.price6}}">
+      </div>
+      <div class="layui-input-block">
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title="四层板" checked="" disabled>
+        <input class="layui-input" type="text" name="price7" value="{{price.price7}}">
+      </div>
+      <div class="layui-input-block">
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title="六层板" checked="" disabled>
+        <input class="layui-input" type="text" name="price8" value="{{price.price8}}">
+      </div>
+   
+   <div class="layui-form-item ">
+        <label class="layui-form-label">特殊板厚</label>
+        <input type="checkbox" name="like[write]" title="特殊板厚" checked="">
+      </div>
+      <div class="layui-input-block">
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title=" 0.4 或 >2.0" checked="" disabled>
+        <input class="layui-input" type="text" name="price9" value="{{price.price9}}">
+      </div>
+       <div class="layui-input-block">
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title="2.5" checked="" disabled>
+        <input class="layui-input" type="text" name="price10" value="{{price.price10}}">
+      </div>
+      <div class="layui-input-block">
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title="3.0" checked="" disabled>
+        <input class="layui-input" type="text" name="price11" value="{{price.price11}}">
+      </div>
+     
+ 
+ 
+   <div class="layui-form-item ">
+        <label class="layui-form-label">焊盘喷镀</label>
+        <input type="checkbox" name="like[write]" title="焊盘喷镀" checked="">
+      </div>
+      <div class="layui-input-block">
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title="沉金" checked="" disabled>
+        <input class="layui-input" type="text" name="price12" value="{{price.price12}}">
+      </div>
+ 
+
+   <div class="layui-form-item ">
+        <label class="layui-form-label">铜厚</label>
+        <input type="checkbox" name="like[write]" title="铜厚" checked="">
+      </div>
+      <div class="layui-input-block">
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title="铜厚2.0" checked="" disabled>
+        <input class="layui-input" type="text" name="price13" value="{{price.price13}}">
+      </div>
+    
+   
+    <div class="layui-form-item ">
+        <label class="layui-form-label">加急</label>
+        <input type="checkbox" name="like[write]" title="加急" checked="">
+      </div>
+      <div class="layui-input-block">
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title="24小时加急" checked="" disabled>
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title="面积 <= 0.3" checked="" disabled>
+        <input class="layui-input" type="text" name="price14" value="{{price.price14}}">
+      </div>
+      <div class="layui-input-block">
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title="24小时加急" checked="" disabled>
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title="面积 <= 0.3" checked="" disabled>
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title="板厚 > 1.6" checked="" disabled>
+        <input class="layui-input" type="text" name="price15" value="{{price.price15}}">
+      </div>
+      <div class="layui-input-block">
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title="48小时加急" checked="" disabled>
+        <input type="checkbox" name="like1[read]" lay-skin="primary" title="面积 <= 0.5" checked="" disabled>
+        <input class="layui-input" type="text" name="price16" value="{{price.price16}}">
+      </div>
+    </div>
+ 
+
+
+  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>批量价格列表</legend>
+  </fieldset>
+
+
+  
+  <div class="layui-col-xs6">
+  	<div class="layui-form-item ">
+  	  <label class="layui-form-label">单面板价格</label>
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like[write]" title="单面板" checked="">
+  	    <input type="checkbox" name="like[write]" title="1.6板厚" checked="">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="有铅喷锡" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price17" value="{{price.price17}}">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="无铅喷锡" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price18" value="{{price.price18}}">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="沉金" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price19" value="{{price.price19}}">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="沉金" checked="" disabled>
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="铜厚2.0" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price20" value="{{price.price20}}">
+  	  </div>
+  	</div>
+  	 <div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="有铅喷锡" checked="" disabled>
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="铜厚2.0" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price21" value="{{price.price21}}">
+  	  </div>
+  	</div>
+  </div>
+
+  <!-- 单面板2.0板厚 -->
+  <div class="layui-col-xs6">
+  	<div class="layui-form-item">
+  	  <label class="layui-form-label">单面板价格</label>
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like[write]" title="单面板" checked="">
+  	    <input type="checkbox" name="like[write]" title="2.0板厚" checked="">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="无铅喷锡" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price22" value="{{price.price22}}">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="沉金" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price23" value="{{price.price23}}">
+  	  </div>
+  	</div>
+  	 <div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="沉金" checked="" disabled>
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="铜厚2.0" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price24" value="{{price.price24}}">
+  	  </div>
+  	</div>
+  </div>
+  
+
+  <!-- 双面板价格 -->
+  <div class="layui-col-xs6">
+  	<div class="layui-form-item">
+  	  <label class="layui-form-label">双面板价格</label>
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like[write]" title="双面板" checked="">
+  	    <input type="checkbox" name="like[write]" title="1.6板厚" checked="">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="有铅喷锡" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price25" value="{{price.price25}}">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="无铅喷锡" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price26" value="{{price.price26}}">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="沉金" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price27" value="{{price.price27}}">
+  	  </div>
+  	</div>
+  	 <div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="有铅喷锡" checked="" disabled>
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="铜厚2.0" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price28" value="{{price.price28}}">
+  	  </div>
+  	</div>
+  	 <div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="沉金" checked="" disabled>
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="铜厚2.0" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price29" value="{{price.price29}}">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="无铅喷锡" checked="" disabled>
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="铜厚2.0" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price30" value="{{price.price30}}">
+  	  </div>
+  	</div>
+  	 <div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="有铅喷锡" checked="" disabled>
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="有半孔" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price31" value="{{price.price31}}">
+  	  </div>
+  	</div>
+  </div>
+	<!-- 双面板2.0板厚 -->
+  <div class="layui-col-xs6">
+  	<div class="layui-form-item">
+  	  <label class="layui-form-label">双面板价格</label>
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like[write]" title="双面板" checked="">
+  	    <input type="checkbox" name="like[write]" title="2.0板厚" checked="">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="有铅喷锡" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price32" value="{{price.price32}}">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="无铅喷锡" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price33" value="{{price.price33}}">
+  	  </div>
+  	</div>
+  	 <div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="有铅喷锡" checked="" disabled>
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="铜厚2.0" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price34" value="{{price.price34}}">
+  	  </div>
+  	</div>
+  	 <div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="无铅喷锡" checked="" disabled>
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="铜厚2.0" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price35" value="{{price.price35}}">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="沉金" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price36" value="{{price.price36}}">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="沉金" checked="" disabled>
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="铜厚2.0" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price37" value="{{price.price37}}">
+  	  </div>
+  	</div>
+  </div>
+
+  <!-- 四层板价格 -->
+  <div class="layui-col-xs6">
+  	<div class="layui-form-item">
+  	  <label class="layui-form-label">四层板价格</label>
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like[write]" title="四层板" checked="">
+  	    <input type="checkbox" name="like[write]" title="1.6板厚" checked="">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="有铅喷锡" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price38" value="{{price.price38}}">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="无铅喷锡" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price39" value="{{price.price39}}">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="沉金" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price40" value="{{price.price40}}">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="有铅喷锡" checked="" disabled>
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="铜厚2.0" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price41" value="{{price.price41}}">
+  	  </div>
+  	</div>
+  </div>
+
+  <!-- 四层板价格 2.0板厚 -->
+  <div class="layui-col-xs6">
+  	<div class="layui-form-item">
+  	  <label class="layui-form-label">四层板价格</label>
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like[write]" title="四层板" checked="">
+  	    <input type="checkbox" name="like[write]" title="2.0板厚" checked="">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="无铅喷锡" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price42" value="{{price.price42}}">
+  	  </div>
+  	</div>
+  	 <div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="有铅喷锡" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price43" value="{{price.price43}}">
+  	  </div>
+  	</div>
+  	<div class="layui-form-item" pane="">
+  	  <div class="layui-input-block">
+  	    <input type="checkbox" name="like1[read]" lay-skin="primary" title="沉金" checked="" disabled>
+  	    <input class="layui-input" type="text" name="price44" value="{{price.price44}}">
+  	  </div>
+  	</div>
+  </div>
+  <div class="layui-form-item btn">
+    <div class="layui-input-block">
+      <button class="layui-btn layui-btn-danger" id="submit" lay-filter="demo1">立即修改</button>
+    </div>
+  </div>
+</form>
+ 
+
+
+<script type="text/javascript" src="/public/frame/layui/layui.js"></script>
+<script type="text/javascript" src="/public/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/frame/static/js/vip_comm.js"></script>
+
+<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+});
+var data = {};
+
+
+$('#submit').click(function(){
+  for (var i = 1; i < 45; i++) {
+    data['price'+i] = $('input[name=price'+i+']').val()
+  }
+  $.post('/admin/priceChange?_csrf={{ ctx.csrf }}',data,function(res){
+    if (res == 'success') {alert('上传成功'); window.location.href = '/admin/price'}
+  })
+  console.log(data)
+})
+</script>
+</body>
+</html>

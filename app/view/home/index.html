@@ -1,4 +1,4 @@
-{% set pagetitle = "深圳荣新PCB" %} {% set pagenav = "home" %} {% extends "../inc/layout.html" %} {% block head %}
+{% set pagetitle = "深圳荣新PCB" %} {% set pagenav = "home" %}{% set phone = word %} {% extends "../inc/layout.html" %} {% block head %}
 <style type="text/css">
     .M-count-price {
         background: url(/public/img/bg.jpg) no-repeat;
@@ -18,9 +18,15 @@
        
     }
 </style>
+{% block nav %}
 
+
+ {% endblock %}
 {% endblock %} {% block content %}
 <link rel="stylesheet" href="public/css/home.css">
+
+
+<!-- {{locals.contact}} -->
 <div class="P-home">
     <div class="M-count-price clearfix">
         <div class="con">
@@ -49,6 +55,7 @@
                                 <div class="items-btn-wrap">
                                     <span class="btn-txt">${ layer }</span>
                                     <span class="btn-icon"></span>
+                                    <input type="hidden" name="layer" :value="layer ">
                                 </div>
                                 <div class="choose-menu">
                                     <ul data-key="layer">
@@ -56,11 +63,6 @@
                                         <li data="2">2</li>
                                         <li data="4">4</li>
                                         <li data="6">6</li>
-                                        <li data="8">8</li>
-                                        <li data="10">10</li>
-                                        <li data="12">12</li>
-                                        <li data="14">14</li>
-                                        <li data="16">16</li>
                                     </ul>
                                 </div>
                             </div>
@@ -73,6 +75,7 @@
                                 <div class="items-btn-wrap">
                                     <span class="btn-txt">${ counts }</span>
                                     <span class="btn-icon"></span>
+                                    <input type="hidden" name="counts" :value="counts ">
                                 </div>
                                 <div class="choose-menu">
                                     <ul data-key="counts">
@@ -127,6 +130,7 @@
                                 <div class="items-btn-wrap">
                                     <span class="btn-txt">${thick}</span>
                                     <span class="btn-icon"></span>
+                                    <input type="hidden" name="thick" :value="thick">
                                 </div>
                                 <div class="choose-menu">
                                     <ul data-key="thick">
@@ -137,6 +141,8 @@
                                         <li data="1.2">1.2</li>
                                         <li data="1.6">1.6</li>
                                         <li data="2.0">2.0</li>
+                                        <li data="2.0">2.5</li>
+                                        <li data="2.0">3.0</li>
                                     </ul>
                                 </div>
                             </div>
@@ -154,20 +160,14 @@
                <span>热门产品</span>
            </div>
            <ul>
-               <li>
-                   <img src="public/img/hdi.png" alt="">
-                   <p>HDI沉金板HDI沉金板</p>
-               </li>
-               <li>
-                   <img src="public/img/hdi.png" alt="">
-                   <p>HDI沉金板HDI沉金板</p>
-               </li>
-               <li>
-                   <img src="public/img/hdi.png" alt="">
-                   <p>HDI沉金板HDI沉金板</p>
-               </li>
+            {% for product in products %}
+              <li>
+                  <img src="public/images/{{product.img}}" alt="">
+               <p>{{product.title}}</p>
+              </li> 
+            {% endfor %}   
                <li class="more-product">
-                   <a href="">更多产品 >></a>
+                   <a href="/products">更多产品 >></a>
                </li>
            </ul>
        </div>
@@ -204,47 +204,28 @@
             <div class="about-left">
                 <h3>工厂实拍</h3>
                 <ul>
-                    <li>
-                        <img src="public/img/2.jpg" alt="">
-                        <p>客户在前台合影</p>
-                    </li>
-                    <li>
-                        <img src="public/img/2.jpg" alt="">
-                        <p>客户在前台合影</p>
-                    </li>
-                    <li>
-                        <img src="public/img/2.jpg" alt="">
-                        <p>客户在前台合影</p>
-                    </li>
-                    <li>
-                        <img src="public/img/2.jpg" alt="">
-                        <p>客户在前台合影</p>
-                    </li>
-                    <li>
-                        <img src="public/img/2.jpg" alt="">
-                        <p>客户在前台合影</p>
-                    </li>
-                    <li>
-                        <img src="public/img/2.jpg" alt="">
-                        <p>客户在前台合影</p>
-                    </li>
+                    {% for factory in factorys %}
+                      <li>
+                          <img src="public/images/{{factory.img}}" alt="">
+                       <p>{{factory.title}}</p>
+                      </li> 
+                    {% endfor %}
+                    
                 </ul>
             </div>
             <div class="about-right">
                 <h3>客服团队</h3>
-                <ul>
-                    <li>
-                        <img src="public/img/2.jpg" alt="">
-                        <p>客户在前台合影</p>
-                    </li>
-                    <li>
-                        <img src="public/img/2.jpg" alt="">
-                        <p>客户在前台合影</p>
-                    </li>
+                 <ul>
+                    {% for server in servers %}
+                      <li>
+                          <img src="public/images/{{server.img}}" alt="">
+                       <p>{{server.title}}</p>
+                      </li> 
+                    {% endfor %}
+                    
                 </ul>
                 <div class="about-txt">
-                   公司定位多层精密电路板样板及小批量为主要目标市场，坚持以质量求生存，以速度求发展的理念.公司定位多层精密电路板样板及小批量为主要目标市场，坚持以质量求生存，以速度求发展的理念.公司定位多层精密电路板样板及小批量为主要目标市场，坚持以质量求生存，以速度求发展的理念.
-                   公司定位多层精密电路板样板及小批量为主要目标市场，坚持以质量求生存，以速度求发展的理念.公司定位多层精密电路板样板及小批量为主要目标市场，坚持以质量求生存，以速....
+                    {{words['home-server']}}
                 </div>
             </div>
         </div>

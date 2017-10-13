@@ -1,0 +1,172 @@
+{% set pagetitle = "深圳荣新PCB" %} {% set accountnav = "order" %} {% extends "inc/layout.html" %} {% block head %}
+{% endblock %} {% block content %}
+<link rel="stylesheet" href="/public/css/account.css">
+<div class="account">
+	<div class="container">
+		{% include "common/accountNav.html" %}
+		<div class="account-wrap">
+			<div class="wrap">
+				<h2>我的订单</h2>
+				<div class="user-bar">
+					<p>欢迎，{{user}}</p>
+					<p>
+						<span>可用余额：￥</span>
+						<span>消费金额：￥</span>
+					</p>
+				</div>
+				<style>
+					th{
+						text-align: center;
+					}
+				</style>
+			  	<div class="ivu-table-wrapper">
+			   		<div class="ivu-table"> 
+			    		<div class="ivu-table-header">
+			     			<table cellspacing="0" cellpadding="0" border="0" style="width: 882px;">
+			      				<colgroup>
+			       					<col width="100" />
+			       					<col width="" />
+			       					<col width="" />
+			       					<col width="" />
+			       					<col width="" />
+			       					<col width="" />
+			       					<col width="" />
+			      				</colgroup> 
+				      			<thead>
+					       			<tr>
+					        			<th class="">
+					         				<div class="ivu-table-cell">
+					          					<span>订单编号</span> 
+					         				</div>
+					         			</th>
+					         			<th class="">
+					         				<div class="ivu-table-cell">
+					          					<span>下单时间</span> 
+					         				</div>
+					         			</th>
+					        			<th class="">
+					         				<div class="ivu-table-cell">
+					          					<span>审核</span> 
+					         				</div>
+					         			</th>
+					         			<th class="">
+					         				<div class="ivu-table-cell">
+					          					<span>付款</span> 
+					         				</div>
+					         			</th>
+					         			<th class="">
+					         				<div class="ivu-table-cell">
+					          					<span>生产</span> 
+					         				</div>
+					         			</th>
+					         			<th class="">
+					         				<div class="ivu-table-cell">
+					          					<span>发货</span> 
+					         				</div>
+					         			</th>
+					         			<th class="">
+					         				<div class="ivu-table-cell">
+					          					<span>订单详情</span> 
+					         				</div>
+					         			</th>
+					       			</tr>
+				      			</thead>
+			    	 		</table>
+			    		</div> 
+			    		<div class="ivu-table-body">
+			     			<table cellspacing="0" cellpadding="0" border="0" style="width: 882px;">
+			      				<colgroup>
+			       					<col width="100" />
+			       					<col width="140" />
+			       					<col width="" />
+			       					<col width="" />
+			       					<col width="" />
+			       					<col width="" />
+			       					<col width="" />
+			      				</colgroup> 
+				      			<tbody class="ivu-table-tbody">
+					      			{% for orderList in orderLists %}
+					       			<tr class="ivu-table-row">
+					        			<td class="">
+					         				<div class="ivu-table-cell">
+					          					<span>{{orderList.id}}</span> 
+					         				</div>
+					         			</td>
+					         			<td class="">
+					         				<div class="ivu-table-cell">
+					         					<span>{{orderList.orderTime}}</span> 
+					         				</div>
+					         			</td>
+					        			<td class="">
+					         				<div class="ivu-table-cell">
+					         				{% if orderList.checkStatus == 0 %}
+					          					<div class="fail">
+					          						<i class="ivu-icon ivu-icon-help-circled"></i><span>待审核</span>
+					          					</div>
+					         				{% elseif orderList.checkStatus == 1 %}
+												<div class="success">
+													<i class="ivu-icon ivu-icon-checkmark-circled"></i><span>审核通过</span>
+												</div>
+											{% elseif orderList.checkStatus == 2 %}
+												<div class="fail">
+													<i class="ivu-icon ivu-icon-close-circled"></i><span>审核不通过</span> 
+												</div>
+											{% endif %}
+					         				</div>
+					         			</td>
+					         			<td class="">
+					         				<div class="ivu-table-cell">
+					         					{% if orderList.payStatus == 0 %}
+					          					<div class="fail">
+					          						<i class="ivu-icon ivu-icon-help-circled"></i><span>待付款</span>
+					          					</div>
+					          					{% elseif orderList.checkStatus == 1 %}
+					          					<div class="success">
+					          						<i class="ivu-icon ivu-icon-checkmark-circled"></i><span>付款成功</span>
+					          					</div>
+					          					{% endif %}
+					         				</div>
+					         			</td>
+					         			<td class="">
+					         				<div class="ivu-table-cell">
+					         					{% if orderList.productStatus == 0 %}
+					          					<div class="fail">
+					          						<i class="ivu-icon ivu-icon-help-circled"></i><span>未生产</span>
+					          					</div>
+					          					{% elseif orderList.productStatus == 1 %}
+					          					<div class="success">
+					          						<i class="ivu-icon ivu-icon-checkmark-circled"></i><span>正在生产</span>
+					          					</div>
+					          					{% endif %}
+					         				</div>
+					         			</td>
+					         			<td class="">
+					         				<div class="ivu-table-cell">
+					         					{% if orderList.sendStatus == 0 %}
+					          					<div class="fail">
+					          						<i class="ivu-icon ivu-icon-help-circled"></i><span>未发货</span>
+					          					</div>
+					          					{% elseif orderList.sendStatus == 1 %}
+					          					<div class="success">
+					          						<i class="ivu-icon ivu-icon-checkmark-circled"></i><span>已发货</span>
+					          					</div>
+					          					{% endif %} 
+					         				</div>
+					         			</td>
+					         			<td class="">
+					         				<div class="ivu-table-cell">
+					          					<a target="_blank" href="/orderDetail?orderId={{orderList.id}}">查看订单详情</a>
+					         				</div>
+					         			</td>
+					       			</tr>
+									{% endfor %}
+				      			</tbody>
+			    	 		</table>
+			    		</div> 
+			  		</div>
+			  	</div>
+			</div> 
+		</div>
+	</div>
+</div>
+{% endblock %}

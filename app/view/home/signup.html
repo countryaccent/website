@@ -1,0 +1,291 @@
+{% set pagetitle = "深圳荣新PCB" %} {% set pagenav = "yewu" %} {% extends "../inc/layout.html" %} {% block head %}
+{% endblock %} {% block content %}
+<style>
+    .wrap{
+        width: 600px;
+        margin: 30px auto;
+        padding: 13px 29px 33px;
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 3px;
+        box-shadow: 1px 3px 3px #ddd;
+    }
+    .wrap h1{
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+        border-bottom: 1px dashed #e0e0e0;
+        color: #444;
+        text-align: center;
+    }
+    .wrap p{
+        text-align: right;
+    }
+    .form label{
+        display: block;
+        font-size: 16px;
+        width: 100%;
+        overflow: hidden;
+        margin:8px 0;
+        position: relative;
+    }
+    .form label .item{
+        text-align: right;
+        width: 150px;
+        display: block;
+        float: left;
+        margin-right: 10px;
+        line-height: 34px;
+    }
+    .form label .item i{
+        color: #ec5051;
+        font-style: normal;
+       
+        margin-right: 5px;
+    }
+     .form label input{
+        border:0;
+        outline: none;
+        border:1px solid #e0e0e0;
+        float: left;
+        padding-left: 10px;
+        height: 34px;
+        width: 230px;
+        font-size: 14px;
+        border-radius: 5px;
+     }
+    .submit{
+        height: 34px;
+        width: 230px;
+        line-height: 34px;
+        text-align: center;
+        color: #fff;
+        background: #ea4246;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-left: 160px;
+        margin-top: 20px;
+
+    }
+    .yzm{
+        display: block;
+        float: left;
+        height: 34px;
+        line-height: 34px;
+        /*width: 100px;*/
+        padding: 0 10px;
+        text-align: center;
+        cursor: pointer;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        margin-left: 10px;
+        outline: none;
+    }
+    .tips{
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: block;
+        height: 34px;
+        line-height: 34px;
+        font-size: 14px;
+        text-align: left;
+        width: 140px;
+        color: #ec5051;
+        display: none;
+    }
+</style>
+<div class="signin">
+	<div class="container">
+		<div class="wrap">
+			<h1>注册</h1>
+			<p>已有账号，<a href="/signin">返回登录</a></p>
+            <div class="form">
+                <form action="" onsubmit="return false">
+                    <label>
+                        <span class="item"><i>*</i>用户名</span>
+                        <input  class="ivu-input" type="text" name="name" placeholder="请填写您的用户名">
+                        <span class="tips name_tips">请输入用户名</span>
+                    </label>
+                    <label>
+                        <span class="item"><i>*</i>手机号</span>
+                        <input  class="ivu-input" type="text" name="phone" placeholder="请填写您的手机号">
+                        <span class="tips phone_tips">请输入正确的手机号</span>
+
+                    </label>
+                    <label>
+                        <span class="item"><i>*</i>密码</span>
+                        <input  class="ivu-input" type="password" name="pass1" placeholder="请填写您的密码">
+                        <span class="tips pass1_tips">请输入密码</span>
+                    </label>
+                    <label>
+                        <span class="item"><i>*</i>确认密码</span>
+                        <input  class="ivu-input" type="password" name="pass2" placeholder="请确认您的密码">
+                        <span class="tips pass2_tips">请输入相同的密码</span>
+                    </label>
+                     <label>
+                        <span class="item">QQ号码(选填)</span>
+                        <input  class="ivu-input" type="text" name="qq" placeholder="请输入您的qq号码">
+                    </label>
+                    <label>
+                        <span class="item"><i>*</i>验证码</span>
+                        <input  class="ivu-input" type="text" name="yzm" placeholder="请输入验证码">
+                        <button class="yzm yzm_abled">获取验证码</button>
+                    </label>
+                    <div class="submit">注册</div>
+                </form>
+            </div>
+		</div>
+	</div>
+</div>
+<script src="public/js/jquery.min.js"></script>
+<script>
+    $(function(){
+        var i_name = false,
+            phone = false,
+            pass1 = false,
+            pass2 = false,
+            yzm = false,
+            all = false
+        function test(name,tips){
+            $(name).blur(function(){ 
+                var i_pass1 = $('input[name=pass1]').val()
+                if (name == 'input[name=name]') {
+                   if ($(name).val() === '') {
+                        $(tips).show()
+                        i_name = false
+
+                   }else{
+                        $(tips).hide()
+                        i_name = true
+                   }
+                }else if(name == 'input[name=phone]'){
+                    var val = $(name).val()   
+                    if (!(/^1[3|4|5|8][0-9]\d{8}$/g).test(val)) {
+                        $(tips).show()
+                        phone = false
+                    }else{
+                         $(tips).hide()
+                         phone = true
+                    }
+                }else if(name == 'input[name=pass1]'){
+                    if( !/^[0-9A-Za-z]{6,16}$/.test(i_pass1) ){
+                        $('.pass1_tips').show()
+                        $('.pass1_tips').html('请输入六位以上的密码')
+                        pass1 = false
+                    }else{
+                        $('.pass1_tips').hide()
+                        pass1 = true
+
+                    }
+                }else if(name == 'input[name=pass2]'){
+                     if (i_pass1 !== $('input[name=pass2]').val()) {
+                        $('.pass2_tips').show()
+                        pass2 = false
+                    }else{
+                        $('.pass2_tips').hide()
+                        pass2 = true
+                    }
+                }else if(name == 'input[name=yzm]'){
+                     if ($('input[name=yzm]').val() === '') {
+                        yzm = false
+                    }else{
+                        yzm = true
+                    }
+                }
+                
+
+            })
+        }
+
+        test('input[name=name]','.name_tips')
+        test('input[name=phone]','.phone_tips')
+        test('input[name=pass1]','.pass1_tips')
+        test('input[name=pass2]','.pass2_tips');
+        test('input[name=yzm]','');
+       
+        var countdown = 60 ;
+        var timer = null ;
+        var yzm_num = '';
+        $('.yzm_abled').click(function(){
+            if (phone) {
+                $(this).attr('disabled',true)
+                $(this).html('<b>60</b>秒后再获取')
+                that = this
+                timer = setInterval(function(){
+                    countdown--
+                    $('.yzm_abled b').html(countdown)
+                    if (countdown == 0) {
+                        clearInterval(timer)
+                        $('.yzm_abled').attr('disabled',false)
+                        $('.yzm_abled').html('获取验证码')
+                        countdown = 60;
+                    }
+                },1000)
+
+                $.ajax({
+                    url:'/signup/yzm?_csrf={{ ctx.csrf }}',
+                    type:'post',
+                    data:{
+                        phone:$('input[name=phone]').val()
+                    },
+                    success:function(res){
+                        console.log(res)
+                        yzm_num = res
+                        // console.log(yzm_num)
+                    }
+                })
+
+            }else{
+                $('.phone_tips').show()
+            }
+ 
+        })
+
+
+        $('.submit').click(function(){
+            signup()
+        })
+        $('input[name=yzm]').keyup(function(e){
+            var keycode = event.which; 
+            //处理回车的情况 
+            if(keycode == 13){ 
+                signup()    
+            } 
+        })
+        function signup(){
+            console.log(yzm_num)
+            // if (($('input[name=yzm]').val() != yzm_num) && yzm) {
+            //     alert('验证码错误，请重新输入');
+            //     return false
+            // }
+            // && $('input[name=yzm]').val() === yzm_num
+            if (i_name && phone && pass1 && pass2 && yzm ) {
+                $.ajax({
+                    url:'/signup?_csrf={{ ctx.csrf }}',
+                    type:'POST',
+                    data:{
+                        name: $('input[name=name]').val(),
+                        phone: $('input[name=phone]').val(),
+                        pass: $('input[name=pass1]').val(),
+                        qq: $('input[name=qq]').val(),
+                    },
+                    success:function(res){
+                        console.log(res)
+                        if (res == 'hasPhone') {
+                            alert('手机号码已经被注册')
+                        }else if(res == 'hasName'){
+                            alert('用户名已经存在')
+                        }else if(res == 'success'){
+                            // alert('注册成功')
+                            window.location.href = "/"
+                        }
+                    }
+                })
+            }else{
+                alert('请输入正确的信息')
+            }
+        }
+    })
+</script>
+{% endblock %}

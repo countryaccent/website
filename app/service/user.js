@@ -1,23 +1,81 @@
 module.exports = app => {
   return class User extends app.Service {
-    * find(uid) {
-      // 假如 我们拿到用户 id 从数据库获取用户详细信息
-      const user = yield app.mysql.get('users', {
-          id: uid,
+    * findName(name) {
+      const userName = yield app.mysql.get('users',{
+        name: name
       });
       return {
-        user,
+        userName
+      };
+    }
+    * findPhone(phone) {
+      const userPhone = yield app.mysql.get('users',{
+        phone: phone
+      });
+      return {
+        userPhone
       };
     }
     * insert(data) {
-      // 假如 我们拿到用户 id 从数据库获取用户详细信息
       const user = yield app.mysql.insert('users', {
           name: data[0],
-          pass: data[1]
+          pass: data[1],
+          phone: data[2],
+          qq: data[3]
       });
       return {
         
       };
     }
+    * findUsers() {
+      const users = yield app.mysql.select('users');
+      return {
+        users
+      };
+    }
+    * changePassword(pass) {
+      const users = yield app.mysql.query('update users set pass=? where name = ?',pass)
+      return {
+      
+      };
+    }
+    // * getAddress(userName) {
+       
+    //   const getAddress = yield app.mysql.select('address',{
+    //     where:{userName: userName}
+    //   })
+    //    // const getAddress = yield app.mysql.query(`select * from address where userName="${userName}" order by isDefault desc;`)
+    //   return {
+    //     getAddress
+    //   };
+    // }
+    * getAddressRank(userName) {
+       const getAddress = yield app.mysql.query(`select * from address where userName="${userName}" order by isDefault desc;`)
+      return {
+        getAddress
+      };
+    }
+    * insertAddress(acceptName,phone,address,detailAddress,userName,isDefault) {
+      const insertAddress = yield app.mysql.insert('address',{
+        acceptName: acceptName,
+        phone: phone,
+        address: address,
+        detailAddress: detailAddress,
+        userName: userName,
+        isDefault:isDefault
+      })
+      return {
+        insertAddress
+      };
+    }
+    * deleteAddress(id) {
+      const deleteAddress = yield app.mysql.delete('address',{
+        id: id
+      })
+      return {
+        deleteAddress
+      };
+    }
+
   }
 };

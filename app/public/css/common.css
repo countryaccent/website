@@ -10,9 +10,33 @@
     color: #ea4246;
     height: 80px;
     line-height: 80px;
-    padding: 0 20px;
+    padding: 0 20px;    
+    float: left;
 }
-
+.C-header .logo a{
+     color: #ea4246;
+}
+.C-header .signin {
+    float: right;
+    line-height: 44px;
+    height: 44px;
+    margin-top: 15px;
+}
+.C-header .signin .item{
+    padding: 0 9px;
+    color: #00a2ca;
+    font-size: 14px;
+}
+.C-header .signin .count{
+    display: inline-block;
+    margin-left: 15px;
+    padding: 0 27px 0 29px;
+    font-size: 18px;
+    border-radius: 4px;
+    color: #fff;
+    background: #de533c;
+    letter-spacing: 2px;
+}
 .C-nav {
     height: 60px;
     background: #222222;
@@ -39,6 +63,9 @@
 
 .C-nav .nav-list li a.active {
     background: #ea4246;
+}
+.C-nav .nav-list li:hover{
+     background: #ea4246;
 }
 .clearfix:after{
     content: '';
@@ -141,4 +168,50 @@
     float: left;
     font-size: 14px;
     color:  #7b7b7b
+}
+
+/*个人中心导航*/
+.account-nav {
+    float: left;
+    width: 180px;
+    margin-right: 20px;
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 2px;
+    padding: 13px 0 15px;
+    margin-top: 30px;
+}
+.account-nav .menu+.menu{
+    margin-top: 15px;
+}
+.account-nav .menu h2{
+    font-size: 15px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-indent: 17px;
+}
+.account-nav .menu a{
+    display: block;
+    margin: 1px 0;
+    height: 28px;
+    line-height: 28px;
+    text-indent: 21px;
+    color: #666;
+    border-left: 2px solid #fff;
+}
+.account-nav .menu a.active{
+     color: #ea4246;
+    background: #f6f6f6;
+    border-left: 2px solid #de533c;
+}
+.account-nav .menu a:hover{
+    color: #ea4246;
+    background: #f6f6f6;
+    border-left: 2px solid #de533c;
+
+}
+.account-nav .menu a i{
+    color: #bbb;
+    margin-right: 3px;
 }

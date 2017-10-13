@@ -6,9 +6,31 @@
 </head>
 <body>
 	<form action="/user" method="post">
-		<input type="text" name="name"><br>
-		<input type="text" name="pass"><br>
-		<input type="submit" value="提交">
+		<input class="int1" type="text" name="name"><br>
+		<input class="int2" type="text" name="pass"><br>
+		<!-- <input type="submit" value="提交"> -->
 	</form>
+	<div>获取验证码</div>
+	<script src="public/js/jquery.min.js"></script>
+	<script>
+		$('.int1').keyup(function(){
+			$('.int2').val(parseInt($('.int1').val())+1)
+		})
+		$('.int2').css('background','#ccc')
+		// $('div').click(function(){
+		// 	$.ajax({
+	 //            url:'/user/yzm?_csrf={{ ctx.csrf }}',
+	 //            type:'POST',
+	 //            success:function(res){
+	 //                // $(this).parents('tr').empty()
+	 //                console.log(res)
+	 //            }            
+	 //        })
+		// })
+		$('div').click(function(){
+			alert(1)
+			$('div').attr('disabled','disabled')
+		})
+	</script>
 </body>
 </html>

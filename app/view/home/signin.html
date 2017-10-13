@@ -1,0 +1,165 @@
+{% set pagetitle = "深圳荣新PCB" %} {% set pagenav = "yewu" %} {% extends "../inc/layout.html" %} {% block head %}
+{% endblock %} {% block content %}
+<style>
+	  .wrap{
+        width: 600px;
+        margin: 30px auto;
+        padding: 13px 29px 33px;
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 3px;
+        box-shadow: 1px 3px 3px #ddd;
+    }
+    .wrap h1{
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+        border-bottom: 1px dashed #e0e0e0;
+        color: #444;
+        text-align: center;
+    }
+    .wrap p{
+        text-align: right;
+    }
+    .form label{
+        display: block;
+        font-size: 16px;
+        width: 100%;
+        overflow: hidden;
+        margin:8px 0;
+        position: relative;
+    }
+    .form label .item{
+        text-align: right;
+        width: 150px;
+        display: block;
+        float: left;
+        margin-right: 10px;
+        line-height: 34px;
+    }
+    .form label .item i{
+        color: #ec5051;
+        font-style: normal;
+        margin-right: 5px;
+    }
+     .form label input{
+        border:0;
+        outline: none;
+        border:1px solid #e0e0e0;
+        float: left;
+        padding-left: 10px;
+        height: 34px;
+        width: 230px;
+        font-size: 14px;
+        border-radius: 5px;
+     }
+     .form label img{
+     	float: left;
+     	display: block;
+     	/*width: 150px;*/
+     	height: 50px;
+     	position: relative;
+     	margin:-10px 0 0 5px;
+     	cursor: pointer;
+     }
+    .submit{
+        height: 34px;
+        width: 230px;
+        line-height: 34px;
+        text-align: center;
+        color: #fff;
+        background: #ea4246;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-left: 160px;
+        margin-top: 20px;
+
+    }
+</style>
+<div class="signin">
+	<div class="container">
+		<div class="wrap">
+			<h1>登录</h1>
+			<p>没有账号，<a href="/signup">返回注册</a></p>
+            <div class="form">
+                <form action="" onsubmit="return false">
+                    <label>
+                        <span class="item"><i>*</i>账号</span>
+                        <input class="ivu-input" type="text" name="name" placeholder="请填写您的用户名或手机号">
+                    </label>
+                    <label>
+                        <span class="item"><i>*</i>密码</span>
+                        <input class="ivu-input" type="password" name="pass" placeholder="请填写您的密码">
+                    </label>
+                    <label>
+                        <span class="item"><i>*</i>验证码</span>
+                        <input class="ivu-input" type="text" name="yzm" placeholder="请输入验证码">
+                        <img src="/public/images/yzm.jpg?=1" alt="">
+                    </label>
+                    <div class="submit">登录</div>
+                </form>
+            </div>
+		</div>
+	</div>
+</div>
+<script src="public/js/jquery.min.js"></script>
+<script>
+	$(function(){
+		var yzm_num =''
+		yzm()
+		$('label img').click(function(){
+			yzm()
+		})
+		function yzm(){
+			$.ajax({
+				url:'/signin/yzm?_csrf={{ ctx.csrf }}',
+				type:'get',
+				success:function(res){
+					console.log(res)
+					yzm_num = res;
+					$('label img').attr('src','/public/images/yzm.jpg?'+new Date().getTime())
+				}
+			})
+		}
+
+		$('.submit').click(function(){
+			 signin()
+		})
+		$('input[name=yzm]').keyup(function(e){
+			var keycode = event.which; 
+		    //处理回车的情况 
+		    if(keycode == 13){ 
+		    	signin()	
+		    } 
+		})
+		function signin(){
+			if ($('input[name=yzm]').val() !== yzm_num) {
+				alert('验证码错误，请重新输入');
+				$('input[name=yzm]').val('');
+				return 
+			}else if ($('input[name=name]').val() !== "" && $('input[name=pass]').val() !== '') {
+				$.ajax({
+					url:'/signin?_csrf={{ ctx.csrf }}',
+					type:'POST',
+					data:{
+						name: $('input[name=name]').val(),
+						pass: $('input[name=pass]').val()
+					},
+					success:function(res){
+						console.log(res)
+						if (res == 'success') {
+							// alert('')
+							// 成功
+							window.location.href = "/"
+						}else if(res == 'fail'){
+							alert('账号或密码错误')
+						}
+					}
+				})
+			}else{
+				alert('请输入账户信息')
+			}
+		}
+	})
+</script>
+{% endblock %}

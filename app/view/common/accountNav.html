@@ -1,0 +1,75 @@
+<div class="account-nav">
+	<div class="menu">
+		<h2>订单中心</h2>
+		{% if accountnav=='order' %}
+        <a href="/account/order" class="active">
+        {% else %}
+        <a href="/account/order">
+        {% endif %}
+			<i>•</i>
+			我的订单
+		</a>
+		{% if accountnav=='refund' %}
+        <a href="/account/refund" class="active">
+        {% else %}
+        <a href="/account/refund">
+        {% endif %}
+			<i>•</i>
+			退款订单
+		</a>
+		{% if accountnav=='comment' %}
+        <a href="/account/comment" class="active">
+        {% else %}
+        <a href="/account/comment">
+        {% endif %}
+			<i>•</i>
+			我的评价
+		</a>
+	</div>
+	<div class="menu">
+		<h2>财务管理</h2>
+		{% if accountnav=='balance' %}
+        <a href="/account/finance/balance" class="active">
+        {% else %}
+        <a href="/account/finance/balance">
+        {% endif %}
+			<i>•</i>
+			余额
+		</a>
+		{% if accountnav=='recharge' %}
+        <a href="/account/finance/recharge" class="active">
+        {% else %}
+        <a href="/account/finance/recharge">
+        {% endif %}
+			<i>•</i>
+			充值
+		</a>
+	</div>
+	<div class="menu">
+		<h2>设置</h2>
+		{% if accountnav=='profile' %}
+        <a href="/account/setting/profile" class="active">
+        {% else %}
+        <a href="/account/setting/profile">
+        {% endif %}
+			<i>•</i>
+			个人资料
+		</a>
+		{% if accountnav=='address' %}
+        <a href="/account/setting/address" class="active">
+        {% else %}
+        <a href="/account/setting/address">
+        {% endif %}
+			<i>•</i>
+			收货地址
+		</a>
+		{% if accountnav=='password' %}
+        <a href="/account/setting/password" class="active">
+        {% else %}
+        <a href="/account/setting/password">
+        {% endif %}
+			<i>•</i>
+			修改密码
+		</a>
+	</div>
+</div>

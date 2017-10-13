@@ -1,0 +1,210 @@
+.account-wrap{
+	margin-top: 30px;
+	float: left;
+}
+.account-wrap .wrap{
+	    min-height: 567px;
+    padding: 14px 27px 50px;
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 3px;
+}
+.account-wrap .wrap .user-bar{
+	overflow: hidden;
+    margin: 10px 0;
+    padding: 9px 15px 7px;
+    line-height: 21px;
+    min-height: 50px;
+    border-color: #ffeab8;
+    color: #de9b61;
+    background: #fffbed;
+    border: 1px solid #fbeed5;	
+}
+.account-wrap .wrap .user-bar p+p{
+	color: #666;
+	margin-top: 5px;
+}
+.account-wrap .wrap .user-bar p+p span+span{
+	margin-left: 30px;
+}
+.ivu-table-wrapper{
+	float: left;
+}
+.account-wrap .balance{
+	margin:10px 0;
+	font-size: 14px;
+	border-bottom:1px dashed #e8e8e8;
+	padding: 10px  0 20px 0
+}
+.account-wrap .wrap > h3{
+	margin-bottom: 10px;
+}
+.account-wrap .balance span{
+	color: #de533c;
+	font-size: 16px;
+}
+.account-wrap .balance span i{
+	font-style: normal;
+	/*font-weight: bold;*/
+	font-size: 26px;
+}
+.account-wrap .balance a{
+	padding: 8px 15px;
+	background: #de533c;
+	color: #fff;
+	border-radius: 5px;
+	position: relative;
+	top: -2px;
+	left: 15px;
+}
+.account-wrap .balance a:hover{
+	background: #d45f4c;
+}
+.wrap{
+	float: left;
+}
+.wrap h2{
+	border-bottom: 1px dashed #e8e8e8;
+	padding-bottom: 15px;
+}
+.wrap form{
+	width: 882px;
+	display: block;
+	margin-top: 20px;
+}
+.wrap form label{
+	display: block;
+	margin:10px 0;
+	position: relative;
+	width: 510px;
+}
+.wrap form span{
+	display: block;
+	width:80px;
+
+}
+.wrap form input{
+	width: 280px;
+}
+.wrap form .submit{
+	height: 34px;
+    width: 280px;
+    line-height: 34px;
+    text-align: center;
+    color: #fff;
+    background: #ea4246;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 70px;
+    margin-top: 20px;
+}
+.wrap form .tips{
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    height: 34px;
+    line-height: 34px;
+    font-size: 14px;
+    text-align: left;
+    width: 140px;
+    color: #ec5051;
+    display: none;
+   
+}
+.wrap .addAddress button{
+	border: 0;
+	width: 162px;
+	height: 44px;
+	border:1px solid #ea4246;
+	font-size: 16px;
+	color: #ea4246;
+	background: #fff;
+	border-radius: 5px;
+	cursor: pointer;
+	margin:20px 0;
+}
+.address_show{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background: rgba(0,0,0,0.3);
+	z-index: 999999;
+}
+.address_show .con{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 530px;
+	height: 390px;
+	margin:-190px 0 0 -265px;
+	background: #fff;
+	padding: 16px 29px 26px;
+}
+.address_show .con h2{
+	padding-bottom: 12px;
+	border-bottom:1px dashed #d8d8d8;
+	font-size: 16px;
+	text-align: center;
+}
+.address_show .con .item{
+	margin-bottom: 5px;
+	display: block;
+}
+.address_show .con label{
+	display: block;
+	margin-top: 10px;
+}
+.address_show .con label select{
+	width: 32.8%;
+}
+.address_show .con .save{
+	display: block;
+	margin-top: 30px;
+	text-align: center;
+}
+.address_show .con .save span{
+	padding: 6px 40px;
+	border: 1px solid #d8d8d8;
+	margin:0 20px;
+	font-size: 16px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.address_show .con .save span:hover{
+	border: 1px solid #ea4246;
+
+}
+.ivu-table-tbody td span{
+	white-space: nowrap;
+}
+.ivu-table-tbody td .defaultAddress{
+	cursor: pointer;
+}
+.ivu-table-tbody td .defaultAddress:hover{
+	color: #ea4246;
+}
+tr.ivu-table-row:hover td{
+	background-color: #e8e8e8;
+}
+tr.ivu-table-row td.active{
+	color: #ea4246;
+}
+tr.ivu-table-row.activeParent td{
+	background: #e8e8e8;
+	border-top:1px dashed #ea4246;
+	border-bottom:1px dashed #ea4246;
+}
+.ivu-table-cell i{
+	font-size: 14px;
+	margin-right: 5px;
+}
+.ivu-table-cell div.fail{
+	color: #ed3f14;
+}
+.ivu-table-cell div.success{
+	color: #19be6b;
+}

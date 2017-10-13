@@ -1,3 +1,15 @@
 <div class="C-header container">
-    <h1 class="logo">深圳荣新PCB</h1>
+    <h1 class="logo"><a href="/">深圳荣新PCB</a></h1>
+    <div class="signin">
+    	{% if user %}
+		  欢迎，<a class="item" href="/account">{{user}}</a>
+		  <a class="item" href="/account/order">我的订单</a>
+		  <a class="item" href="/signout">退出</a>
+    	<a class="count" href="/count">在线下单</a>
+		{% else %}
+    	<a class="item" href="/signin">登录</a>
+    	<a class="item" href="/signup">免费注册</a>
+    	<a class="count" href="/count">在线下单</a>
+    	{% endif %}
+    </div>
 </div>

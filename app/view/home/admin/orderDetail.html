@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>首页 · 后台模板 HTML</title>
+    <link rel="stylesheet" href="/public/frame/layui/css/layui.css">
+    <link rel="stylesheet" href="/public/frame/static/css/style.css">
+    <link rel="icon" href="/public/frame/static/image/code.png">
+    <link rel="stylesheet" href="/public/css/iview.css">
+</head>
+<body>
+
+<!-- layout admin -->
+
+<link rel="stylesheet" href="/public/css/order.css">
+<style>
+	.P-order{
+		padding-left: 30px;
+	}
+	.wrap-right{
+		float: left;
+		margin-left: 20px;
+	}
+</style>
+<div class="P-order">
+	<div class="container">
+		<h1>订单详情</h1>
+		<div class="wrap">
+			<div class="left">
+				<div class="wrap-left">
+					<div class="accept">
+						<h3>收货信息</h3>
+						{{orderList.address | safe}}
+						<ul>
+							{% for addressList in addressLists %}
+
+				            {% if addressList.isDefault == '1' %}
+							<li class="isDefault selected">
+							{% else %}
+							  <li>
+							{% endif %}
+				                 <div class="address">
+									<span>{{addressList.address}} </span>（<span>{{addressList.acceptName}}收</span>）
+								</div>
+								<div class="detailAddress">{{addressList.detailAddress}}</div>
+								<div class="phone">{{addressList.phone}}</div>
+								{% if addressList.isDefault == '1' %}
+								  
+								<div class="default">[默认]</div>
+								{% endif %}
+								
+				            </li> 
+				            {% endfor %}   
+						</ul>
+					</div>
+					<div class="express fl">
+						<h3>快递信息</h3>
+						<label class="ivu-radio-wrapper ivu-radio-wrapper-checked">
+							<span class="ivu-radio ivu-radio-checked">
+								<span class="ivu-radio-inner"></span> 
+								<input type="radio" class="ivu-radio-input" name="express" value="速尔快递">
+							</span>
+							{{orderList.express}}
+						</label>
+					</div>
+					
+					<div class="inovice fl">
+						<h3>发票信息</h3>
+						<label class="ivu-radio-wrapper ivu-radio-wrapper-checked">
+							<span class="ivu-radio  ivu-radio-checked">
+								<span class="ivu-radio-inner"></span> 
+								<input type="radio" class="ivu-radio-input" name="invoice" value="需要发票">
+							</span>
+							{{orderList.invoice}}
+						</label>
+					</div>
+					<div class="pcbFile fl">
+						<h3>已上传的pcb文件</h3>
+						<div class="ivu-upload">
+							<div class="ivu-upload ivu-upload-select">
+								<a href="/public/images/pcbFile/{{orderList.pcbFile}}">
+									<button type="button" class="ivu-btn ivu-btn-ghost"><i class="ivu-icon ivu-icon-ios-cloud-upload-outline"></i> 
+									<span>下载上传的文件</span>
+									</button>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="pcbFile fl bd">
+						<h3>下单备注</h3>
+						{{orderList.orderPs}}
+					</div>
+					<div class="checkResult fl bd">
+						<h3>审核结果</h3>
+						{% if orderList.checkStatus == 0 %}
+						<div class="resultFail">
+							<i class="ivu-icon ivu-icon-help-circled"></i><span>等待审核</span>
+						</div>
+						{% elseif orderList.checkStatus == 2 %}
+						<div class="resultFail">
+							<i class="ivu-icon ivu-icon-close-circled"></i><span>审核不通过</span>
+						</div>
+						<p>
+							原因：{{orderList.checkPs}}
+						</p>
+						{% elseif orderList.checkStatus == 1 %}
+						<div class="resultSuccess">
+							<i class="ivu-icon ivu-icon-checkmark-circled"></i><span>审核通过</span>
+						</div>
+						<p>
+							审核详情：{{orderList.checkPs}}
+						</p>
+						{% endif %}
+					</div>
+					<div class="checkResult fl bd">
+						<h3>生产信息</h3>
+						{% if orderList.productStatus == 0 %}
+						<div class="resultFail">
+							<i class="ivu-icon ivu-icon-help-circled"></i><span>未生产</span>
+						</div>
+						{% elseif orderList.productStatus == 1 %}
+						<div class="resultSuccess">
+							<i class="ivu-icon ivu-icon-checkmark-circled"></i><span>正在生产</span>
+						</div>
+						{% endif %}
+					</div>
+					<div class="checkResult fl bd">
+						<h3>发货信息</h3>
+						{% if orderList.productStatus == 0 %}
+						<div class="resultFail">
+							<i class="ivu-icon ivu-icon-help-circled"></i><span>未发货</span>
+						</div>
+						{% elseif orderList.productStatus == 1 %}
+						<div class="resultSuccess">
+							<i class="ivu-icon ivu-icon-checkmark-circled"></i><span>已发货</span>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+				<div class="fee">
+					<ul>
+						<li>
+							工程费：<span>￥{{orderList.gcFee}}</span>
+						</li>
+						<li>
+							板材费：<span>￥{{orderList.bcFee}}</span>
+						</li>
+						<li>
+							特殊板厚：<span>￥{{orderList.thickExtra}}</span>
+						</li>
+						<li>
+							铜厚费：<span>￥{{orderList.copperFee}}</span>
+						</li>
+						<li>
+							喷镀费：<span>￥{{orderList.sprayFee}}</span>
+						</li>
+						<li>
+							颜色费：<span>￥{{orderList.colorFee}}</span>
+						</li>
+						<li>
+							测试费：<span>￥{{orderList.testFee}}</span>
+						</li>
+						<li>
+							加急费：<span>￥{{orderList.urgentFee}}</span>
+						</li>
+					</ul>
+					<h4>应付总额：<i>￥</i><span>{{orderList.totalFee}}</span></h4>
+				</div> 
+			</div>
+			<div class="wrap-right">
+				<h3>生产信息</h3>
+				<ul>
+					<li>
+						<div class="pd-name">板子层数</div>
+						<div class="pd-val">{{orderList.layer}}</div>
+					</li>
+					<li>
+						<div class="pd-name">出货形式</div>
+						<div class="pd-val">{{orderList.pattern}}</div>
+					</li>
+					<li>
+						<div class="pd-name">单片大小</div>
+						<div class="pd-val">{{orderList.width}} * {{orderList.height}} cm</div>
+					</li>
+					<li>
+						<div class="pd-name">工艺边框</div>
+						<div class="pd-val">{{orderList.border}}</div>
+					</li>
+					<li>
+						<div class="pd-name">单片数量</div>
+						<div class="pd-val">{{orderList.counts}}</div>
+					</li>
+					<li>
+						<div class="pd-name">板子厚度</div>
+						<div class="pd-val">{{orderList.thick}}</div>
+					</li>
+					<li>
+						<div class="pd-name">焊盘喷镀</div>
+						<div class="pd-val">{{orderList.spray}}</div>
+					</li>
+					<li>
+						<div class="pd-name">阻焊覆盖</div>
+						<div class="pd-val">{{orderList.cover}}</div>
+					</li>
+					<li>
+						<div class="pd-name">阻焊颜色</div>
+						<div class="pd-val">{{orderList.color}}</div>
+					</li>
+					<li>
+						<div class="pd-name">外层铜厚</div>
+						<div class="pd-val">{{orderList.copper}}</div>
+					</li>
+					<li>
+						<div class="pd-name">最小线宽/距</div>
+						<div class="pd-val">{{orderList.lineweight}}</div>
+					</li>
+					<li>
+						<div class="pd-name">最小过孔</div>
+						<div class="pd-val">{{orderList.hole}}</div>
+					</li>
+					<li>
+						<div class="pd-name">测试</div>
+						<div class="pd-val">{{orderList.test}}</div>
+					</li>
+					<li>
+						<div class="pd-name">加急</div>
+						<div class="pd-val">{{orderList.urgent}}</div>
+					</li>
+					<li>
+						<div class="pd-name">发货时间</div>
+						<div class="pd-val">{{orderList.delivery}}</div>
+					</li>
+					<li>
+						<div class="pd-name"></div>
+						<div class="pd-val"></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="/public/js/jquery.min.js"></script>
+<script src="/public/js/vue.js"></script>
+<script>
+	var csrf = '{{ ctx.csrf }}';
+</script>
+<!-- <script src="/public/js/order.js"></script> -->
+
+
+
+<script type="text/javascript" src="/public/frame/layui/layui.js"></script>
+<script type="text/javascript" src="/public/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/frame/static/js/vip_comm.js"></script>
+</body>
+</html>
+
+

@@ -186,6 +186,7 @@
 .M-product-list ul li p{
     font-size: 16px;
     margin-top: 10px;
+    text-align: center;
 }
 .M-product-list ul li + li{
     margin-left: 20px;
@@ -304,6 +305,8 @@
 }
 .M-about .about-left ul li img,.about-right ul li img{
     border-radius: 4px;
+    width: 180px;
+    height: 135px;
 }
 .about-right{
     float: right;

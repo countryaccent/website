@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>首页 · 后台模板 HTML</title>
+    <link rel="stylesheet" href="/public/frame/layui/css/layui.css">
+    <link rel="stylesheet" href="/public/frame/static/css/style.css">
+    <link rel="icon" href="/public/frame/static/image/code.png">
+</head>
+<body>
+<style>
+  .layui-form{
+    width: 30%;
+    margin:100px auto;
+    padding: 40px;
+    border: 1px solid #f2f2f2;
+  }
+  .layui-upload-drag{
+    margin: 0 auto;
+    display: table;
+  }
+ .layui-input-block.submit{
+    margin-left: 0 ;
+  }
+  .layui-btn{
+     margin: 0 auto;
+    margin-top: 40px;
+    display: table;
+  }
+  input[type=file]{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+  }
+</style>
+<form method="post" class="layui-form  layui-form-pane" enctype="multipart/form-data" action="/admin/uploadProduct?_csrf={{ ctx.csrf }}">
+  <div class="layui-form-item">
+    <label class="layui-form-label">title</label>
+    <div class="layui-input-block">
+      <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">类型</label>
+    <div class="layui-input-block">
+      <select name="type" lay-filter="aihao">
+        <option value=""></option>
+        <option value="产品">产品</option>
+        <option value="工厂实拍">工厂实拍</option>
+        <option value="客服团队">客服团队</option>
+        <option value="微信公众号">微信公众号</option>
+      </select>
+    </div>
+  </div>
+
+  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+    <legend>上传图片</legend>
+  </fieldset> 
+  <div class="layui-upload-drag" id="test10">
+    <i class="layui-icon"></i>
+    <p>点击上传图片</p>
+     <input type="file" name="image" />
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block submit">
+      <button class="layui-btn">立即提交</button>
+    </div>
+  </div>
+</form>
+  
+
+<script type="text/javascript" src="/public/frame/layui/layui.js"></script>
+<script type="text/javascript" src="/public/frame/static/js/vip_comm.js"></script>
+
+
+<script>
+   layui.use(['form', 'layedit', 'laydate'], function(){
+    });
+</script>
+</script>
+</body>
+</html>

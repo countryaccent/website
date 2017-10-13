@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>首页 · 后台模板 HTML</title>
+    <link rel="stylesheet" href="/public/frame/layui/css/layui.css">
+    <link rel="stylesheet" href="/public/frame/static/css/style.css">
+    <link rel="icon" href="/public/frame/static/image/code.png">
+</head>
+<body>
+
+<!-- layout admin -->
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+  <legend>用户列表</legend>
+</fieldset>
+<table class="layui-table"  lay-skin="line" lay-size="lg">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>名称</th>
+      <th>手机号码</th>
+      <th>QQ</th>
+      <!-- <th>编辑</th> -->
+    </tr>
+  </thead>
+  <tbody>
+     {% for user in users %}
+        <tr>
+          <th>{{ user.id }}</th>
+          <th>{{user.name}}</th>
+          <th>{{ user.phone }}</th>
+          <th>{{ user.qq }}</th>
+          <!-- <th>
+              <div class="layui-btn-group">
+                <a href="/editProduct/{{ product.id }}"   data-url=""> <button class="layui-btn ">编辑</button></a>
+                <button data-id="{{ product.id }}" class="layui-btn delete">删除</button>
+              </div>
+          </th> -->
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+<script type="text/javascript" src="/public/frame/layui/layui.js"></script>
+<script type="text/javascript" src="/public/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/frame/static/js/vip_comm.js"></script>
+
+<script>
+   // $('.layui-btn.delete').click(function(){
+   //      console.log($(this).attr('data-id'))
+   //      // console.log($(this).parents('tr').empty())
+   //      var id = $(this).attr('data-id')
+   //      $.ajax({
+   //          url:'/admin/deleteProduct/'+id+'?_csrf={{ ctx.csrf }}',
+   //          type:'POST',
+   //          success:function(res){
+   //              $(this).parents('tr').empty()
+   //          }            
+   //      })
+   // })
+</script>
+</body>
+</html>

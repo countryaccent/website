@@ -1,4 +1,4 @@
-{% set pagetitle = "深圳荣新PCB" %} {% set pagenav = "yewu" %} {% extends "../inc/layout.html" %} {% block head %}
+{% set pagetitle = "深圳荣新PCB" %} {% set pagenav = "count" %} {% extends "../inc/layout.html" %} {% block head %}
 {% endblock %} {% block content %}
 <style>
 	
@@ -25,11 +25,11 @@
 									<li data="2">2</li>
 									<li data="4">4</li>
 									<li data="6">6</li>
-									<li data="8">8</li>
+									<!-- <li data="8">8</li>
 									<li data="10">10</li>
 									<li data="12">12</li>
 									<li data="14">14</li>
-									<li data="16">16</li>
+									<li data="16">16</li> -->
 								</ul>
 							</div>
 						</div>
@@ -51,28 +51,32 @@
 						</div>
 					</div>
 					<div class="items-list" v-show="pbStyleShow">
-						<h3>单片大小：</h3>
+						<h3>拼版款数：</h3>
 						<div class="items-btn">
 							<div class="">
 								<div class="input-box" style="width: 100%">
 									<input type="text" onkeyup="this.value=this.value.replace(/[^0-9]+/,'');" v-model.number="pbStyle" name="width" placeholder="长" id="width">
 								</div>
-								
 							</div>
-							
 						</div>
 					</div>
 					<div class="items-list">
-						<h3>单片大小：</h3>
+						<template v-if=" pattern =='按文件内已拼版资料出货' ">
+							<h3>拼版大小：</h3>
+						</template>
+						<template v-else>
+							<h3>单片大小：</h3>
+						</template>
+						
 						<div class="items-btn">
 							<div class="">
 								<div class="input-box">
-									<input type="text" onkeyup="this.value=this.value.replace(/[^0-9]+/,'');" v-model.number="width" name="width" placeholder="长" id="width">
+									<input type="text" @keyup="onLength" onkeyup="this.value=this.value.replace(/[^0-9]+/,'');" v-model.number="width" name="width" placeholder="长" id="width">
 									<div class="cm">cm</div>
 								</div>
 								<div class="icon-x">X</div>
 								<div class="input-box">
-									<input type="text" onkeyup="this.value=this.value.replace(/[^0-9]+/,'');" v-model.number="height" name="height" placeholder="宽" id="height">
+									<input type="text" @keyup="onLength" onkeyup="this.value=this.value.replace(/[^0-9]+/,'');" v-model.number="height" name="height" placeholder="宽" id="height">
 									<div class="cm">cm</div>
 								</div>
 							</div>
@@ -96,7 +100,7 @@
 							
 						</div>
 					</div>
-					<div class="items-list">
+					<div class="items-list" v-show="pattern !== '按文件内已拼版资料出货' ">
 						<h3>工艺边框：</h3>
 						<div class="items-btn min-wdith">
 							<div class="items-btn-wrap">
@@ -197,6 +201,8 @@
 									<li data="1.2">1.2</li>
 									<li data="1.6">1.6</li>
 									<li data="2.0">2.0</li>
+									<li data="2.5">2.5</li>
+									<li data="3.0">3.0</li>
 								</ul>
 							</div>
 						</div>
@@ -232,14 +238,11 @@
 							</div>
 							<div class="choose-menu">
 								<ul data-key="cover">
-									<li data="有铅喷锡">
-										有铅喷锡
+									<li data="过孔盖油">
+										过孔盖油
 									</li>
-									<li data="无铅喷锡">
-										无铅喷锡
-									</li>
-									<li data="沉金">
-										沉金
+									<li data="过孔开窗">
+										过孔开窗
 									</li>
 								</ul>
 							</div>
@@ -301,7 +304,7 @@
 						</div>
 					</div>
 					<div class="items-list">
-						<h3>最小线宽：</h3>
+						<h3>最小线宽/距：</h3>
 						<div class="items-btn">
 							<div class="items-btn-wrap">
 								<span class="btn-txt">${lineweight} / ${lineweight} mil</span>
@@ -327,13 +330,13 @@
 							<div class="choose-menu">
 								<ul data-key="hole">
 									<li data="0.3">0.3 mm</li>
-									<li data="0.25">0.25 mm</li>
-									<li data="0.2">0.2 mm</li>
+									<!-- <li data="0.25">0.25 mm</li>
+									<li data="0.2">0.2 mm</li> -->
 								</ul>
 							</div>
 						</div>
 					</div>
-					<div class="items-list">
+					<!-- <div class="items-list">
 						<h3>BGA：</h3>
 						<div class="items-btn">
 							<div class="items-btn-wrap">
@@ -356,8 +359,8 @@
 								</ul>
 							</div>
 						</div>
-					</div>
-					<div class="items-list">
+					</div> -->
+					<!-- <div class="items-list">
 						<h3>半孔：</h3>
 						<div class="items-btn">
 							<div class="items-btn-wrap">
@@ -378,8 +381,8 @@
 								</ul>
 							</div>
 						</div>
-					</div>
-					<div class="items-list">
+					</div> -->
+					<!-- <div class="items-list">
 						<h3>阻抗：</h3>
 						<div class="items-btn">
 							<div class="items-btn-wrap">
@@ -400,9 +403,9 @@
 								</ul>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<div class="items-list">
-						<h3>阻抗：</h3>
+						<h3>测试：</h3>
 						<div class="items-btn">
 							<div class="items-btn-wrap">
 								<span class="btn-txt">${test}</span>
@@ -463,7 +466,7 @@
 							<div class="pb-table-num">
 								${(width*pbWidth ) + borderWidthResult } 
 								* 
-								${(height*pbWidth) + borderHeightResult} cm
+								${(height*pbHeight) + borderHeightResult} cm
 							</div>
 						</div>
 						<div class="pb-table-tr">
@@ -471,7 +474,7 @@
 								拼版后数量
 							</div>
 							<div class="pb-table-num">
-								${counts} 连片(45000单片)
+								${counts} <!-- 连片(45000单片) -->
 							</div>
 						</div>
 						<div class="pb-table-tr">
@@ -516,8 +519,8 @@
 							<li v-show="bcFee > 0">
 								板材费：<i>￥</i>${bcFee}
 							</li>
-							<li v-show="price.specialFee > 0">
-								特殊板厚：<i>￥</i>${price.specialFee}
+							<li v-show="thickExtra > 0 && area < 2">
+								特殊板厚：<i>￥</i>${thickExtra}
 							</li>
 							<li v-show="feilinFee > 0">
 								菲林费：<i>￥</i>${feilinFee}
@@ -525,10 +528,10 @@
 							<li v-show="price.pinFee > 0">
 								拼版费：<i>￥</i>${price.gcpinFeef}
 							</li>
-							<li v-show="price.copperFee > 0">
+							<li v-show="price.copperFee > 0 && area < 2">
 								铜厚费：<i>￥</i>${price.copperFee}
 							</li>
-							<li v-show="price.sprayFee > 0">
+							<li v-show="price.sprayFee > 0 && area < 2">
 								喷镀费：<i>￥</i>${price.sprayFee}
 							</li>
 							<li v-show="price.colorFee > 0">
@@ -555,16 +558,17 @@
 						</ul>
 						<div class="totalFee">
 							￥<span>
-								<template v-if="totalFee > 0">
-									${totalFee}
+								<template v-if="massTotalFee > 0 || generTotalFee > 0">
+									${area >=2 ? massTotalFee : generTotalFee }
 								</template>
 								<template v-else>
 									0
 								</template>
 							</span>
 						</div>
-						<div class="submit buy">立即下单</div>
-						<div>面积：${(width*height*counts/10000).toFixed(3)} ㎡</div>
+
+						<div class="submit buy" @click="submit">立即下单</div>
+						<div>面积：${(area).toFixed(3)} ㎡</div>
 					</template>
 					<template v-else>
 						<p class="please-input">请输入板子大小~</p>
@@ -580,5 +584,24 @@
 </div>
 <script src="public/js/jquery.min.js"></script>
 <script src="public/js/vue.js"></script>
+<script>
+	var csrf = '{{ ctx.csrf }}';
+	var price = {
+
+	}; 
+	var priceData =[{{price.price1}},{{price.price2}},{{price.price3}},{{price.price4}}
+	,{{price.price5}},{{price.price6}},{{price.price7}},{{price.price8}},{{price.price9}},{{price.price10}},{{price.price11}}
+	,{{price.price12}},{{price.price13}},{{price.price14}},{{price.price15}},{{price.price16}}
+	,{{price.price17}},{{price.price18}},{{price.price18}},{{price.price20}},{{price.price21}}
+	,{{price.price22}},{{price.price23}},{{price.price24}},{{price.price25}}
+	,{{price.price26}},{{price.price27}},{{price.price28}},{{price.price29}},{{price.price30}}
+	,{{price.price31}},{{price.price32}},{{price.price33}},{{price.price34}},{{price.price35}},{{price.price36}},{{price.price37}}
+	,{{price.price38}},{{price.price39}},{{price.price40}},{{price.price41}},{{price.price42}},{{price.price43}},{{price.price44}}]
+	for (var i = 1; i < 45; i++) {
+		price['price'+i] = priceData[i-1];
+	}
+</script>
+<script src="public/js/countVue.js"></script>
 <script src="public/js/counts.js"></script>
+
 {% endblock %}

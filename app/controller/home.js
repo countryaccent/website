@@ -1,6 +1,6 @@
 'use strict';
 
-var data = {name:'egg'}
+const data = {name:'egg'}
 
 module.exports = app => {
 
@@ -30,7 +30,7 @@ module.exports = app => {
       });
     }
     * signin() {
-      var user = this.ctx.cookies.get('user');
+      const user = this.ctx.cookies.get('user');
       const ewm = yield this.ctx.service.product.findByType('微信公众号');
       const word = yield this.ctx.service.product.findWordById();
       if (user) {this.ctx.redirect('/')}
@@ -43,7 +43,7 @@ module.exports = app => {
     * signup() {
       const ewm = yield this.ctx.service.product.findByType('微信公众号');
       const word = yield this.ctx.service.product.findWordById();
-      var user = this.ctx.cookies.get('user')
+      const user = this.ctx.cookies.get('user')
       if (user) {this.ctx.redirect('/')}
       yield this.ctx.render('home/signup.html',{
         words: word.words,
@@ -154,12 +154,7 @@ module.exports = app => {
     * about() {
       const word = yield this.ctx.service.product.findWordById();
       const ewm = yield this.ctx.service.product.findByType('微信公众号');
-      const server = yield this.ctx.service.product.findByType('客服团队');
-      this.app.locals = {
-        word: word.words ,
-        ewm: ewm.results,
-        user: this.ctx.cookies.get('user'),
-      };
+      const server = yield this.ctx.service.product.findByType('客服团队')
       console.log(server.results.slice(0,1))
       yield this.ctx.render('home/about.html',{
         words: word.words,
@@ -262,13 +257,21 @@ module.exports = app => {
       });
     }
 
-
+    // *********************************//
     // 后台首页
     * admin() {
+      const admin = this.ctx.cookies.get('admin');
+      if (!admin) {this.ctx.redirect('/admin/adminLogin')}
       yield this.ctx.render('home/admin/index.html');
     }
-
+    * adminLogin() {
+      const admin = this.ctx.cookies.get('admin');
+      if (admin) {this.ctx.redirect('/admin')}
+      yield this.ctx.render('home/admin/adminLogin.html');
+    }
     * home() {
+      const admin = this.ctx.cookies.get('admin');
+      if (!admin) this.ctx.redirect('/admin/adminLogin')
       const product = yield this.ctx.service.product.findByType('产品');
       const factory = yield this.ctx.service.product.findByType('工厂实拍');
       const server = yield this.ctx.service.product.findByType('客服团队');
@@ -285,10 +288,14 @@ module.exports = app => {
     }
     // 上传产品
     * uploadProduct() {
+      const admin = this.ctx.cookies.get('admin');
+      if (!admin) this.ctx.redirect('/admin/adminLogin')
       yield this.ctx.render('home/admin/uploadProduct.html');
     }
     // 更改产品
     * editProduct() {
+      const admin = this.ctx.cookies.get('admin');
+      if (!admin) this.ctx.redirect('/admin/adminLogin')
       const productId = this.ctx.params.id;
       const data = yield this.ctx.service.product.findById(productId);
       console.log(JSON.parse(JSON.stringify(data)).products)
@@ -299,6 +306,8 @@ module.exports = app => {
     }
     // 上传文字信息
     * uploadWord() {
+      const admin = this.ctx.cookies.get('admin');
+      if (!admin) this.ctx.redirect('/admin/adminLogin')
       const word = yield this.ctx.service.product.findWordById();
       yield this.ctx.render('home/admin/uploadWord.html',{
         words: word.words
@@ -306,6 +315,8 @@ module.exports = app => {
     }
     // 编辑文字信息
      * editWord() {
+      const admin = this.ctx.cookies.get('admin');
+      if (!admin) this.ctx.redirect('/admin/adminLogin')
       const word = yield this.ctx.service.product.findWordById();
       yield this.ctx.render('home/admin/editWord.html',{
         words: word.words
@@ -313,6 +324,8 @@ module.exports = app => {
     }
     // 编辑文字信息
      * users() {
+      const admin = this.ctx.cookies.get('admin');
+      if (!admin) this.ctx.redirect('/admin/adminLogin')
       const users = yield this.ctx.service.user.findUsers();
       yield this.ctx.render('home/admin/users.html',{
         users: users.users
@@ -320,6 +333,8 @@ module.exports = app => {
     }
     // 管理价格
     * price() {
+      const admin = this.ctx.cookies.get('admin');
+      if (!admin) this.ctx.redirect('/admin/adminLogin')
       const priceData = yield this.ctx.service.product.findPrice()
       const price = JSON.parse(JSON.stringify(priceData)).price[0]
       yield this.ctx.render('home/admin/price.html',{
@@ -327,6 +342,8 @@ module.exports = app => {
       });
     }
      * priceChange() {
+      const admin = this.ctx.cookies.get('admin');
+      if (!admin) this.ctx.redirect('/admin/adminLogin')
       const priceData = yield this.ctx.service.product.findPrice()
       const price = JSON.parse(JSON.stringify(priceData)).price[0]
       console.log(price)
@@ -336,6 +353,8 @@ module.exports = app => {
     }
     // 后台订单
     * checkOrder() {
+      const admin = this.ctx.cookies.get('admin');
+      if (!admin) this.ctx.redirect('/admin/adminLogin')
       const orderData = yield this.ctx.service.order.findAllOrder();
       console.log(orderData)
       const orderLists = JSON.parse(JSON.stringify(orderData)).orderList;
@@ -345,6 +364,8 @@ module.exports = app => {
     }
     // 后台订单详情
     * adminOrderDetail() {
+      const admin = this.ctx.cookies.get('admin');
+      if (!admin) this.ctx.redirect('/admin/adminLogin')
       const orderId = this.ctx.query.orderId; 
       console.log(orderId);
       const orderData = yield this.ctx.service.order.findById(orderId);
@@ -357,6 +378,8 @@ module.exports = app => {
     }
     // 审核订单
     * doCheckOrder() {
+      const admin = this.ctx.cookies.get('admin');
+      if (!admin) this.ctx.redirect('/admin/adminLogin')
       const orderId = this.ctx.query.orderId; 
       console.log(orderId);
       const orderData = yield this.ctx.service.order.findById(orderId);

@@ -13,43 +13,11 @@ exports.submit = function *(ctx){
 	const phoneData = yield ctx.service.user.findName(userName)
 	const phone = JSON.parse(JSON.stringify(phoneData)).userName.phone
 	console.log(phone)
-	const orderTime = moment().format('YYYY-MM-DD HH:mm')
-	const order = yield ctx.service.order.insert(userName,
-												phone,
-												orderTime,
-												data.layer,
-												data.pattern,
-												data.width,
-												data.height,
-												data.pbStyle,
-												data.pbWidth,
-												data.pbHeight,
-												data.border,
-												data.borderStyle,
-												data.borderStyleStatus,
-												data.counts,
-												data.thick,
-												data.spray,
-												data.cover,
-												data.color,
-												data.copper,
-												data.lineweight,
-												data.hole,
-												data.bga,
-												data.halfhole,
-												data.impedance,
-												data.test,
-												data.delivery,
-												data.urgent,
-												price.bcFee,
-												price.gcFee,
-												price.urgentFee,
-												price.thickExtra,
-												price.copperFee,
-												price.sprayFee,
-												price.colorFee,
-												price.testFee,
-												price.totalFee)
+	const orderTime = moment().format('YYYY-MM-DD HH:mm');
+	data.userName = userName;
+	data.phone = phone;
+	data.orderTime = orderTime;
+	const order = yield ctx.service.order.insert(data)
 		
 	ctx.body = order.orders.insertId
 	// console.log(order)
@@ -96,20 +64,7 @@ exports.finalSubmit = function *(ctx){
 exports.doCheckOrder = function *(ctx){
 	var data = ctx.request.body
 	console.log(data);
-	var updateOrder = yield ctx.service.order.doCheckOrder(data.id,
-															data.checkStatus,
-															data.productStatus,
-															data.sendStatus,
-															data.checkPs,
-															data.gcFee,
-															data.bcFee,
-															data.urgentFee,
-															data.thickExtra,
-															data.copperFee,
-															data.sprayFee,
-															data.colorFee,
-															data.testFee,
-															data.totalFee)
+	var updateOrder = yield ctx.service.order.doCheckOrder(data)
 	ctx.body = 'success'
 	console.log(updateOrder)
 }

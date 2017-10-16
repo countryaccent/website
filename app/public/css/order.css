@@ -200,6 +200,11 @@
     height: 34px;
     line-height: 34px;
     float: left;
+    width: 112px;
+    overflow: hidden;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
 }
 .ivu-upload-input{
 	display: block!important;

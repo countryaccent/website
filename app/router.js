@@ -43,7 +43,9 @@ module.exports = app => {
   // 后台
   app.get('/admin', 'home.admin');
   app.get('/admin/home', 'home.home');
-  // app.get('/home', 'home.uploadProduct');
+  app.get('/admin/adminLogin', 'home.adminLogin');
+  app.get('/admin/signout','uploadProduct.signout')
+  app.post('/admin/adminLogin', 'uploadProduct.adminLogin');
   app.get('/admin/uploadProduct', 'home.uploadProduct');
   app.post('/admin/uploadProduct', 'uploadProduct.upload');
   app.get('/admin/editProduct/:id', 'home.editProduct');

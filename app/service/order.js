@@ -1,45 +1,8 @@
 module.exports = app => {
    return class Orders extends app.Service {
-    * insert(userName,phone,orderTime,layer,pattern,width,height,pbStyle,pbWidth,pbHeight,border,borderStyle,borderStyleStatus,counts,thick,spray,cover,color,copper,lineweight,hole,bga,halfhole,impedance,test,delivery,urgent, bcFee,gcFee,urgentFee,thickExtra,copperFee,sprayFee,colorFee,testFee,totalFee) {
+    * insert(data) {
       // 假如 我们拿到用户 id 从数据库获取用户详细信息
-      const orders = yield app.mysql.insert('orders', {
-          userName:userName,
-          phone: phone,
-          orderTime: orderTime,
-          layer: layer,
-          pattern: pattern,
-          width: width,
-          height: height,
-          pbStyle: pbStyle,
-          pbWidth: pbWidth,
-          pbHeight: pbHeight,
-          border: border,
-          borderStyle: borderStyle,
-          borderStyleStatus: borderStyleStatus,
-          counts: counts,
-          thick: thick,
-          spray: spray,
-          cover: cover,
-          color: color,
-          copper: copper,
-          lineweight: lineweight,
-          hole: hole,
-          bga: bga,
-          halfhole: halfhole,
-          impedance: impedance,
-          test: test,
-          delivery: delivery,
-          urgent: urgent, 
-          bcFee: bcFee,
-          gcFee: gcFee,
-          urgentFee: urgentFee,
-          thickExtra: thickExtra,
-          copperFee: copperFee,
-          sprayFee: sprayFee,
-          colorFee: colorFee,
-          testFee: testFee,
-          totalFee: totalFee
-      });
+      const orders = yield app.mysql.insert('orders', data)
       return {
         orders
       };
@@ -59,7 +22,8 @@ module.exports = app => {
         express: express,
         invoice: invoice,
         pcbFile: pcbFile,
-        orderPs: orderPs
+        orderPs: orderPs,
+        orderStatus:1,
       })
       return {
         orderList
@@ -83,23 +47,8 @@ module.exports = app => {
         orderList
       }
     }
-    * doCheckOrder(id,checkStatus,productStatus,sendStatus,checkPs,gcFee,bcFee,urgentFee,thickExtra,copperFee,sprayFee,colorFee,testFee,totalFee){
-      const orderList = yield app.mysql.update('orders',{
-        id:id,
-        checkStatus: checkStatus,
-        productStatus: productStatus,
-        sendStatus: sendStatus,
-        checkPs: checkPs,
-        gcFee:gcFee,
-        bcFee: bcFee,
-        urgentFee: urgentFee,
-        thickExtra: thickExtra,
-        copperFee: copperFee,
-        sprayFee: sprayFee,
-        colorFee: colorFee,
-        testFee: testFee,
-        totalFee: totalFee,
-      })
+    * doCheckOrder(data){
+      const orderList = yield app.mysql.update('orders',data)
       return {
         orderList
       }

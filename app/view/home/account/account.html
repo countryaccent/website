@@ -86,6 +86,7 @@
 			      				</colgroup> 
 				      			<tbody class="ivu-table-tbody">
 					      			{% for orderList in orderLists %}
+					      			{% if orderList.orderStatus == 1 %}
 					       			<tr class="ivu-table-row">
 					        			<td class="">
 					         				<div class="ivu-table-cell">
@@ -159,6 +160,7 @@
 					         				</div>
 					         			</td>
 					       			</tr>
+					       			{% endif %}
 									{% endfor %}
 				      			</tbody>
 			    	 		</table>

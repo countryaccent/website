@@ -44,6 +44,7 @@
   </thead>
   <tbody>
      {% for orderList in orderLists %}
+        {% if orderList.orderStatus == 1 %}
         <tr>
           <th>{{ orderList.id }}</th>
           <th>{{orderList.userName}}</th>
@@ -106,6 +107,7 @@
               </div>
           </th> -->
         </tr>
+        {% endif %}
     {% endfor %}
   </tbody>
 </table>

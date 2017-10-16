@@ -173,69 +173,79 @@
 			<div class="wrap-right">
 				<h3>生产信息</h3>
 				<ul>
-					<li>
+					<li title="{{orderList.layer}}">
 						<div class="pd-name">板子层数</div>
 						<div class="pd-val">{{orderList.layer}}</div>
 					</li>
-					<li>
+					<li title="{{orderList.pattern}}">
 						<div class="pd-name">出货形式</div>
 						<div class="pd-val">{{orderList.pattern}}</div>
 					</li>
-					<li>
+					<li title="{{orderList.width}} * {{orderList.height}} cm">
 						<div class="pd-name">单片大小</div>
 						<div class="pd-val">{{orderList.width}} * {{orderList.height}} cm</div>
 					</li>
-					<li>
+					<li title="{{orderList.border}}">
 						<div class="pd-name">工艺边框</div>
 						<div class="pd-val">{{orderList.border}}</div>
 					</li>
-					<li>
+					<li title="{{orderList.borderStyle}}">
+						<div class="pd-name">边框大小</div>
+						<div class="pd-val">{{orderList.borderStyle}}</div>
+					</li>
+					{% if orderList.pbWidth > 0 %}
+					<li title="{{orderList.pbWidth}}">
+						<div class="pd-name">拼版宽度</div>
+						<div class="pd-val">{{orderList.pbWidth}}</div>
+					</li>
+					<li title="{{orderList.pbWidth}}">
+						<div class="pd-name">拼版高度</div>
+						<div class="pd-val">{{orderList.pbWidth}}</div>
+					</li>
+					{% endif %}
+					<li title="{{orderList.counts}}">
 						<div class="pd-name">单片数量</div>
 						<div class="pd-val">{{orderList.counts}}</div>
 					</li>
-					<li>
+					<li title="{{orderList.thick}}">
 						<div class="pd-name">板子厚度</div>
 						<div class="pd-val">{{orderList.thick}}</div>
 					</li>
-					<li>
+					<li title="{{orderList.spray}}">
 						<div class="pd-name">焊盘喷镀</div>
 						<div class="pd-val">{{orderList.spray}}</div>
 					</li>
-					<li>
+					<li title="{{orderList.cover}}">
 						<div class="pd-name">阻焊覆盖</div>
 						<div class="pd-val">{{orderList.cover}}</div>
 					</li>
-					<li>
+					<li title="{{orderList.color}}">
 						<div class="pd-name">阻焊颜色</div>
 						<div class="pd-val">{{orderList.color}}</div>
 					</li>
-					<li>
+					<li title="{{orderList.copper}}">
 						<div class="pd-name">外层铜厚</div>
 						<div class="pd-val">{{orderList.copper}}</div>
 					</li>
-					<li>
+					<li title="{{orderList.lineweight}}">
 						<div class="pd-name">最小线宽/距</div>
 						<div class="pd-val">{{orderList.lineweight}}</div>
 					</li>
-					<li>
+					<li title="{{orderList.hole}}">
 						<div class="pd-name">最小过孔</div>
 						<div class="pd-val">{{orderList.hole}}</div>
 					</li>
-					<li>
+					<li title="{{orderList.test}}">
 						<div class="pd-name">测试</div>
 						<div class="pd-val">{{orderList.test}}</div>
 					</li>
-					<li>
+					<li title="{{orderList.urgent}}">
 						<div class="pd-name">加急</div>
 						<div class="pd-val">{{orderList.urgent}}</div>
 					</li>
-					<li>
+					<li title="{{orderList.delivery}}">
 						<div class="pd-name">发货时间</div>
 						<div class="pd-val">{{orderList.delivery}}</div>
-					</li>
-					<li>
-						<div class="pd-name"></div>
-						<div class="pd-val"></div>
 					</li>
 				</ul>
 			</div>
@@ -253,7 +263,6 @@
 
 <script type="text/javascript" src="/public/frame/layui/layui.js"></script>
 <script type="text/javascript" src="/public/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/frame/static/js/vip_comm.js"></script>
 </body>
 </html>
 

@@ -26,7 +26,7 @@ exports.getAddressRank = function *(ctx){
 exports.saveAddress = function *(ctx){
 	console.log(ctx.request.body)
 	const data = ctx.request.body
-	const res = yield ctx.service.user.insertAddress(data.acceptName,data.phone,data.address,data.detailAddress,data.userName,data.isDefault)
+	const res = yield ctx.service.user.insertAddress(data)
 	// console.log(JSON.stringify(res))
 	// console.log(res.insertAddress.insertId)
 	ctx.body = res.insertAddress.insertId
@@ -48,3 +48,4 @@ exports.defaultAddress = function *(ctx){
 	// console.log(JSON.stringify(res))
 	ctx.body = 'defaultSuccess'
 }
+

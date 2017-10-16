@@ -27,10 +27,10 @@ $(".choose-menu").find("li").on('click', function() {
 })
 
 $('.choose-menu').on('click', 'li', function() {
-        _this = $(this)
-        key = _this.parent().data('key');
-        type = _this.parent().data('type');
-        val = _this.attr('data')
+        var _this = $(this)
+        var key = _this.parent().data('key');
+        var type = _this.parent().data('type');
+        var val = _this.attr('data')
         console.log(key, val)
             // _this.parents('.items-btn').find('.btn-txt').html(val);
         vm[key] = val;

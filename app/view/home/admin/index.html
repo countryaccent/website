@@ -16,9 +16,9 @@
 <div class="layui-layout layui-layout-admin"> <!-- 添加skin-1类可手动修改主题为纯白，添加skin-2类可手动修改主题为蓝白 -->
     <!-- header -->
     <div class="layui-header my-header">
-        <a href="index.html">
+        <a href="/admin">
             <!--<img class="my-header-logo" src="" alt="logo">-->
-            <div class="my-header-logo">后台模板 HTML</div>
+            <div class="my-header-logo">后台管理中心</div>
         </a>
         <div class="my-header-btn">
             <button class="layui-btn layui-btn-small btn-nav"><i class="layui-icon">&#xe65f;</i></button>
@@ -28,10 +28,14 @@
         <ul class="layui-nav" lay-filter="side-top-left">
             <li class="layui-nav-item"><a href="javascript:;" href-url="/admin/home"><i class="layui-icon">&#xe68e;</i>主页</a></li>
             <li class="layui-nav-item">
-                <a href="javascript:;"><i class="layui-icon">&#xe621;</i>基础</a>
+                <a href="javascript:;"><i class="layui-icon">&#xe620;</i>功能</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="javascript:;" href-url="demo/btn.html"><i class="layui-icon">&#xe621;</i>按钮</a></dd>
-                    <dd><a href="javascript:;" href-url="demo/form.html"><i class="layui-icon">&#xe621;</i>表单</a></dd>
+                     <dd><a href="javascript:;" href-url="/admin/uploadProduct"><i class="layui-icon">&#xe857;</i>上传产品</a></dd>
+                    <dd><a href="javascript:;" href-url="/admin/editWord"><i class="layui-icon">&#xe60a;</i>上传文字</a></dd>
+                    <dd><a href="javascript:;" href-url="/admin/users"><i class="layui-icon">&#xe612;</i>用户管理</a></dd>
+                     <dd><a href="javascript:;" href-url="/admin/checkOrder"><i class="layui-icon">&#xe657;</i>订单审核</a></dd>
+                        <dd><a href="javascript:;" href-url="/admin/price"><i class="layui-icon">&#xe65e;</i>价格管理</a></dd>
+                        <dd><a href="javascript:;" href-url="/admin/priceChange"><i class="layui-icon">&#xe65e;</i>修改价格</a></dd>
                 </dl>
             </li>
         </ul>
@@ -50,9 +54,7 @@
             <li class="layui-nav-item">
                 <a class="name" href="javascript:;"><img src="/public/frame/static/image/code.png" alt="logo"> Admin </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="javascript:;" href-url="demo/login.html"><i class="layui-icon">&#xe621;</i>登录页</a></dd>
-                    <dd><a href="javascript:;" href-url="demo/map.html"><i class="layui-icon">&#xe621;</i>图表</a></dd>
-                    <dd><a href="/"><i class="layui-icon">&#x1006;</i>退出</a></dd>
+                    <dd><a href="/admin/signout"><i class="layui-icon">&#x1006;</i>退出</a></dd>
                 </dl>
             </li>
         </ul>
@@ -66,32 +68,20 @@
                 <li class="layui-nav-item layui-nav-itemed"> 
                     <a href="javascript:;"><i class="layui-icon">&#xe620;</i>基础</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" href-url="/admin/uploadProduct"><i class="layui-icon">&#xe621;</i>上传产品</a></dd>
-                        <dd><a href="javascript:;" href-url="/admin/editWord"><i class="layui-icon">&#xe621;</i>上传文字</a></dd>
-                        <dd><a href="javascript:;" href-url="/admin/users"><i class="layui-icon">&#xe621;</i>用户管理</a></dd>
-                        <dd><a href="javascript:;" href-url="/admin/price"><i class="layui-icon">&#xe621;</i>价格管理</a></dd>
-                        <dd><a href="javascript:;" href-url="/admin/priceChange"><i class="layui-icon">&#xe621;</i>修改价格</a></dd>
-                        <dd><a href="javascript:;" href-url="/admin/checkOrder"><i class="layui-icon">&#xe621;</i>订单审核</a></dd>
-                        <dd><a href="javascript:;" href-url="demo/progress-bar.html"><i class="layui-icon">&#xe621;</i>进度条</a></dd>
-                        <dd><a href="javascript:;" href-url="demo/folding-panel.html"><i class="layui-icon">&#xe621;</i>折叠面板</a></dd>
-                        <dd><a href="javascript:;" href-url="demo/auxiliar.html"><i class="layui-icon">&#xe621;</i>辅助元素</a></dd>
+                        <dd><a href="javascript:;" href-url="/admin/uploadProduct"><i class="layui-icon">&#xe857;</i>上传产品</a></dd>
+                        <dd><a href="javascript:;" href-url="/admin/editWord"><i class="layui-icon">&#xe60a;</i>上传文字</a></dd>
+                        <dd><a href="javascript:;" href-url="/admin/users"><i class="layui-icon">&#xe612;</i>用户管理</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"> 
-                    <a href="javascript:;"><i class="layui-icon">&#xe628;</i>扩展</a>
+                <li class="layui-nav-item  layui-nav-itemed"> 
+                    <a href="javascript:;"><i class="layui-icon">&#xe628;</i>订单/价格管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" href-url="demo/login.html"><i class="layui-icon">&#xe621;</i>登录页</a></dd>
-                        <dd><a href="javascript:;" href-url="demo/register.html"><i class="layui-icon">&#xe621;</i>注册页</a></dd>
-                        <dd><a href="javascript:;" href-url="demo/login2.html"><i class="layui-icon">&#xe621;</i>登录页2</a></dd>
-                        <dd><a href="javascript:;" href-url="demo/map.html"><i class="layui-icon">&#xe621;</i>图表</a></dd>
-                        <dd><a href="javascript:;" href-url="demo/add-edit.html"><i class="layui-icon">&#xe621;</i>添加-修改</a></dd>
-                        <dd><a href="javascript:;" href-url="demo/data-table.html"><i class="layui-icon">&#xe621;</i>data-table 表格页</a></dd>
-                        <dd><a href="javascript:;" href-url="demo/tree-table.html"><i class="layui-icon">&#xe621;</i>Tree table树表格页</a></dd>
-                        <dd><a href="javascript:;" href-url="demo/404.html"><i class="layui-icon">&#xe621;</i>404页</a></dd>
-                        <dd><a href="javascript:;" href-url="demo/tips.html"><i class="layui-icon">&#xe621;</i>提示页</a></dd>
+                        <dd><a href="javascript:;" href-url="/admin/checkOrder"><i class="layui-icon">&#xe657;</i>订单审核</a></dd>
+                        <dd><a href="javascript:;" href-url="/admin/price"><i class="layui-icon">&#xe65e;</i>价格管理</a></dd>
+                        <dd><a href="javascript:;" href-url="/admin/priceChange"><i class="layui-icon">&#xe65e;</i>修改价格</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=ad6ba602ae228be2222ddb804086e0cfa42da3d74e34b383b665c2bec1adfc6e"><i class="layui-icon">&#xe61e;</i>加入群下载源码</a></li>
+               
             </ul>
 
         </div>
@@ -104,22 +94,20 @@
             </ul>
             <div class="layui-tab-content">
                 <div class="layui-tab-item layui-show">
-                    <iframe id="iframe" src="/admin/price" frameborder="0"></iframe>
+                    <iframe id="iframe" src="/admin/home" frameborder="0"></iframe>
                 </div>
             </div>
         </div>
     </div>
     <!-- footer -->
     <div class="layui-footer my-footer">
-        <p><a href="http://vip-admin.com" target="_blank">vip-admin后台模板v1.8.0</a>&nbsp;&nbsp;&&nbsp;&nbsp;<a href="http://vip-admin.com/index/gather/index.html" target="_blank">vip-admin管理系统v1.2.0</a></p>
-        <p>2017 © copyright 蜀ICP备17005881号</p>
+        
     </div>
 </div>
 
 <!-- pay -->
 <div class="my-pay-box none">
-    <div><img src="/public/frame/static/image/zfb.png" alt="支付宝"><p>支付宝</p></div>
-    <div><img src="/public/frame/static/image/wx.png" alt="微信"><p>微信</p></div>
+    
 </div>
 
 <!-- 右键菜单 -->

@@ -67,7 +67,6 @@ var i_data = {
         },
 
         // 计算不同样式价格
-        // 四层
         differLayer:0,
         urgentFee:0,
 
@@ -199,17 +198,26 @@ var vm = new Vue({
                 test: this.test,
                 delivery: this.delivery,
                 urgent: this.urgent, 
-                price:{
-                    bcFee: this.bcFee,
-                    gcFee: this.gcFee,
-                    urgentFee: this.urgentFee,
-                    thickExtra: this.thickExtra,
-                    copperFee: this.price.copperFee,
-                    sprayFee: this.price.sprayFee,
-                    colorFee:this.price.colorFee,
-                    testFee:this.price.testFee,
-                    totalFee: this.area >= 2 ? this.massTotalFee : this.generTotalFee
-                }  
+                gcFee: this.gcFee,
+                urgentFee: this.urgentFee,
+                thickExtra: this.thickExtra,
+                copperFee: this.price.copperFee,
+                sprayFee: this.price.sprayFee,
+                colorFee:this.price.colorFee,
+                testFee:this.price.testFee,
+                totalFee: this.area >= 2 ? this.massTotalFee : this.generTotalFee
+                // price:{
+                //     bcFee: this.bcFee,
+                //     gcFee: this.gcFee,
+                //     urgentFee: this.urgentFee,
+                //     thickExtra: this.thickExtra,
+                //     copperFee: this.price.copperFee,
+                //     sprayFee: this.price.sprayFee,
+                //     colorFee:this.price.colorFee,
+                //     testFee:this.price.testFee,
+                //     totalFee: this.area >= 2 ? this.massTotalFee : this.generTotalFee
+                //     bcFee: this.bcFee,
+                // }  
             }
             $.post('/count/submit?_csrf='+ csrf,data,function(res){
                 console.log('success')
@@ -237,119 +245,182 @@ var vm = new Vue({
                 
              // 计算价格// 计算价格// 计算价格// 计算价格// 计算价格
              // 单面板
-             if (this.layer == 1) {
-                if (this.thick == 1.6 ) {
-                    if (this.spray == '有铅喷锡') {
-                        this.differLayer =  price['price17']
-                     }
-                    if (this.spray == '无铅喷锡') {
-                        this.differLayer =  price['price18']
-                     }
-                    if (this.spray == '沉金') {
-                        this.differLayer =  price['price19']
-                    }
-                    if (this.spray == '有铅喷锡' && this.copper == 2) {
-                        this.differLayer =  price['price20']
-                    }
-                    if (this.spray == '沉金' && this.copper == 2) {
-                        this.differLayer =  price['price21']
-                    }
-                }
-                if (this.thick == 2.0) {
-                    if (this.spray == '无铅喷锡') {
-                        this.differLayer =  price['price22']
-                    }
-                    if (this.spray == '沉金') {
-                        this.differLayer =  price['price23']
-                    }
-                    if (this.spray == '沉金' && this.copper == 2) {
-                        this.differLayer =  price['price24']
-                    }  
-                }
+            // if(this.layer == 1 && this.thick == 1.6){
+            //     switch(this.spray){
+            //         case '有铅喷锡':
+            //             if (this.copper == 2) 
+            //                 this.differLayer =  price['price20']
+            //             else 
+            //                 this.differLayer =  price['price17']
+            //             break;
+            //         case '无铅喷锡':
+            //              this.differLayer =  price['price18']
+            //             break;
+            //         case '沉金':
+            //             if (this.copper == 2) 
+            //                 this.differLayer =  price['price21']
+            //             else   
+            //                 this.differLayer =  price['price19']
+            //             break;
+            //     }
+            // }else if(this.layer == 1 && this.thick == 2.0){
+            //     switch(this.spray){
+            //         case '无铅喷锡':
+            //              this.differLayer =  price['price22']
+            //             break;
+            //         case '沉金':
+            //             if (this.copper == 2) 
+            //                 this.differLayer =  price['price24']
+            //             else
+            //                 this.differLayer =  price['price23']
+            //             break;
+            //     }
+            // }
+          
+            // if(this.layer == 2 && this.thick == 1.6){
+            //     switch(this.spray){
+            //         case '有铅喷锡':
+            //             if (this.copper == 2) 
+            //                 this.differLayer =  price['price28']
+            //             else if(this.halfhole == 1)
+            //                 this.differLayer =  price['price31']
+            //             else  this.differLayer =  price['price25']
+            //             break;
+            //         case '无铅喷锡':
+            //             if (this.copper == 2) 
+            //                 this.differLayer =  price['price30']
+            //             else
+            //                 this.differLayer =  price['price26']
+            //             break;
+            //         case '沉金':
+            //             if (this.copper == 2) 
+            //                 this.differLayer =  price['price29']
+            //             else   
+            //                 this.differLayer =  price['price27']
+            //             break;
+            //     }
+            // }else if(this.layer == 2 && this.thick == 2.0){
+            //     switch(this.spray){
+            //         case '无铅喷锡':
+            //              this.differLayer =  price['price22']
+            //             break;
+            //         case '沉金':
+            //             if (this.copper == 2) 
+            //                 this.differLayer =  price['price24']
+            //             else
+            //                 this.differLayer =  price['price23']
+            //             break;
+            //     }
+            // }
+
+            var spray1 = this.spray == '有铅喷锡';
+            var spray2 = this.spray == '无铅喷锡';
+            var spray3 = this.spray == '沉金';
+            var copper = this.copper == 2
+            console.log(spray1,spray2,spray3)
+            if (this.layer == 1 && this.thick == 1.6 ) {
+                if (spray1) 
+                    this.differLayer =  price['price17']
+                
+                else if (spray2) 
+                    this.differLayer =  price['price18']
+                
+                else if (spray3) 
+                    this.differLayer =  price['price19']
+                
+                if (spray1 && copper) 
+                    this.differLayer =  price['price20']
+                
+                if (spray3 && copper) 
+                    this.differLayer =  price['price21']
+                
+            }
+            else if (this.layer == 1 && this.thick == 2.0) {
+                if (spray1) 
+                    this.differLayer =  price['price22']
+                
+                else if (spray3) 
+                    this.differLayer =  price['price23']
+                
+                if (spray3 && copper) 
+                    this.differLayer =  price['price24']
+                 
              }
 
             // 双面板
-            if (this.layer == 2) {
-                if (this.thick == 1.6) {
-                    if (this.spray == '有铅喷锡') {
-                        this.differLayer =  price['price25']
-                    }
-                    if (this.spray == '无铅喷锡') {
-                        this.differLayer =  price['price26']
-                    }
-                    if (this.spray == '沉金') {
-                        this.differLayer =  price['price27']
-                    }
-                    if (this.spray == '有铅喷锡' && this.copper == 2) {
-                        this.differLayer =  price['price28']
-                    }
-                    if (this.spray == '沉金' && this.copper == 2) {
-                        this.differLayer =  price['price29']
-                    }
-                    if (this.spray == '无铅喷锡' && this.copper == 2) {
-                        this.differLayer =  price['price30']
-                    }
-                    if (this.spray == '有铅喷锡' && this.halfhole == 1) {
-                        this.differLayer =  price['price31']
-                    }
-                }
-                if (this.thick == 2.0) {
-                    if (this.spray == '有铅喷锡') {
-                        this.differLayer =  price['price32']
-                    }
-                    if (this.spray == '无铅喷锡') {
-                        this.differLayer =  price['price33']
-                    }
-                    if (this.spray == '有铅喷锡' && this.copper == 2) {
-                        this.differLayer =  price['price34']
-                    }
-                    if (this.spray == '无铅喷锡' && this.copper == 2) {
-                        this.differLayer =  price['price35']
-                    }
-                    if (this.spray == '沉金') {
-                        this.differLayer =  price['price36']
-                    }
-                    if (this.spray == '沉金' && this.copper == 2) {
-                        this.differLayer =  price['price37']
-                    }
-                    
-                }
+            if (this.layer == 2 && this.thick == 1.6) {
+                if (spray1) 
+                    this.differLayer =  price['price25']
                 
+                else if (spray2) 
+                    this.differLayer =  price['price26']
+                
+                else if (spray3) 
+                    this.differLayer =  price['price27']
+                
+                if (spray1 && copper) 
+                    this.differLayer =  price['price28']
+                
+                if (spray3 && copper) 
+                    this.differLayer =  price['price29']
+                
+                if (spray2 && copper) 
+                    this.differLayer =  price['price30']
+                
+                if (spray1 && this.halfhole == 1) 
+                    this.differLayer =  price['price31']
+  
+            }
+            else if (this.layer == 2 && this.thick == 2.0) {
+                if (spray1) 
+                    this.differLayer =  price['price32']
+                
+                else if (spray2) 
+                    this.differLayer =  price['price33']
+                
+                else if (spray3) 
+                    this.differLayer =  price['price36']
+
+                if (spray1 && copper) 
+                    this.differLayer =  price['price34']
+                
+                if (spray2 && copper) 
+                    this.differLayer =  price['price35']
+                
+                if (spray3 && copper) 
+                    this.differLayer =  price['price37']
+                  
             }
             // 四层板 1.6板厚 有铅喷锡 
              console.log( this.spray)
-             if (this.layer == 4) {
-                if (this.thick == 1.6) {
-                    if (this.spray == '有铅喷锡') {
-                        this.differLayer =  price['price38']
-                    }
-                    // 无铅喷锡
-                    if (this.spray == '无铅喷锡') {
-                        this.differLayer =  price['price39']
-                    }
-                    // 沉金
-                    if (this.spray == '沉金') {
-                        this.differLayer =  price['price40']
-                    }
-                    // 四层板 1.6板厚 外层2盎司 内层2盎司
-                    if (this.spray == '有铅喷锡' && this.copper == 2) {
-                        this.differLayer =  price['price41']
-                    }
-                }
-                if (this.thick == 2.0) {
-                    // 四层板 2.0板厚 
-                    if (this.spray == '无铅喷锡') {
-                        this.differLayer =  price['price42']
-                    }
-                     if (this.spray == '有铅喷锡') {
-                        this.differLayer =  price['price43']
-                    }
-                    if (this.spray == '沉金') {
-                        this.differLayer =  price['price44']
-                    }
-                }
+             if (this.layer == 4 && this.thick == 1.6) {
+                if (spray1) 
+                    this.differLayer =  price['price38']
                 
-             }
+                // 无铅喷锡
+                else if (spray2) 
+                    this.differLayer =  price['price39']
+                
+                // 沉金
+                else if (spray3) 
+                    this.differLayer =  price['price40']
+                
+                // 四层板 1.6板厚 外层2盎司 内层2盎司
+                if (spray1 && copper) 
+                    this.differLayer =  price['price41']
+            }
+            // 四层板 2.0板厚 
+            else if (this.layer == 4 && this.thick == 2.0) {
+                if (spray2) 
+                    this.differLayer =  price['price42']
+                
+                else if (spray1) 
+                    this.differLayer =  price['price43']
+                
+                else if (spray3) 
+                    this.differLayer =  price['price44']
+                
+            }
         }
     }
 

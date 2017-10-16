@@ -161,8 +161,8 @@
            </div>
            <ul>
             {% for product in products %}
-              <li>
-                  <img src="public/images/{{product.img}}" alt="">
+              <li title="{{product.title}}">
+                  <img src="public/images/{{product.img}}" alt="{{product.title}}">
                <p>{{product.title}}</p>
               </li> 
             {% endfor %}   
@@ -205,8 +205,8 @@
                 <h3>工厂实拍</h3>
                 <ul>
                     {% for factory in factorys %}
-                      <li>
-                          <img src="public/images/{{factory.img}}" alt="">
+                      <li title="{{factory.title}}">
+                          <img src="public/images/{{factory.img}}" alt="{{factory.title}}">
                        <p>{{factory.title}}</p>
                       </li> 
                     {% endfor %}
@@ -217,12 +217,11 @@
                 <h3>客服团队</h3>
                  <ul>
                     {% for server in servers %}
-                      <li>
-                          <img src="public/images/{{server.img}}" alt="">
+                      <li title="{{server.title}}">
+                          <img src="public/images/{{server.img}}" alt="{{server.title}}">
                        <p>{{server.title}}</p>
                       </li> 
                     {% endfor %}
-                    
                 </ul>
                 <div class="about-txt">
                     {{words['home-server']}}

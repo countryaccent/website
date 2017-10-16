@@ -89,7 +89,8 @@ exports.uploadWord = function* (ctx){
 exports.editWord = function* (ctx){
 
   const res = ctx.request.body ;
-  console.log(res)
+  console.log(res);
+  res.id = 1
   const img = yield ctx.service.product.editWord({
           id:1,
           'home-server':res['home-server'],
@@ -110,6 +111,27 @@ exports.editPrice = function* (ctx){
   const price = yield ctx.service.product.editPrice(data)
   console.log(data)
   ctx.body = 'success'
+}
+
+
+// 后台登录
+exports.adminLogin = function *(ctx){
+  const data = ctx.request.body
+  console.log(data)
+  const userData = yield this.app.mysql.query('select * from admin') ;
+  const user = JSON.parse(JSON.stringify(userData))[0]
+  if (data.userName == user.userName && data.password == user.password) {
+    ctx.body = 'success';
+    this.cookies.set('admin', data.userName, { maxAge: 24 * 3600 * 1000 });
+  }else {
+    ctx.body = 'fail'
+  }
+  console.log(user)
+}
+
+exports.signout = function *(ctx){
+   ctx.cookies.set('admin', null);
+   ctx.redirect('/admin')
 }
 
 function saveStream(stream, filepath) {

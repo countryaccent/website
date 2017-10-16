@@ -55,15 +55,8 @@ module.exports = app => {
         getAddress
       };
     }
-    * insertAddress(acceptName,phone,address,detailAddress,userName,isDefault) {
-      const insertAddress = yield app.mysql.insert('address',{
-        acceptName: acceptName,
-        phone: phone,
-        address: address,
-        detailAddress: detailAddress,
-        userName: userName,
-        isDefault:isDefault
-      })
+    * insertAddress(data) {
+      const insertAddress = yield app.mysql.insert('address',data)
       return {
         insertAddress
       };

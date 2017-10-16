@@ -17,9 +17,6 @@
 		float: left;
 		margin:0 24px;
 	}
-	.products .container ul li{
-		
-	}
 	.products .container ul li img{
 		width: 204px;
 		height: 150px;
@@ -36,8 +33,8 @@
 		<h1>产品展示</h1>
 		<ul>
 			{% for product in products %}
-              <li>
-                  <img src="public/images/{{product.img}}" alt="">
+              <li title="{{product.title}}">
+                  <img src="public/images/{{product.img}}" alt="{{product.title}}">
                <p>{{product.title}}</p>
               </li> 
              {% endfor %}   

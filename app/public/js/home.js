@@ -8,7 +8,6 @@ var vm = new Vue({
         thick:1.6,
         counts:10,
         url:'/count'
-
     }
 })
 $('.items-btn-wrap').click(function() {
@@ -41,4 +40,27 @@ $('.choose-menu').on('click', 'li', function() {
             vm[key] = _this.html().trim()
         }
 })
+
+var $body = $('.ivu-table-tbody')
+var trHeight = $body.find("tr").height(); 
+console.log(trHeight)
+setInterval(function(){
+    
+   $('.ivu-table-body').animate({ marginTop : trHeight },600,function(){ 
+        $body.find("tr:last").prependTo($body);
+        $body.find("tr:first").hide(); 
+        $('.ivu-table-body').css({marginTop:0}); 
+        $body.find("tr:first").fadeIn(1000); 
+    }); 
+   
+},4000)
+var acceptNameSize = $('.acceptName span').size()
+var detailAddressSize = $('.detailAddress span').size()
+for (var i = 0; i < acceptNameSize; i++) {
+    $('.acceptName').eq(i).find('span').html( $('.acceptName').eq(i).find('span').html().charAt(0)+'**')
+}
+for (var i = 0; i < detailAddressSize; i++) {
+    var _html = $('.detailAddress').eq(i).find('span').html().split(' ')[0]
+    $('.detailAddress').eq(i).find('span').html(_html)
+}
                

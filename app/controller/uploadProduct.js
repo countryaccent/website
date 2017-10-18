@@ -6,66 +6,133 @@ const sendToWormhole = require('stream-wormhole');
 
 // 上传
 exports.upload = function* (ctx) {
-  const stream = yield this.getFileStream();
-  let filepath = path.join(this.app.config.baseDir, `app/public/images/${stream.filename}`);
-  if (stream.fields.title === 'mock-error') {
-    filepath = path.join(this.app.config.baseDir, `app/public/images/not-exists/dir/${stream.filename}`);
-  } else if (stream.fields.title === 'mock-read-error') {
-    filepath = path.join(this.app.config.baseDir, `app/public/images/read-error-${stream.filename}`);
-  }
-  this.logger.warn('Saving %s to %s', stream.filename, filepath);
-  try {
-    yield saveStream(stream, filepath);
-  } catch (err) {
-    yield sendToWormhole(stream);
-    throw err;
-  }
+  // const stream = yield this.getFileStream();
+  // let filepath = path.join(this.app.config.baseDir, `app/public/images/${stream.filename}`);
+  // if (stream.fields.title === 'mock-error') {
+  //   filepath = path.join(this.app.config.baseDir, `app/public/images/not-exists/dir/${stream.filename}`);
+  // } else if (stream.fields.title === 'mock-read-error') {
+  //   filepath = path.join(this.app.config.baseDir, `app/public/images/read-error-${stream.filename}`);
+  // }
+  // this.logger.warn('Saving %s to %s', stream.filename, filepath);
+  // try {
+  //   yield saveStream(stream, filepath);
+  // } catch (err) {
+  //   yield sendToWormhole(stream);
+  //   throw err;
+  // }
 
-  // this.body = {
-  //   file: stream.filename,
-  //   fields: stream.fields,
-  // };
-  const data = ctx.response.body
-  console.log(stream.fields.title)
-  const img = yield ctx.service.product.insert([stream.filename,stream.fields.title,stream.fields.type]);
+  // const data = ctx.response.body
+  // console.log(stream.fields.title)
+  // const img = yield ctx.service.product.insert([stream.filename,stream.fields.title,stream.fields.type]);
 
-  console.log(stream.filename)
-  ctx.redirect('/admin/home')
+  // console.log(stream.filename)
+  // ctx.redirect('/admin/home')
+
+  const parts = this.multipart();
+  const arr = []
+  let object;
+  let part;
+  part = yield parts;
+  while (part) {
+    if (part.length) {
+      // arrays are busboy fields
+      console.log('part',part)
+      console.log('field: ' + part[0]);
+      console.log('value: ' + part[1]);
+      console.log('valueTruncated: ' + part[2]);
+      console.log('fieldnameTruncated: ' + part[3]);
+      arr.push(part[1])
+    } else {
+      // otherwise, it's a stream
+      console.log('field: ' + part.fieldname);
+      console.log('filename: ' + part.filename);
+      console.log('encoding: ' + part.encoding);
+      console.log('mime: ' + part.mime);
+      // file handle
+      object = yield this.oss.put('egg-oss-demo-' + part.filename, part);
+    }
+    part = yield parts;
+  }
+  console.log('arr',arr)
+  console.log('and we are done parsing the form!');
+  if (object) {
+    console.log('get oss object: %j', object);
+    this.unsafeRedirect(object.url);
+    yield ctx.service.product.insert([object.url,arr[0],arr[1]]);
+    ctx.redirect('/admin/home')
+  } else {
+    this.body = 'please select a file to upload！';
+  }
 };
 
 // 编辑
 exports.edit = function* (ctx) {
-  const stream = yield this.getFileStream();
-  let filepath = path.join(this.app.config.baseDir, `app/public/images/${stream.filename}`);
-  if (stream.fields.title === 'mock-error') {
-    filepath = path.join(this.app.config.baseDir, `app/public/images/not-exists/dir/${stream.filename}`);
-  } else if (stream.fields.title === 'mock-read-error') {
-    filepath = path.join(this.app.config.baseDir, `app/public/images/read-error-${stream.filename}`);
-  }
-  this.logger.warn('Saving %s to %s', stream.filename, filepath);
-  try {
-    yield saveStream(stream, filepath);
-  } catch (err) {
-    yield sendToWormhole(stream);
-    throw err;
-  }
+  // const stream = yield this.getFileStream();
+  // let filepath = path.join(this.app.config.baseDir, `app/public/images/${stream.filename}`);
+  // if (stream.fields.title === 'mock-error') {
+  //   filepath = path.join(this.app.config.baseDir, `app/public/images/not-exists/dir/${stream.filename}`);
+  // } else if (stream.fields.title === 'mock-read-error') {
+  //   filepath = path.join(this.app.config.baseDir, `app/public/images/read-error-${stream.filename}`);
+  // }
+  // this.logger.warn('Saving %s to %s', stream.filename, filepath);
+  // try {
+  //   yield saveStream(stream, filepath);
+  // } catch (err) {
+  //   yield sendToWormhole(stream);
+  //   throw err;
+  // }
 
  
-  const data = stream
-  console.log('data',data)
-  const productId = ctx.params.id;
+  // const data = stream
+  // console.log('data',data)
+  // const productId = ctx.params.id;
 
-  const img = yield this.app.mysql.query('update products set img=?, title=?, type=? where id = ?',
-                                          [ stream.filename, 
-                                            stream.fields.title,
-                                            stream.fields.type,
-                                            productId
-                                          ])
+  // const img = yield this.app.mysql.query('update products set img=?, title=?, type=? where id = ?',
+  //                                         [ stream.filename, 
+  //                                           stream.fields.title,
+  //                                           stream.fields.type,
+  //                                           productId
+  //                                         ])
 
-  console.log(stream.filename)
+  // console.log(stream.filename)
 
-  ctx.redirect('/admin/home')
   
+  const parts = this.multipart();
+  const productId = ctx.params.id;
+  const arr = []
+  let object;
+  let part;
+  part = yield parts;
+  while (part) {
+    if (part.length) {
+      // arrays are busboy fields
+      console.log('part',part)
+      console.log('field: ' + part[0]);
+      console.log('value: ' + part[1]);
+      console.log('valueTruncated: ' + part[2]);
+      console.log('fieldnameTruncated: ' + part[3]);
+      arr.push(part[1])
+    } else {
+      // otherwise, it's a stream
+      console.log('field: ' + part.fieldname);
+      console.log('filename: ' + part.filename);
+      console.log('encoding: ' + part.encoding);
+      console.log('mime: ' + part.mime);
+      // file handle
+      object = yield this.oss.put('egg-oss-demo-' + part.filename, part);
+    }
+    part = yield parts;
+  }
+  console.log('arr',arr)
+  console.log('and we are done parsing the form!');
+  if (object) {
+    console.log('get oss object: %j', object);
+    this.unsafeRedirect(object.url);
+    yield this.app.mysql.query('update products set img=?, title=?, type=? where id = ?',[object.url,arr[0],arr[1],productId]);
+    ctx.redirect('/admin/home')                         
+  } else {
+    this.body = 'please select a file to upload！';
+  }
 };
 
 // 删除

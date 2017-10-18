@@ -208,3 +208,6 @@ tr.ivu-table-row.activeParent td{
 .ivu-table-cell div.success{
 	color: #19be6b;
 }
+.ivu-table-cell p{
+	color: #ed3f14;
+}

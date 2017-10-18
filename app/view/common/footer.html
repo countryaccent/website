@@ -23,20 +23,18 @@
                     <div class="contact-erm">
                         <h3>微信公众号</h3>
                        {% for ewm in ewms %}
-                      
-                          <img src="/public/images/{{ewm.img}}" alt="">
-                      
+                          <img src="{{ewm.img}}" alt="">
                         {% endfor %}
                     </div>
                     <div class="contact-location">
-                        {{words['foot-location']  | safe}}
+                        {{words['foot-location'] | safe}}
                     </div>
                 </div>
-                <div class="copyright">
-                    <p>Copyright ©2012-2017 hqpcb.com.All Rights Reserved 粤ICP备17077613号 </p>
-                    <p>工商网监认证</p>
-                </div>
             </div>
+        </div>
+        <div class="copyright clearfix">
+            <p>Copyright ©2012-2017 rongxinpcb.com All Rights Reserved 粤ICP备17077613号 </p>
+            <!-- <p>工商网监认证</p> -->
         </div>
     </div>	
 </div>

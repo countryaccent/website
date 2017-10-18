@@ -4,7 +4,7 @@
 	
 </style>
 <link rel="stylesheet" href="public/css/count.css">
-<div class="P-count">
+<div  v-cloak class="P-count">
 	<div class="container">
 		<h1>在线计价</h1>
 		<div class="count">
@@ -566,8 +566,11 @@
 								</template>
 							</span>
 						</div>
-
+						{% if user %}
 						<div class="submit buy" @click="submit">立即下单</div>
+						{% else %}
+						<div class="submit buy" @click="submitStop">立即下单</div>
+						{% endif %}
 						<div>面积：${(area).toFixed(3)} ㎡</div>
 					</template>
 					<template v-else>

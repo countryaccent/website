@@ -33,28 +33,9 @@
 				<div class="wrap-left">
 					<div class="accept">
 						<h3>收货信息</h3>
-						{{orderList.address | safe}}
-						<ul>
-							{% for addressList in addressLists %}
-
-				            {% if addressList.isDefault == '1' %}
-							<li class="isDefault selected">
-							{% else %}
-							  <li>
-							{% endif %}
-				                 <div class="address">
-									<span>{{addressList.address}} </span>（<span>{{addressList.acceptName}}收</span>）
-								</div>
-								<div class="detailAddress">{{addressList.detailAddress}}</div>
-								<div class="phone">{{addressList.phone}}</div>
-								{% if addressList.isDefault == '1' %}
-								  
-								<div class="default">[默认]</div>
-								{% endif %}
-								
-				            </li> 
-				            {% endfor %}   
-						</ul>
+						<p>收件人：{{orderList.acceptName | safe}}</p>
+						<p>联系方式：{{orderList.acceptPhone | safe}}</p>
+						<p>地址：{{orderList.detailAddress | safe}}</p>
 					</div>
 					<div class="express fl">
 						<h3>快递信息</h3>

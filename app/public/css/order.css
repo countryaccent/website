@@ -22,7 +22,7 @@
 }
 .wrap .wrap-left  h3{
 	margin-bottom: 8px;
-    font-size: 15px;
+    font-size: 16px;
     color: #333;
     font-weight: bold;
 }
@@ -45,7 +45,6 @@
 }
 .wrap-left  ul li .default{
 	color: #de533c;
-
 }
 .wrap-left  ul li .address{
 	border-bottom:1px solid #e4e4e4 ;
@@ -72,12 +71,18 @@
 .wrap-left .express{
 	float: left;
 }
+.express .ivu-radio-wrapper{
+	font-size: 14px;
+}
 .wrap-left .fl{
 	float: left;
 	margin-top: 15px;
 	width: 100%;
 	border-bottom: 1px dashed #e4e4e4;
 	padding-bottom: 20px; 
+}
+.fl p{
+	font-size: 14px;
 }
 .wrap-left .fl h3{
 	margin-bottom: 15px;
@@ -86,7 +91,7 @@
 	margin-left:15px;
 }
 .pcbFile input{
-	width: 155px;
+	width: 210px;
 }
 .pcbFile span{
 	
@@ -160,7 +165,6 @@
 	float: right;
 	width: 383px;
 	padding: 11px;
-	/*border: 1px solid #e0e0e0;*/
 	border-radius: 5px;
 	background: #fff;
 }
@@ -177,7 +181,6 @@
 	border-right: 1px solid #e0e0e0;
 	border-bottom: 1px solid #e0e0e0;
 	overflow: hidden;
-
 }
 .wrap-right ul li{
 	float: left;
@@ -273,4 +276,78 @@
 	margin-right: 5px;
 	font-size: 26px;
 
+}
+.addAddress button{
+	border: 0;
+	width: 162px;
+	height: 44px;
+	border:1px solid #ea4246;
+	font-size: 16px;
+	color: #ea4246;
+	background: #fff;
+	border-radius: 5px;
+	cursor: pointer;
+	margin:20px 0;
+}
+.address_show{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background: rgba(0,0,0,0.3);
+	z-index: 999999;
+	display: none;
+}
+.address_show .con{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 530px;
+	height: 390px;
+	margin:-190px 0 0 -265px;
+	background: #fff;
+	padding: 16px 29px 26px;
+}
+.address_show .con h2{
+	padding-bottom: 12px;
+	border-bottom:1px dashed #d8d8d8;
+	font-size: 16px;
+	text-align: center;
+}
+.address_show .con .item{
+	margin-bottom: 5px;
+	display: block;
+}
+.address_show .con label{
+	display: block;
+	margin-top: 10px;
+}
+.address_show .con label select{
+	width: 32.8%;
+}
+.address_show .con .save{
+	display: block;
+	margin-top: 30px;
+	text-align: center;
+}
+.address_show .con .save span{
+	padding: 6px 40px;
+	border: 1px solid #d8d8d8;
+	margin:0 20px;
+	font-size: 16px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.address_show .con .save span:hover{
+	border: 1px solid #ea4246;
+}
+.ivu-table-tbody td span{
+	white-space: nowrap;
+}
+.ivu-table-tbody td .defaultAddress{
+	cursor: pointer;
+}
+.ivu-table-tbody td .defaultAddress:hover{
+	color: #ea4246;
 }

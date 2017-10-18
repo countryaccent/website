@@ -15,10 +15,12 @@ module.exports = app => {
         orderList
       }
     }
-    * insertFinalData(id,address,express,invoice,pcbFile,orderPs){
+    * insertFinalData(id,acceptName,acceptPhone,detailAddress,express,invoice,pcbFile,orderPs){
       const orderList = yield app.mysql.update('orders',{
         id: id,
-        address: address,
+        acceptName: acceptName,
+        acceptPhone: acceptPhone,
+        detailAddress: detailAddress,
         express: express,
         invoice: invoice,
         pcbFile: pcbFile,
@@ -53,10 +55,15 @@ module.exports = app => {
         orderList
       }
     }
-     * cancelOrder(id){
-      const orderList = yield app.mysql.delete('orders',{
-        id: id
-      })
+     * cancelOrder(data){
+    //   const orderList = yield app.mysql.delete('orders',{
+    //     id: id
+    //   })
+    //   return {
+    //     orderList
+    //   }
+    // }
+     const orderList = yield app.mysql.update('orders',data)
       return {
         orderList
       }

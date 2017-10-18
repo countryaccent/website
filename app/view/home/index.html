@@ -27,7 +27,7 @@
 
 
 <!-- {{locals.contact}} -->
-<div class="P-home">
+<div  v-cloak class="P-home">
     <div class="M-count-price clearfix">
         <div class="con">
             <div class="count-form">
@@ -153,6 +153,88 @@
             </div>
         </div>
     </div>
+    <div class="count-list clearfix">
+        <div class="container">
+            <ul>
+                <li>
+                    <div class="count-list-top">
+                        <img src="/public/img/1layer.png" alt="">
+                        <div>
+                            <h3>单面板</h3>
+                            <p>1层，板厚1.6mm，铜厚1oz，阻焊绿色</p>
+                        </div>
+                    </div>
+                    <div class="count-list-bot">
+                        <div>
+                            <p><i>￥</i><span>88</span>/10片</p>
+                            <a href="/count?width=10&height=10&layer=1&counts=10&thick=1.6">打样</a>
+                        </div>
+                        <div>
+                            <p><i>￥</i><span>760</span>/ 2㎡</p>
+                            <a href="/count?width=10&height=10&layer=1&counts=200&thick=1.6">批量</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="count-list-top">
+                        <img src="/public/img/1layer.png" alt="">
+                        <div>
+                            <h3>双面板</h3>
+                            <p>2层，板厚1.6mm，铜厚1oz，阻焊绿色</p>
+                        </div>
+                    </div>
+                    <div class="count-list-bot">
+                        <div>
+                            <p><i>￥</i><span>100</span>/10片</p>
+                            <a href="/count?width=10&height=10&layer=2&counts=10&thick=1.6">打样</a>
+                        </div>
+                        <div>
+                            <p><i>￥</i><span>760</span>/ 2㎡</p>
+                            <a href="/count?width=10&height=10&layer=2&counts=200&thick=1.6">批量</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="count-list-top">
+                        <img src="/public/img/1layer.png" alt="">
+                        <div>
+                            <h3>四层板</h3>
+                            <p>4层，板厚1.6mm，铜厚1oz，阻焊绿色</p>
+                        </div>
+                    </div>
+                    <div class="count-list-bot">
+                        <div>
+                            <p><i>￥</i><span>280</span>/10片</p>
+                            <a href="/count?width=10&height=10&layer=4&counts=10&thick=1.6">打样</a>
+                        </div>
+                        <div>
+                            <p><i>￥</i><span>1500</span>/ 2㎡</p>
+                            <a href="/count?width=10&height=10&layer=4&counts=200&thick=1.6">批量</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="count-list-top">
+                        <img src="/public/img/1layer.png" alt="">
+                        <div>
+                            <h3>六层板</h3>
+                            <p>6层，板厚1.6mm，铜厚1oz，阻焊绿色</p>
+                        </div>
+                    </div>
+                    <div class="count-list-bot">
+                        <div>
+                            <p><i>￥</i><span>920</span>/10片</p>
+                            <a href="/count?width=10&height=10&layer=6&counts=10&thick=1.6">打样</a>
+                        </div>
+                        <div>
+                            <p><i>￥</i><span>2300</span>/ 2㎡</p>
+                            <a href="/count?width=10&height=10&layer=6&counts=200&thick=1.6">批量</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
     <div class="M-product-list clearfix">
        <div class="container">
             <div class="hot-title">
@@ -162,7 +244,7 @@
            <ul>
             {% for product in products %}
               <li title="{{product.title}}">
-                  <img src="public/images/{{product.img}}" alt="{{product.title}}">
+                  <img src="{{product.img}}" alt="{{product.title}}">
                <p>{{product.title}}</p>
               </li> 
             {% endfor %}   
@@ -171,6 +253,150 @@
                </li>
            </ul>
        </div>
+    </div>
+    <div class="order_list clearfix">
+        <div class="container">
+            <div class="order-title">
+               <i></i>
+               <span>PCB订单记录</span>
+           </div>
+           <div class="ivu-table-wrapper clearfix">
+                <div class="ivu-table"> 
+                    <div class="ivu-table-header">
+                        <table cellspacing="0" cellpadding="0" border="0" style="width: 1200px;">
+                            <colgroup>
+                                <col width="" />
+                                <col width="" />
+                                <col width="" />
+                                <col width="" />
+                                <col width="" />
+                                <col width="" />
+                                <col width="" />
+                            </colgroup> 
+                            <thead>
+                                <tr>
+                                    <th class="">
+                                        <div class="ivu-table-cell">
+                                            <span>客户</span> 
+                                        </div>
+                                    </th>
+                                    <th class="">
+                                        <div class="ivu-table-cell">
+                                            <span>下单时间</span> 
+                                        </div>
+                                    </th>
+                                    <th class="">
+                                        <div class="ivu-table-cell">
+                                            <span>地区</span> 
+                                        </div>
+                                    </th>
+                                    <th class="">
+                                        <div class="ivu-table-cell">
+                                            <span>数量</span> 
+                                        </div>
+                                    </th>
+                                    <th class="">
+                                        <div class="ivu-table-cell">
+                                            <span>层数</span> 
+                                        </div>
+                                    </th>
+                                    <th class="">
+                                        <div class="ivu-table-cell">
+                                            <span>板子尺寸</span> 
+                                        </div>
+                                    </th>
+                                    <th class="">
+                                        <div class="ivu-table-cell">
+                                            <span>金额</span> 
+                                        </div>
+                                    </th>
+                                    <th class="">
+                                        <div class="ivu-table-cell">
+                                            <span>状态</span> 
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div> 
+                    <div class="ivu-table-body">
+                        <table cellspacing="0" cellpadding="0" border="0" style="width: 1200px;">
+                            <colgroup>
+                                <col width="" />
+                                <col width="" />
+                                <col width="" />
+                                <col width="" />
+                                <col width="" />
+                                <col width="" />
+                                <col width="" />
+                            </colgroup> 
+                            <tbody class="ivu-table-tbody">
+                               {% for orderList in orderLists %}
+                                <tr class="ivu-table-row">
+                                    <td class="">
+                                        <div class="ivu-table-cell acceptName">
+                                            <span>{{orderList.acceptName}}</span> 
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="ivu-table-cell">
+                                            <span>{{orderList.orderTime}}</span> 
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="ivu-table-cell detailAddress">
+                                            <span>{{orderList.detailAddress }}</span> 
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="ivu-table-cell">
+                                           <span>{{orderList.counts}}</span>
+                                        </div>
+                                    </td>
+                                     <td class="">
+                                        <div class="ivu-table-cell">
+                                           <span>{{orderList.layer}}</span>
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="ivu-table-cell red">
+                                             <span>{{orderList.width}}*{{orderList.height}} cm</span>
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="ivu-table-cell">
+                                            <span>{{orderList.totalFee}}</span>
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="ivu-table-cell">
+                                        {% if orderList.orderStatus == 3 %}
+                                            <div class="fail">
+                                                <i class="ivu-icon ivu-icon-close-circled"></i><span>客户取消</span>
+                                            </div>
+                                        {% elseif orderList.checkStatus == 0 %}
+                                            <div class="fail">
+                                                <i class="ivu-icon ivu-icon-help-circled"></i><span>待审核</span>
+                                            </div>
+                                        {% elseif orderList.checkStatus == 1 %}
+                                            <div class="success">
+                                                <i class="ivu-icon ivu-icon-checkmark-circled"></i><span>审核通过</span>
+                                            </div>
+                                        {% elseif orderList.checkStatus == 2 %}
+                                            <div class="fail">
+                                                <i class="ivu-icon ivu-icon-close-circled"></i><span>审核不通过</span> 
+                                            </div>
+                                        {% endif %}
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div> 
+                </div>
+            </div>
+        </div>
     </div>
     <div class="M-adv clearfix">
         <div class="container">
@@ -206,7 +432,7 @@
                 <ul>
                     {% for factory in factorys %}
                       <li title="{{factory.title}}">
-                          <img src="public/images/{{factory.img}}" alt="{{factory.title}}">
+                          <img src="{{factory.img}}" alt="{{factory.title}}">
                        <p>{{factory.title}}</p>
                       </li> 
                     {% endfor %}
@@ -218,7 +444,7 @@
                  <ul>
                     {% for server in servers %}
                       <li title="{{server.title}}">
-                          <img src="public/images/{{server.img}}" alt="{{server.title}}">
+                          <img src="{{server.img}}" alt="{{server.title}}">
                        <p>{{server.title}}</p>
                       </li> 
                     {% endfor %}

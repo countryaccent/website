@@ -1,3 +1,4 @@
+const md5 = require('md5')
 exports.signup = function* (ctx) {
 	 const data=ctx.request.body
 	
@@ -23,7 +24,7 @@ exports.signup = function* (ctx) {
 
 	 }
 	 catch(e){
-		yield ctx.service.user.insert([data.name,data.pass,data.phone,data.qq]);
+		yield ctx.service.user.insert([data.name,md5(data.pass),data.phone,data.qq]);
 		ctx.body = 'success'
 		this.cookies.set('user', data.name, { maxAge: 24 * 3600 * 1000 });
 
@@ -72,7 +73,7 @@ exports.signin = function *(ctx){
 			const pass = JSON.parse(JSON.stringify(userName)).userName.pass;
 			console.log(name,pass)
 			ctx.body = 'success' 
-			if (name && pass == data.pass) {
+			if (name && pass == md5(data.pass)) {
 				ctx.body = 'success';
 				this.cookies.set('user', name, { maxAge: 24 * 3600 * 1000 });
 
@@ -87,7 +88,7 @@ exports.signin = function *(ctx){
 			const pass = JSON.parse(JSON.stringify(userPhone)).userPhone.pass
 			const name = JSON.parse(JSON.stringify(userPhone)).userPhone.name
 
-			if(phone && pass == data.pass){
+			if(phone && pass == md5(data.pass)){
 				ctx.body = 'success';
 				this.cookies.set('user', name, { maxAge: 24 * 3600 * 1000 });
 

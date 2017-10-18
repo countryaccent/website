@@ -76,7 +76,6 @@ var vm = new Vue({
     delimiters: ['${', '}'],
     data: i_data,
     mounted:function(){
-        this.mass();
         //不同板厚多加50
         if (this.thick == 0.4 || this.thick > 2.0) {
             this.thickExtra =  price['price9'];
@@ -98,6 +97,7 @@ var vm = new Vue({
             this.counts = result[3].split('=')[1]
             this.thick = result[4].split('=')[1]
         }
+        this.mass();
     },
     computed: {
         tableY: function() {
@@ -198,6 +198,7 @@ var vm = new Vue({
                 test: this.test,
                 delivery: this.delivery,
                 urgent: this.urgent, 
+                bcFee: this.bcFee,
                 gcFee: this.gcFee,
                 urgentFee: this.urgentFee,
                 thickExtra: this.thickExtra,
@@ -227,6 +228,10 @@ var vm = new Vue({
                 }
             })
             console.log(data)
+        },
+        submitStop:function(){
+            alert('请先登录再操作')
+            window.location.href = '/signin'
         },
         onLength:function(){
             // this.value=this.value.replace(/[^0-9]+/,'')
@@ -420,6 +425,10 @@ var vm = new Vue({
                 else if (spray3) 
                     this.differLayer =  price['price44']
                 
+            }
+            // 6层板占位
+            if (this.layer == 6 && this.thick == 1.6) {
+                this.differLayer =  price['price44']
             }
         }
     }

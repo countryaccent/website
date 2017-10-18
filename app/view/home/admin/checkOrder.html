@@ -44,7 +44,7 @@
   </thead>
   <tbody>
      {% for orderList in orderLists %}
-        {% if orderList.orderStatus == 1 %}
+        {% if orderList.orderStatus != 0 %}
         <tr>
           <th>{{ orderList.id }}</th>
           <th>{{orderList.userName}}</th>
@@ -97,7 +97,12 @@
             </div>
             {% endif %} 
           </th>
-          <th><a href="/admin/orderDetail?orderId={{orderList.id}}">订单详情</a></th>
+          <th>
+            <a href="/admin/orderDetail?orderId={{orderList.id}}">订单详情</a>
+            {% if orderList.orderStatus == 3  %}
+              <p>（订单已取消）</p>
+            {% endif %}
+          </th>
           <th><a href="/admin/doCheckOrder?orderId={{orderList.id}}">去审核</a></th>
 
           <!-- <th>

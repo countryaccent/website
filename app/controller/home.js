@@ -12,12 +12,9 @@ module.exports = app => {
       const server = yield this.ctx.service.product.findByType('客服团队');
       const ewm = yield this.ctx.service.product.findByType('微信公众号');
       const word = yield this.ctx.service.product.findWordById();
-      // yield ctx.body = users
-      // console.log(word)
-      // this.app.locals = {
-      //   word: word.words,
-      //   ewm: ewm.results
-      // };
+      const orderData = yield this.ctx.service.order.findAllOrder();
+      const orderLists = JSON.parse(JSON.stringify(orderData)).orderList;
+    
       console.log(JSON.parse(JSON.stringify(ewm.results)))
       console.log( this.app.locals.ewm)
       yield this.ctx.render('home/index.html',{
@@ -26,7 +23,8 @@ module.exports = app => {
         servers: server.results.slice(0,2),
         words: word.words,
         user: this.ctx.cookies.get('user'),
-        ewms: ewm.results
+        ewms: ewm.results,
+        orderLists: orderLists
       });
     }
     * signin() {

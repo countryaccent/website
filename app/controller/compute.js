@@ -49,14 +49,60 @@ exports.finalSubmit = function *(ctx){
 	  };
 
 	const finalData = yield ctx.service.order.insertFinalData(data.fields.id,
-																data.fields.address,
+																data.fields.acceptName,
+																data.fields.acceptPhone,
+																data.fields.detailAddress,
 																data.fields.express,
 																data.fields.invoice,
 																data.file,
 																data.fields.orderPs)
-	// ctx.body = order.orders.insertId
-	this.body = 'success'
-	console.log(finalData)	
+
+	ctx.body = 'success'
+	// console.log(data)	
+	// const parts = this.multipart();
+	// const parts =  stream
+	// const arr = []
+	// let object;
+	// let part;
+	// part = yield parts;
+	// while (part) {
+	// if (part.length) {
+	//   // arrays are busboy fields
+	//   console.log('part',part)
+	//   console.log('field: ' + part[0]);
+	//   console.log('value: ' + part[1]);
+	//   console.log('valueTruncated: ' + part[2]);
+	//   console.log('fieldnameTruncated: ' + part[3]);
+	//   arr.push(part[1])
+	// } else {
+	//   // otherwise, it's a stream
+	//   console.log('field: ' + part.fieldname);
+	//   console.log('filename: ' + part.filename);
+	//   console.log('encoding: ' + part.encoding);
+	//   console.log('mime: ' + part.mime);
+	//   // file handle
+	//   object = yield this.oss.put('pcbFile/'+'egg-oss-demo-' + part.filename, part);
+	// }
+	// 	part = yield parts;
+	// }
+	// console.log('arr',arr)
+	// console.log('and we are done parsing the form!');
+	// if (object) {
+	// 	console.log('get oss object: %j', object);
+	// 	this.unsafeRedirect(object.url);
+	// 	yield ctx.service.order.insertFinalData(arr[6],arr[0],arr[1],arr[2],arr[3],arr[4],object.url,arr[5])
+	// 	const finalData = yield ctx.service.order.insertFinalData(data.fields.id,
+	// 															data.fields.acceptName,
+	// 															data.fields.acceptPhone,
+	// 															data.fields.detailAddress,
+	// 															data.fields.express,
+	// 															data.fields.invoice,
+	// 															data.file,
+	// 															data.fields.orderPs)
+	//     this.body = 'success'                
+	// } else {
+	// 	this.body = 'please select a file to upload！';
+	// }
 }
 
 
@@ -73,7 +119,10 @@ exports.doCheckOrder = function *(ctx){
 exports.cancelOrder = function *(ctx){
 	var data = ctx.request.body
 	console.log(data);
-	var updateOrder = yield ctx.service.order.cancelOrder(data.id)
+	var updateOrder = yield ctx.service.order.cancelOrder({
+		id: data.id,
+		orderStatus: 3
+	})
 	ctx.body = 'success'
 	console.log(updateOrder)
 }

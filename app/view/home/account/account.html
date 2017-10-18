@@ -86,7 +86,7 @@
 			      				</colgroup> 
 				      			<tbody class="ivu-table-tbody">
 					      			{% for orderList in orderLists %}
-					      			{% if orderList.orderStatus == 1 %}
+					      			{% if orderList.orderStatus != 0 %}
 					       			<tr class="ivu-table-row">
 					        			<td class="">
 					         				<div class="ivu-table-cell">
@@ -157,6 +157,9 @@
 					         			<td class="">
 					         				<div class="ivu-table-cell">
 					          					<a target="_blank" href="/orderDetail?orderId={{orderList.id}}">查看订单详情</a>
+					          					{% if orderList.orderStatus == 3  %}
+					          						<p>（订单已取消）</p>
+					          					{% endif %}
 					         				</div>
 					         			</td>
 					       			</tr>

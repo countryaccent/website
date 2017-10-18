@@ -1,3 +1,4 @@
+const md5 = require('md5')
 exports.changePassword = function *(ctx){
 	console.log(ctx.request.body.old)
 	const user = ctx.cookies.get('user');
@@ -5,8 +6,8 @@ exports.changePassword = function *(ctx){
 	const userInfo = yield ctx.service.user.findName(user)
 	const password = JSON.parse(JSON.stringify(userInfo)).userName.pass
 	// console.log(password)
-		if(ctx.request.body.old == password){
-            yield ctx.service.user.changePassword([newPass,user])                         
+		if(md5(ctx.request.body.old) == password){
+            yield ctx.service.user.changePassword([md5(newPass),user])                         
 			ctx.body = 'success'                                               
 		}else{
 			ctx.body = 'passError'

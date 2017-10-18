@@ -12,32 +12,13 @@
 				<div class="wrap-left">
 					<div class="accept fl">
 						<h3><i class="ivu-icon ivu-icon-ios-clock-outline icon"></i>下单时间</h3>
-						{{orderList.orderTime}}
+						<p>{{orderList.orderTime}}</p>
 					</div>
 					<div class="accept fl">
 						<h3><i class="ivu-icon ivu-icon-ios-home-outline icon"></i>收货信息</h3>
-						{{orderList.address | safe}}
-						<ul>
-							{% for addressList in addressLists %}
-
-				            {% if addressList.isDefault == '1' %}
-							<li class="isDefault selected">
-							{% else %}
-							  <li>
-							{% endif %}
-				                 <div class="address">
-									<span>{{addressList.address}} </span>（<span>{{addressList.acceptName}}收</span>）
-								</div>
-								<div class="detailAddress">{{addressList.detailAddress}}</div>
-								<div class="phone">{{addressList.phone}}</div>
-								{% if addressList.isDefault == '1' %}
-								  
-								<div class="default">[默认]</div>
-								{% endif %}
-								
-				            </li> 
-				            {% endfor %}   
-						</ul>
+						<p>收件人：{{orderList.acceptName | safe}}</p>
+						<p>联系方式：{{orderList.acceptPhone | safe}}</p>
+						<p>地址：{{orderList.detailAddress | safe}}</p>
 					</div>
 					<div class="express fl">
 						<h3><i class="ivu-icon ivu-icon-ios-location-outline icon"></i>快递信息</h3>
@@ -74,7 +55,7 @@
 					</div>
 					<div class="pcbFile fl bd">
 						<h3><i class="ivu-icon ivu-icon-ios-paper-outline icon"></i>下单备注</h3>
-						{{orderList.orderPs}}
+						<p>{{orderList.orderPs}}</p>
 					</div>
 					<div class="checkResult fl bd">
 						<h3><i class="ivu-icon ivu-icon-ios-gear-outline icon"></i>审核结果</h3>
@@ -94,7 +75,7 @@
 							<i class="ivu-icon ivu-icon-checkmark-circled"></i><span>审核通过</span>
 						</div>
 						<p>
-							审核详情：{{orderList.checkPs}}
+							审核详情：{{orderList.checkPs | safe}}
 						</p>
 						{% endif %}
 					</div>
@@ -151,11 +132,16 @@
 						</li>
 					</ul>
 					<h4>应付总额：<i>￥</i><span>{{orderList.totalFee}}</span></h4>
+					{% if orderList.orderStatus == 3  %}
+					    <button class="btn disabled">订单已取消</button>
+						<a href="/account/order"><button class="btn">返回个人中心</button></a>
+					{% else %}						
 					{% if orderList.checkStatus == 1 %}
 					<button class="btn pay">支付订单</button>
 					{% else %}
 					<button class="btn disabled">支付订单</button>
 					{% endif %}
+
 					{% if orderList.checkStatus == 0 %}
 					<button class="btn cancel">取消订单</button>
 					<a href="/order?orderId={{orderList.id}}"><button class="btn">返回修改订单</button></a>
@@ -163,6 +149,9 @@
 					<button class="btn disabled">取消订单</button>
 					<button class="btn disabled">返回修改订单</button>
 					{% endif %}
+					{% endif %}
+					
+					
 				</div> 
 			</div>
 			<div class="wrap-right">
@@ -247,6 +236,7 @@
 		</div>
 	</div>
 </div>
+
 <script src="public/js/jquery.min.js"></script>
 <script src="public/js/vue.js"></script>
 <script>

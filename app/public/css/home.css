@@ -142,7 +142,84 @@
     width: 180px;
     margin-top: 10px;
 }
-
+/*打样*/
+.count-list{
+    margin: 26px 0 30px 0;
+}
+.count-list ul li{
+    float: left;
+    /*width: 25%;*/
+    width: 280px;
+    /*margin: 0 12px;*/
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+}
+.count-list ul li + li{
+    margin-left: 25px;
+}
+.count-list-top img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border:1px solid #ea4246;
+    float: left;
+    margin:0 20px;
+    margin-top: 12px;
+}
+.count-list-top div{
+    float: left;
+}
+.count-list-top div h3{
+    padding-top: 15px;
+    font-size: 20px;
+    color: #111;
+    margin-bottom: 4px;
+    font-weight: normal;
+}
+.count-list-top div p{
+    color: #7a7a7a;
+    line-height: 22px;
+    width: 150px;
+}
+.count-list-bot{
+    float: left;
+}
+.count-list-bot div{
+    float: left;
+    margin:15px 9px;
+    font-size: 14px;
+}
+.count-list-bot span{
+    font-size: 26px;
+    color: #f34a4a;
+}
+.count-list-bot p{
+    text-align: center;
+}
+.count-list-bot i{
+    font-style: normal;
+    color: #f34a4a;
+    font-size: 14px;
+}
+.count-list-bot a{
+    width: 120px;
+    margin-top: 10px;
+    text-align: center;
+    display: block;
+    background: #fff;
+    height: 27px;
+    line-height: 28px;
+    padding: 0;
+    border: 1px solid #f34a4a;
+    color: #f34a4a;
+    font-size: 13px;
+    border-radius: 5px;
+}
+.count-list-bot a:hover{
+    color: #fff;
+    background: #f34a4a;
+}
 /*热门产品*/
 .M-product-list{
     margin-top: 20px;
@@ -154,7 +231,7 @@
 }
 .hot-title:after{
     content: '';
-    width: 90%;
+    width: 1080px;
     height: 1px;
     background: #e4e4e4;
     position: absolute;
@@ -166,7 +243,7 @@
     height: 32px;
     width: 32px;
     overflow: hidden;
-    background: url(../img/sprite.png) -0px -0px no-repeat;
+    background: url(../img/sprite.png) -32px -0px no-repeat;
     float: left;
     margin-right: 10px;
 }
@@ -182,6 +259,7 @@
 }
 .M-product-list ul li{
     float: left;
+  
 }
 .M-product-list ul li p{
     font-size: 16px;
@@ -194,6 +272,15 @@
 .M-product-list ul li img{
     width: 280px;
     height: 230px;
+    border-radius: 5px;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.M-product-list ul li img:hover{
+    -webkit-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    -o-transform: translateY(-10px);
+    transform: translateY(-10px);
 }
 .M-product-list ul li.more-product{
     width: 280px;
@@ -202,6 +289,8 @@
     text-align: center;
     line-height: 230px;
     font-size: 16px;
+    border-radius: 5px;
+
 }
 .M-product-list ul li.more-product:hover{
     background: #ccc;
@@ -214,8 +303,7 @@
 }
 /*我们的优势*/
 .M-adv{
-    /*float: left;*/
-    background: #eee;
+    background: #f2f2f2;
     text-align: center;
     padding:30px 0 60px 0;
     margin-top: 30px;
@@ -238,7 +326,7 @@
     height: 32px;
     width: 32px;
     overflow: hidden;
-    background: url(../img/sprite.png) -32px -0px no-repeat;
+    background: url(../img/sprite.png) -64px -0px no-repeat;
     vertical-align: bottom;
 }
 .M-adv h3 span{
@@ -276,7 +364,7 @@
     margin-top: 30px;
 }
 .about-title i{
-    background: url(../img/sprite.png) -64px -0px no-repeat;
+    background: url(../img/sprite.png) -96px -0px no-repeat;
 }
 .M-about .about-left{
     float: left;
@@ -307,6 +395,14 @@
     border-radius: 4px;
     width: 180px;
     height: 135px;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.M-about .about-left ul li img:hover,.about-right ul li img:hover{
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
 }
 .about-right{
     float: right;
@@ -315,7 +411,7 @@
     border:1px solid #e4e4e4;
     border-radius: 15px;
     margin-top: 30px;
-    height: 424px;
+    height: 418px;
 }
 .about-right ul li{
     float: left;
@@ -333,4 +429,55 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.order_list{
+    margin-top: 30px;
+}
+.order_list .order-title i{
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    overflow: hidden;
+    background: url(../img/sprite.png) -0px -0px no-repeat;
+    vertical-align: bottom;
+    margin-right: 10px;
+    float: left;
+}
+.order-title{
+    position: relative;
+}
+.order-title:after{
+    content: '';
+    width: 1040px;
+    height: 1px;
+    background: #e4e4e4;
+    position: absolute;
+    top: 15px;
+    right: 0;
+}
 
+.order-title  span{
+    margin-top: 6px;
+    color: #333;
+    font-weight: bold;
+    float: left;
+    font-size: 16px;
+}
+.ivu-table-wrapper{
+    margin-top: 20px;
+    float: left;
+    overflow: hidden;
+    height: 521px;
+}
+.ivu-table-body{
+    height: 480px;
+    overflow: hidden;
+}
+.ivu-table-body td span{
+    white-space: nowrap;
+}
+.red{
+    color: #ea4246;
+}
+tr.ivu-table-row:hover td{
+    background-color: #e8e8e8;
+}

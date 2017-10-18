@@ -13,6 +13,47 @@
 				<div class="wrap-left">
 					<div class="accept">
 						<h3><i class="ivu-icon ivu-icon-ios-home-outline icon"></i>收货信息</h3>
+						{% if addressLists.length == 0 %}
+						<div class="addAddress">
+							<button>添加收货地址</button>
+						</div>
+						<div class="address_show" >
+							<div class="con">
+								<h2>新增收货地址</h2>
+								<div class="form">
+									<form>
+										<label>
+							                <span class="item">收货人</span>
+							                <input class="ivu-input" v-model="name" type="text" name="name">
+							            </label>
+							            <label>
+							                <span class="item">联系方式</span>
+							                <input class="ivu-input" type="text" v-model="phone" name="phone" placeholder="请输入手机号或座机">
+							            </label>
+							            <label>
+							                <span class="item">所在地区</span>
+							                 <div data-toggle="distpicker">
+											  <select class="ivu-input" v-model="sel1"></select>
+											  <select class="ivu-input" v-model="sel2"></select>
+											  <select class="ivu-input" v-model="sel3"></select>
+											</div>
+							            </label>
+							            <label>
+							                <span class="item">街道地址</span>
+							                <input class="ivu-input" type="text" v-model="detailAddress" name="detailAddress" placeholder="如街道名称，门牌号码等信息">
+							            </label>
+							            <div class="save">
+							            	<span >保存</span>
+							            	<span >关闭</span>
+							            </div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<ul>
+							
+						</ul>
+						{% else %}
 						<ul>
 							{% for addressList in addressLists %}
 
@@ -21,8 +62,8 @@
 							{% else %}
 							  <li>
 							{% endif %}
-				                 <div class="address">
-									<span>{{addressList.address}} </span>（<span>{{addressList.acceptName}}收</span>）
+				                <div class="address">
+									<span>{{addressList.address}} </span>（<span>{{addressList.acceptName}}</span>收）
 								</div>
 								<div class="detailAddress">{{addressList.detailAddress}}</div>
 								<div class="phone">{{addressList.phone}}</div>
@@ -34,6 +75,8 @@
 				            </li> 
 				            {% endfor %}   
 						</ul>
+						{% endif %}
+
 					</div>
 					<div class="express fl">
 						<h3><i class="ivu-icon ivu-icon-ios-location-outline icon"></i>选择快递</h3>
@@ -229,8 +272,10 @@
 {% endif %}
 <script src="public/js/jquery.min.js"></script>
 <script src="public/js/vue.js"></script>
+<script src="public/js/distpicker.js"></script>
 <script>
 	var csrf = '{{ ctx.csrf }}';
+	var userName = '{{ user }}';
 </script>
 <script src="/public/js/order.js"></script>
 <script>

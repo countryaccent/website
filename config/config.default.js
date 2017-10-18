@@ -39,11 +39,26 @@ module.exports = appInfo => {
 
   
   config.view = {
-    defaultViewEngine: 'nunjucks',
+    defaultViewEngine: 'nunjucks',     
     mapping: {
       '.html': 'nunjucks',
     },
   };
+  config.multipart = {
+    fileExtensions: [
+      '.rar',
+    ],
+    
+  }
 
+  config.oss = {
+        client: {
+            accessKeyId: 'LTAIaAIeUp83JopT',
+            accessKeySecret: 'bMGMQ81ZupdyUoOJrfJUq6uTGr6Mmq',
+            bucket: 'rongxinpcb',
+            endpoint: 'oss-cn-shenzhen.aliyuncs.com',
+            timeout: '60s',
+        }
+    };
   return config;
 };
